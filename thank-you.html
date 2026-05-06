@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ברוכה הבאה! | Salon Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .thankyou-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 60, 190, 0.12) 0%, transparent 60%);
+    }
+
+    .thankyou-card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: pulse 1s ease-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .thankyou-card h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .thankyou-card .sub {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .status-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .status-box.success {
+      border-color: rgba(60, 255, 130, 0.3);
+      color: #3cff82;
+      background: rgba(60, 255, 130, 0.05);
+    }
+
+    .status-box.loading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .loading-bar {
+      height: 4px;
+      background: var(--bg3);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .loading-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), #b44fff);
+      animation: fillBar 2s ease-out forwards;
+    }
+
+    @keyframes fillBar {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"> Salon Academy</a>
+</nav>
+
+<div class="thankyou-page">
+  <div class="thankyou-card">
+    <div class="success-icon">🎉</div>
+    <h1>ברוכה הבאה!</h1>
+    <p class="sub">
+      תודה שהצטרפת לקורס <strong style="color:var(--pink);">לא משתעבדת לתוכן</strong>.<br />
+      מוסיפה אותך לקורס...
+    </p>
+
+    <div class="loading-bar">
+      <div class="loading-bar-fill"></div>
+    </div>
+
+    <div class="status-box loading" id="statusBox">
+      <span class="spinner"></span>
+      <span>מעבדת את הגישה שלך...</span>
+    </div>
+
+    <div id="ctaArea" style="display:none;">
+      <a href="course.html" class="btn btn-primary btn-lg" style="width:100%;display:block;margin-bottom:16px;">
+        כניסה לקורס ←
+      </a>
+      <p style="font-size:0.85rem;color:var(--text-muted);">
+        קיבלת גם אימייל עם פרטי הכניסה
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const courseId = urlParams.get('course') || COURSE_ID;
+  const token = urlParams.get('token'); // Optional payment provider token
+
+  async function processEnrollment() {
+    const statusBox = document.getElementById('statusBox');
+    const ctaArea = document.getElementById('ctaArea');
+
+    // 1. Get current session
+    const { data: { session }, error: sessionError } = await sb.auth.getSession();
+
+    if (!session) {
+      // Not logged in - redirect to register
+      statusBox.innerHTML = '<span>⚠️ יש להתחבר לפני הגישה</span>';
+      statusBox.className = 'status-box';
+      setTimeout(() => {
+        window.location.href = `register.html?course=${courseId}`;
+      }, 2000);
+      return;
+    }
+
+    const userId = session.user.id;
+
+    try {
+      // 2. Check if already enrolled
+      const { data: existing, error: checkError } = await sb
+        .from('enrollments')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('course_id', courseId)
+        .maybeSingle();
+
+      if (existing) {
+        // Already enrolled - just proceed
+        showSuccess('✓ הגישה לקורס כבר מופעלת!');
+        return;
+      }
+
+      // 3. Insert enrollment
+      const { error: insertError } = await sb
+        .from('enrollments')
+        .insert({
+          user_id: userId,
+          course_id: courseId
+        });
+
+      if (insertError) {
+        console.error('Enrollment insert error:', insertError);
+        // If RLS error, it might mean row already exists or policy blocks it
+        if (insertError.code === '23505') {
+          showSuccess('✓ הגישה לקורס כבר מופעלת!');
+        } else {
+          statusBox.innerHTML = `⚠️ שגיאה בהוספת הגישה. <a href="mailto:info@salon-hayazamiot.co.il">צרי קשר</a>`;
+          statusBox.className = 'status-box';
+          ctaArea.style.display = 'block';
+        }
+        return;
+      }
+
+      showSuccess('✓ הגישה לקורס הופעלה בהצלחה!');
+
+    } catch (err) {
+      console.error('Enrollment error:', err);
+      statusBox.innerHTML = '⚠️ שגיאה. נסי לרענן את הדף.';
+      statusBox.className = 'status-box';
+      ctaArea.style.display = 'block';
+    }
+  }
+
+  function showSuccess(msg) {
+    const statusBox = document.getElementById('statusBox');
+    const ctaArea = document.getElementById('ctaArea');
+    statusBox.innerHTML = msg;
+    statusBox.className = 'status-box success';
+    ctaArea.style.display = 'block';
+
+    // Auto-redirect after 3 seconds
+    setTimeout(() => {
+      window.location.href = 'course.html';
+    }, 3000);
+  }
+
+  // Wait a moment for the animation, then process
+  setTimeout(processEnrollment, 1500);
+</script>
+
+</body>
+</html>

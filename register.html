@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הרשמה | Salon Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"> Salon Academy</a>
+  <ul class="navbar-links">
+    <li><a href="login.html">כניסה</a></li>
+  </ul>
+</nav>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>יצירת חשבון</h1>
+    <p class="subtitle">הצטרפי ל-Salon Academy וקבלי גישה מיידית לקורס</p>
+
+    <div class="alert alert-error" id="errorMsg"></div>
+    <div class="alert alert-success" id="successMsg"></div>
+
+    <!-- Course info banner if coming from pricing -->
+    <div id="courseBanner" style="display:none;background:var(--pink-glow);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:24px;">
+      <p style="font-weight:700;color:var(--pink-light);margin-bottom:4px;"> לא משתעבדת לתוכן</p>
+      <p style="font-size:0.9rem;color:var(--text-muted);">לאחר ההרשמה תועברי לדף התשלום</p>
+    </div>
+
+    <form id="registerForm">
+      <div class="form-group">
+        <label for="fullName">שם מלא</label>
+        <input
+          type="text"
+          id="fullName"
+          placeholder="שם מלא"
+          required
+          autocomplete="name"
+          style="direction:rtl;"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">כתובת אימייל</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">סיסמה</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="לפחות 8 תווים"
+          required
+          minlength="8"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="passwordConfirm">אימות סיסמה</label>
+        <input
+          type="password"
+          id="passwordConfirm"
+          placeholder="הכניסי שוב את הסיסמה"
+          required
+          autocomplete="new-password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;font-size:1.05rem;padding:15px;" id="submitBtn">
+        הרשמה ← גישה לקורס
+      </button>
+    </form>
+
+    <div class="divider"></div>
+
+    <p style="text-align:center;color:var(--text-muted);font-size:0.95rem;">
+      כבר יש לך חשבון?
+      <a href="login.html" style="font-weight:700;">כניסה כאן</a>
+    </p>
+
+    <p style="text-align:center;margin-top:16px;font-size:0.8rem;color:var(--text-muted);">
+      בהרשמה את מסכימה ל<a href="#" style="color:var(--text-muted);text-decoration:underline;">תנאי השימוש</a>
+      ו<a href="#" style="color:var(--text-muted);text-decoration:underline;">מדיניות הפרטיות</a>
+    </p>
+  </div>
+</div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const course = urlParams.get('course');
+
+  // Show course banner
+  if (course) {
+    document.getElementById('courseBanner').style.display = 'block';
+  }
+
+  // If already logged in → redirect
+  (async () => {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      window.location.href = course ? `thank-you.html?course=${course}` : 'course.html';
+    }
+  })();
+
+  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+
+    errorMsg.classList.remove('show');
+    successMsg.classList.remove('show');
+
+    // Validation
+    if (password !== passwordConfirm) {
+      errorMsg.textContent = 'הסיסמאות אינן תואמות';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    if (password.length < 8) {
+      errorMsg.textContent = 'הסיסמה חייבת להכיל לפחות 8 תווים';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'נרשמת... <span class="spinner"></span>';
+
+    const { data, error } = await sb.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: fullName },
+        emailRedirectTo: window.location.origin + '/login.html'
+      }
+    });
+
+    if (error) {
+      errorMsg.textContent = translateError(error.message);
+      errorMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'הרשמה ← גישה לקורס';
+      return;
+    }
+
+    // Registration success
+    if (data.user && data.session) {
+      // Auto-confirmed (email confirmation disabled in Supabase)
+      window.location.href = course
+        ? `thank-you.html?course=${course}`
+        : 'thank-you.html?course=' + COURSE_ID;
+    } else {
+      // Email confirmation required
+      successMsg.textContent = 'נשלח אימייל אימות! בדקי את תיבת הדואר שלך ולחצי על הקישור לאישור.';
+      successMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'הרשמה ← גישה לקורס';
+    }
+  });
+
+  function translateError(msg) {
+    if (msg.includes('already registered') || msg.includes('already been registered')) {
+      return 'כתובת האימייל הזו כבר רשומה. אולי תרצי <a href="login.html">להתחבר</a>?';
+    }
+    if (msg.includes('Password should be')) return 'הסיסמה חייבת להכיל לפחות 8 תווים';
+    if (msg.includes('invalid email')) return 'כתובת אימייל לא תקינה';
+    return 'שגיאה בהרשמה: ' + msg;
+  }
+</script>
+
+</body>
+</html>

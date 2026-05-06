@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לא משתעבדת לתוכן | Salon Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== Course Layout ===== */
+    .course-loading {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .course-loading p { color: var(--text-muted); }
+
+    .course-wrapper {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .course-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: calc(100vh - 70px);
+    }
+
+    /* Sidebar */
+    .course-sidebar {
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      padding: 0;
+      overflow-y: auto;
+      position: sticky;
+      top: 70px;
+      height: calc(100vh - 70px);
+    }
+
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-header p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .sidebar-item:hover,
+    .sidebar-item.active {
+      background: var(--pink-glow);
+      color: var(--text);
+    }
+
+    .sidebar-item.active .item-num {
+      background: var(--pink);
+      color: white;
+    }
+
+    .item-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-info .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .item-info .item-type {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .type-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .type-video { background: rgba(255, 60, 190, 0.15); color: var(--pink-light); }
+    .type-pdf { background: rgba(130, 0, 255, 0.15); color: #b44fff; }
+
+    /* Main content area */
+    .course-main {
+      padding: 40px 48px;
+      overflow-y: auto;
+    }
+
+    .content-header {
+      margin-bottom: 32px;
+    }
+
+    .content-header .content-type-badge {
+      margin-bottom: 12px;
+    }
+
+    .content-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    /* Video embed */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    /* PDF embed */
+    .pdf-container {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .pdf-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 4rem; margin-bottom: 20px; }
+    .empty-state h2 { color: var(--white); margin-bottom: 12px; }
+
+    /* No content */
+    .no-content-admin {
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .course-layout { grid-template-columns: 1fr; }
+      .course-sidebar {
+        position: static;
+        height: auto;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .course-main { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"> Salon Academy</a>
+  <ul class="navbar-links">
+    <li id="userEmail" style="color:var(--text-muted);font-size:0.9rem;"></li>
+    <li><a href="#" id="logoutBtn" style="color:var(--text-muted);">יציאה</a></li>
+  </ul>
+</nav>
+
+<!-- Loading state -->
+<div class="course-loading" id="loadingState">
+  <span class="spinner" style="width:36px;height:36px;border-width:3px;"></span>
+  <p>בודקת הרשאות...</p>
+</div>
+
+<!-- Course content (hidden until auth check passes) -->
+<div class="course-wrapper" id="courseWrapper">
+  <div class="course-layout">
+    <!-- Sidebar -->
+    <aside class="course-sidebar">
+      <div class="sidebar-header">
+        <h2>לא משתעבדת לתוכן</h2>
+        <p id="contentCount">טוענת תכנים...</p>
+      </div>
+      <div id="sidebarItems">
+        <!-- Populated by JS -->
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="course-main">
+      <div id="contentArea">
+        <div class="empty-state">
+          <div class="icon">👆</div>
+          <h2>בחרי שיעור להתחלה</h2>
+          <p>בחרי שיעור מהרשימה משמאל כדי להתחיל ללמוד</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+  let currentContent = null;
+  let allContent = [];
+
+  async function init() {
+    // 1. Check auth
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      window.location.href = 'login.html?redirect=course.html';
+      return;
+    }
+
+    const user = session.user;
+
+    // 2. Check enrollment
+    const { data: enrollment, error: enrollError } = await sb
+      .from('enrollments')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('course_id', COURSE_ID)
+      .maybeSingle();
+
+    if (!enrollment) {
+      // Not enrolled - redirect to purchase
+      window.location.href = 'index.html#pricing';
+      return;
+    }
+
+    // 3. Show course
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('courseWrapper').style.display = 'block';
+    document.getElementById('userEmail').textContent = user.email;
+
+    // 4. Load content
+    await loadContent();
+  }
+
+  async function loadContent() {
+    const { data: items, error } = await sb
+      .from('course_content')
+      .select('*')
+      .eq('course_id', COURSE_ID)
+      .order('order_num', { ascending: true });
+
+    allContent = items || [];
+
+    if (error) {
+      console.error('Content load error:', error);
+    }
+
+    renderSidebar(allContent);
+
+    if (allContent.length > 0) {
+      renderContent(allContent[0]);
+    } else {
+      document.getElementById('contentCount').textContent = 'אין תכנים עדיין';
+      document.getElementById('contentArea').innerHTML = `
+        <div class="empty-state">
+          <h2>התכנים בדרך!</h2>
+          <p>תכני הקורס יתווספו בקרוב. בדקי שוב מאוחר יותר.</p>
+        </div>`;
+    }
+  }
+
+  function renderSidebar(items) {
+    const container = document.getElementById('sidebarItems');
+    const count = document.getElementById('contentCount');
+
+    count.textContent = `${items.length} שיעורים`;
+
+    if (items.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+
+    container.innerHTML = items.map((item, i) => `
+      <a class="sidebar-item" data-id="${item.id}" onclick="renderContent(allContent[${i}]); setSidebarActive(this); return false;" href="#">
+        <div class="item-num">${i + 1}</div>
+        <div class="item-info">
+          <div class="item-title">${escHtml(item.title)}</div>
+          <div class="item-type">
+            <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}">
+              ${item.type === 'video' ? ' וידאו' : ' PDF'}
+            </span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    // Mark first as active
+    const first = container.querySelector('.sidebar-item');
+    if (first) first.classList.add('active');
+  }
+
+  function setSidebarActive(el) {
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function renderContent(item) {
+    currentContent = item;
+    const area = document.getElementById('contentArea');
+
+    let embedHtml = '';
+
+    if (item.type === 'video') {
+      const embedUrl = getVideoEmbedUrl(item.url);
+      if (embedUrl) {
+        embedHtml = `
+          <div class="video-container">
+            <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="${escHtml(item.title)}"></iframe>
+          </div>`;
+      } else {
+        embedHtml = `<div class="no-content-admin">לא ניתן לטעון את הוידאו. <a href="${escHtml(item.url)}" target="_blank">פתח קישור</a></div>`;
+      }
+    } else if (item.type === 'pdf') {
+      embedHtml = `
+        <div class="pdf-container">
+          <iframe src="${escHtml(item.url)}" title="${escHtml(item.title)}"></iframe>
+        </div>
+        <a href="${escHtml(item.url)}" target="_blank" class="btn btn-outline" style="margin-bottom:16px;">
+           הורד PDF
+        </a>`;
+    } else {
+      embedHtml = `<div class="no-content-admin">סוג תוכן לא מוכר: ${escHtml(item.type)}</div>`;
+    }
+
+    area.innerHTML = `
+      <div class="content-header">
+        <div class="content-type-badge">
+          <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}" style="padding:4px 12px;font-size:0.8rem;">
+            ${item.type === 'video' ? '🎬 שיעור וידאו' : '📄 חומר עזר PDF'}
+          </span>
+        </div>
+        <h1>${escHtml(item.title)}</h1>
+      </div>
+      ${embedHtml}
+    `;
+  }
+
+  function getVideoEmbedUrl(url) {
+    if (!url) return null;
+
+    // YouTube
+    const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (ytMatch) {
+      return `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // Vimeo
+    const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vimeoMatch) {
+      return `https://player.vimeo.com/video/${vimeoMatch[1]}?dnt=1`;
+    }
+
+    // Direct embed URLs
+    if (url.includes('/embed/') || url.includes('player.vimeo')) {
+      return url;
+    }
+
+    return null;
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Logout
+  document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    await sb.auth.signOut();
+    window.location.href = 'index.html';
+  });
+
+  // Init
+  init();
+</script>
+
+</body>
+</html>

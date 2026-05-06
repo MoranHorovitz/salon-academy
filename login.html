@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כניסה | Salon Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo"> Salon Academy</a>
+  <ul class="navbar-links">
+    <li><a href="register.html">הרשמה</a></li>
+  </ul>
+</nav>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>כניסה לחשבון</h1>
+    <p class="subtitle">ברוכה השבה! הכנסי את הפרטים שלך כדי להמשיך</p>
+
+    <div class="alert alert-error" id="errorMsg"></div>
+    <div class="alert alert-info" id="infoMsg"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">כתובת אימייל</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">סיסמה</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="••••••••"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;font-size:1.05rem;padding:15px;" id="submitBtn">
+        כניסה
+      </button>
+    </form>
+
+    <div class="divider"></div>
+
+    <p style="text-align:center;color:var(--text-muted);font-size:0.95rem;">
+      אין לך חשבון עדיין?
+      <a href="register.html" style="font-weight:700;">הרשמי כאן</a>
+    </p>
+
+    <p style="text-align:center;margin-top:12px;">
+      <a href="#" id="forgotPasswordLink" style="font-size:0.9rem;color:var(--text-muted);">שכחתי סיסמה</a>
+    </p>
+  </div>
+</div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+  // Check for redirect param (if came from a protected page)
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectTo = urlParams.get('redirect') || 'course.html';
+
+  // If user is already logged in → redirect
+  (async () => {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      window.location.href = redirectTo;
+    }
+  })();
+
+  // Show info if redirected from protected page
+  if (urlParams.get('redirect')) {
+    const infoMsg = document.getElementById('infoMsg');
+    infoMsg.textContent = 'יש להתחבר כדי לגשת לקורס';
+    infoMsg.classList.add('show');
+  }
+
+  // Login form submission
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMsg');
+
+    errorMsg.classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'מתחברת... <span class="spinner"></span>';
+
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      errorMsg.textContent = translateError(error.message);
+      errorMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'כניסה';
+    } else {
+      window.location.href = redirectTo;
+    }
+  });
+
+  // Forgot password
+  document.getElementById('forgotPasswordLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email) {
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.textContent = 'הכניסי את האימייל שלך קודם';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    const { error } = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/login.html'
+    });
+
+    const infoMsg = document.getElementById('infoMsg');
+    if (error) {
+      infoMsg.textContent = 'שגיאה בשליחת המייל. נסי שוב.';
+    } else {
+      infoMsg.textContent = 'נשלח אימייל לאיפוס סיסמה! בדקי את תיבת הדואר שלך.';
+    }
+    infoMsg.classList.add('show');
+  });
+
+  function translateError(msg) {
+    if (msg.includes('Invalid login credentials')) return 'אימייל או סיסמה שגויים';
+    if (msg.includes('Email not confirmed')) return 'יש לאמת את האימייל לפני הכניסה';
+    if (msg.includes('Too many requests')) return 'יותר מדי ניסיונות, נסי שוב בעוד מספר דקות';
+    return 'שגיאה בכניסה: ' + msg;
+  }
+</script>
+
+</body>
+</html>
