@@ -3,228 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ניהול קורס - לא משתעבדת לתוכן</title>
+<title>ניהול קורסים</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-.admin-form{background:rgba(255,255,255,0.04);border:1px solid rgba(255,60,190,0.2);border-radius:16px;padding:32px;margin-bottom:32px}
-.admin-form h2{font-size:18px;font-weight:700;color:#ff3cbe;margin-bottom:20px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.form-group{display:flex;flex-direction:column;gap:8px}
-.form-group label{font-size:13px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:1px}
-.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 16px;color:white;font-family:'Heebo',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#ff3cbe}
-.form-group select option{background:#1a0a2e;color:white}
-.btn-add{background:#ff3cbe;color:white;font-family:'Heebo',sans-serif;font-size:15px;font-weight:700;padding:12px 28px;border-radius:10px;border:none;cursor:pointer;transition:background 0.2s}
-.btn-add:hover{background:#e0359f}
-.content-list{display:flex;flex-direction:column;gap:12px}
-.content-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-.content-item .item-info h4{font-size:15px;font-weight:700;margin-bottom:4px}
-.content-item .item-info span{font-size:12px;color:rgba(255,255,255,0.4)}
-.content-item .item-type{background:rgba(255,60,190,0.15);color:#ff3cbe;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px}
-.btn-delete{background:rgba(255,60,60,0.1);color:#ff6060;border:1px solid rgba(255,60,60,0.2);border-radius:8px;padding:6px 14px;font-family:'Heebo',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s}
-.btn-delete:hover{background:rgba(255,60,60,0.2)}
-.enrollment-count{font-size:48px;font-weight:900;color:#ff3cbe;text-shadow:0 0 30px rgba(255,60,190,0.5)}
-.stat-card{background:rgba(255,60,190,0.06);border:1px solid rgba(255,60,190,0.2);border-radius:16px;padding:24px;text-align:center}
-.stat-card p{color:rgba(255,255,255,0.4);font-size:13px;margin-top:8px}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px}
+.admin-wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+.admin-title{font-size:28px;font-weight:900;margin-bottom:6px}
+.admin-sub{color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:36px}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;margin-bottom:24px}
+.card-title{font-size:16px;font-weight:700;color:#ff3cbe;margin-bottom:20px}
+.fgroup{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fgroup label{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.fgroup input,.fgroup select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 14px;color:white;font-family:'Heebo',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%}
+.fgroup input:focus,.fgroup select:focus{border-color:#ff3cbe}
+.fgroup select option{background:#1a0a2e}
+.upload-area{border:2px dashed rgba(255,60,190,0.3);border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;margin-bottom:10px}
+.upload-area:hover{border-color:#ff3cbe;background:rgba(255,60,190,0.05)}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:32px;margin-bottom:8px}
+.upload-text{font-size:14px;color:rgba(255,255,255,0.5)}
+.upload-text strong{color:#ff3cbe}
+.upload-accept{font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px}
+.progress-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:8px;display:none}
+.progress-fill{height:100%;background:#ff3cbe;width:0%;transition:width 0.3s}
+.upload-status{font-size:13px;margin-top:6px;text-align:center;min-height:18px}
+.s-ok{color:#3ecf8e}.s-err{color:#ff6060}
+.tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.tab{padding:10px 20px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s}
+.tab.active{color:#ff3cbe;border-bottom-color:#ff3cbe}
+.tc{display:none}.tc.active{display:block}
+.btn{font-family:'Heebo',sans-serif;font-size:15px;font-weight:700;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;transition:all 0.2s}
+.btn-p{background:#ff3cbe;color:white}.btn-p:hover{background:#e0359f}.btn-p:disabled{opacity:0.5;cursor:not-allowed}
+.btn-sec{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.1)}
+.btn-del{background:rgba(255,60,60,0.1);color:#ff6060;border:1px solid rgba(255,60,60,0.2);padding:6px 14px;font-size:12px;border-radius:8px;font-family:'Heebo',sans-serif;cursor:pointer}
+.clist{display:flex;flex-direction:column;gap:10px}
+.citem{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cinfo h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.cinfo span{font-size:11px;color:rgba(255,255,255,0.35);max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.tbadge{font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;text-transform:uppercase;flex-shrink:0}
+.t-pdf{background:rgba(130,0,255,0.2);color:#b44fff}
+.t-video{background:rgba(255,60,190,0.15);color:#ff3cbe}
+.t-image{background:rgba(0,200,255,0.15);color:#00c8ff}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.stat{background:rgba(255,60,190,0.06);border:1px solid rgba(255,60,190,0.15);border-radius:12px;padding:18px;text-align:center}
+.stat-num{font-size:36px;font-weight:900;color:#ff3cbe}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px}
+.empty{text-align:center;padding:32px;color:rgba(255,255,255,0.25);font-size:14px}
+.divider{border-top:1px solid rgba(255,255,255,0.06);margin:14px 0;padding-top:14px}
+.hint{font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px}
 </style>
 </head>
 <body>
 <nav class="navbar">
-  <div class="nav-brand">🎓 ניהול אקדמיה</div>
-  <div class="nav-links">
-    <a href="index.html">דף ראשי</a>
-    <button onclick="logout()" class="btn-secondary" style="padding:8px 20px;font-size:13px">יציאה</button>
+  <div class="nav-brand">ניהול אקדמיה</div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <a href="index.html" style="color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none">דף ראשי</a>
+    <button onclick="signOut()" class="btn btn-sec" style="padding:7px 16px;font-size:13px">יציאה</button>
   </div>
 </nav>
 
-<div class="container" style="max-width:900px;padding-top:40px">
+<div id="loading" style="display:flex;align-items:center;justify-content:center;min-height:80vh">
+  <p style="color:rgba(255,255,255,0.3)">טוען...</p>
+</div>
 
-  <div id="authCheck" style="display:none;text-align:center;padding:80px 0">
-    <p style="color:rgba(255,255,255,0.4)">בודק הרשאות...</p>
+<div id="main" class="admin-wrap" style="display:none">
+  <div class="admin-title">לוח ניהול קורסים</div>
+  <div class="admin-sub">קורס: לא משתעבדת לתוכן</div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="sEnroll">—</div><div class="stat-lbl">נרשמות</div></div>
+    <div class="stat"><div class="stat-num" id="sContent">—</div><div class="stat-lbl">פריטי תוכן</div></div>
+    <div class="stat"><div class="stat-num">₪197</div><div class="stat-lbl">מחיר</div></div>
   </div>
 
-  <div id="adminContent" style="display:none">
+  <div class="card">
+    <div class="card-title">הוספת תוכן לקורס</div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('pdf',this)">📄 PDF</button>
+      <button class="tab" onclick="switchTab('video',this)">🎬 וידאו</button>
+      <button class="tab" onclick="switchTab('image',this)">🖼 תמונה</button>
+    </div>
 
-    <h1 style="font-size:28px;font-weight:900;margin-bottom:8px">לוח ניהול</h1>
-    <p style="color:rgba(255,255,255,0.4);margin-bottom:32px">קורס: לא משתעבדת לתוכן</p>
-
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="enrollment-count" id="enrollCount">-</div>
-        <p>נרשמות לקורס</p>
+    <div class="tc active" id="tc-pdf">
+      <div class="fgroup"><label>כותרת</label><input type="text" id="tpdf" placeholder="לדוגמה: המדריך המלא"></div>
+      <div class="upload-area">
+        <input type="file" accept=".pdf" id="fpdf" onchange="upload('pdf')">
+        <div class="upload-icon">📄</div>
+        <div class="upload-text">גררי PDF לכאן או <strong>לחצי לבחירה</strong></div>
+        <div class="upload-accept">PDF בלבד • עד 50MB</div>
       </div>
-      <div class="stat-card">
-        <div class="enrollment-count" id="contentCount">-</div>
-        <p>פריטי תוכן</p>
-      </div>
-      <div class="stat-card">
-        <div class="enrollment-count" style="font-size:32px">₪197</div>
-        <p>מחיר הקורס</p>
+      <div class="progress-bar" id="pb-pdf"><div class="progress-fill" id="pf-pdf"></div></div>
+      <div class="upload-status" id="st-pdf"></div>
+      <div class="divider">
+        <label style="font-size:12px;color:rgba(255,255,255,0.35)">או הדביקי לינק (Google Drive / Dropbox)</label>
+        <input type="text" id="url-pdf" placeholder="https://drive.google.com/..." style="margin-top:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 14px;color:white;font-family:'Heebo',sans-serif;font-size:14px;outline:none;width:100%">
+        <div class="hint">לינק Google Drive: שיתוף → כל אחד עם הלינק → העתיקי → שיני /view ל-/preview</div>
       </div>
     </div>
 
-    <!-- Add Content -->
-    <div class="admin-form">
-      <h2>הוספת תוכן לקורס</h2>
-      <div class="form-row">
-        <div class="form-group">
-          <label>כותרת</label>
-          <input type="text" id="contentTitle" placeholder="שם השיעור / הפרק">
+    <div class="tc" id="tc-video">
+      <div class="fgroup"><label>כותרת</label><input type="text" id="tvideo" placeholder="לדוגמה: שיעור 1 — הבעיה האמיתית"></div>
+      <div class="fgroup">
+        <label>קישור YouTube / Vimeo</label>
+        <input type="text" id="url-video" placeholder="https://youtube.com/watch?v=...">
+        <div class="hint">YouTube Unlisted לא מופיע בחיפוש — מושלם לקורסים</div>
+      </div>
+      <div class="divider">
+        <label style="font-size:12px;color:rgba(255,255,255,0.35)">או העלי קובץ וידאו</label>
+        <div class="upload-area" style="margin-top:10px">
+          <input type="file" accept="video/*" id="fvideo" onchange="upload('video')">
+          <div class="upload-icon">🎬</div>
+          <div class="upload-text">גררי וידאו לכאן או <strong>לחצי לבחירה</strong></div>
+          <div class="upload-accept">MP4, MOV • עד 500MB</div>
         </div>
-        <div class="form-group">
-          <label>סוג תוכן</label>
-          <select id="contentType">
-            <option value="video">וידאו (YouTube / Vimeo)</option>
-            <option value="pdf">PDF</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group" style="margin-bottom:16px">
-        <label>קישור (URL)</label>
-        <input type="text" id="contentUrl" placeholder="https://youtube.com/... או קישור ל-PDF">
-      </div>
-      <div class="form-group" style="margin-bottom:20px">
-        <label>סדר (מספר)</label>
-        <input type="number" id="contentOrder" placeholder="1" value="1" style="width:120px">
-      </div>
-      <button class="btn-add" onclick="addContent()">הוסף לקורס</button>
-      <span id="addStatus" style="margin-right:16px;font-size:13px;color:#ff3cbe"></span>
-    </div>
-
-    <!-- Content List -->
-    <div class="admin-form">
-      <h2>תוכן הקורס הנוכחי</h2>
-      <div class="content-list" id="contentList">
-        <p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px">טוען...</p>
+        <div class="progress-bar" id="pb-video"><div class="progress-fill" id="pf-video"></div></div>
+        <div class="upload-status" id="st-video"></div>
       </div>
     </div>
 
-    <!-- Enrollments -->
-    <div class="admin-form">
-      <h2>נרשמות אחרונות</h2>
-      <div id="enrollmentsList" style="color:rgba(255,255,255,0.4);font-size:14px">טוען...</div>
+    <div class="tc" id="tc-image">
+      <div class="fgroup"><label>כותרת</label><input type="text" id="timage" placeholder="לדוגמה: שקף פתיחה"></div>
+      <div class="upload-area">
+        <input type="file" accept="image/*" id="fimage" onchange="upload('image')">
+        <div class="upload-icon">🖼</div>
+        <div class="upload-text">גררי תמונה לכאן או <strong>לחצי לבחירה</strong></div>
+        <div class="upload-accept">JPG, PNG, WebP • עד 20MB</div>
+      </div>
+      <div class="progress-bar" id="pb-image"><div class="progress-fill" id="pf-image"></div></div>
+      <div class="upload-status" id="st-image"></div>
     </div>
 
+    <div style="margin-top:20px;display:flex;align-items:flex-end;gap:14px">
+      <div class="fgroup" style="width:90px;margin-bottom:0">
+        <label>סדר</label>
+        <input type="number" id="orderNum" value="1" min="1" style="text-align:center">
+      </div>
+      <button class="btn btn-p" id="addBtn" onclick="addContent()" style="flex:1">הוסף לקורס</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">תוכן הקורס</div>
+    <div class="clist" id="clist"><div class="empty">טוען...</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">נרשמות אחרונות</div>
+    <div id="elist"><div class="empty">טוען...</div></div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script>
-const COURSE_ID = 'lo-mishtabdet';
-const ADMIN_EMAIL = 'moran@salon-hayazamiot.co.il'; // שני לאימייל שלך
+const CID = 'lo-mishtabedet-latochan';
+const ADMIN = 'morry4@gmail.com';
+let tab = 'pdf', uploadedUrl = null;
 
-async function init(){
-  const { data: adminData } = await supabase
-    .from('admins')
-    .select('email')
-    .eq('email', session.user.email)
-    .single();
-
-  if(!adminData){
-    alert('גישה מורשית לאדמין בלבד');
-    window.location.href = 'login.html';
-    return;
-  }
-
-  document.getElementById('adminContent').style.display = 'block';
-  loadContent();
-  loadEnrollments();
+async function init() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session || session.user.email !== ADMIN) { window.location.href = 'login.html'; return; }
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+  refresh();
 }
 
-async function loadContent(){
-  const {data,error} = await supabase
-    .from('course_content')
-    .select('*')
-    .eq('course_id', COURSE_ID)
-    .order('order_num');
+async function signOut() { await supabase.auth.signOut(); window.location.href = 'login.html'; }
 
-  document.getElementById('contentCount').textContent = data ? data.length : 0;
+function switchTab(t, el) {
+  tab = t; uploadedUrl = null;
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tc').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tc-' + t).classList.add('active');
+}
 
-  if(!data || data.length === 0){
-    document.getElementById('contentList').innerHTML = '<p style="color:rgba(255,255,255,0.3);text-align:center;padding:20px">אין תוכן עדיין</p>';
-    return;
+async function upload(type) {
+  const file = document.getElementById('f' + type).files[0];
+  if (!file) return;
+  const pb = document.getElementById('pb-' + type);
+  const pf = document.getElementById('pf-' + type);
+  const st = document.getElementById('st-' + type);
+  pb.style.display = 'block'; st.className = 'upload-status'; st.textContent = 'מעלה...';
+  let p = 0;
+  const iv = setInterval(() => { p = Math.min(p + 8, 80); pf.style.width = p + '%'; }, 250);
+  try {
+    const name = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+    const { error } = await supabase.storage.from('courses').upload(CID + '/' + name, file, { upsert: true });
+    if (error) throw error;
+    clearInterval(iv); pf.style.width = '100%';
+    const { data: u } = supabase.storage.from('courses').getPublicUrl(CID + '/' + name);
+    uploadedUrl = u.publicUrl;
+    st.className = 'upload-status s-ok'; st.textContent = 'הועלה! ' + file.name;
+  } catch(e) {
+    clearInterval(iv); pb.style.display = 'none';
+    st.className = 'upload-status s-err'; st.textContent = 'שגיאה: ' + e.message;
   }
+}
 
-  document.getElementById('contentList').innerHTML = data.map(item => `
-    <div class="content-item">
-      <div class="item-info">
-        <h4>${item.title}</h4>
-        <span>${item.url.substring(0,60)}...</span>
-      </div>
-      <div style="display:flex;gap:10px;align-items:center">
-        <span class="item-type">${item.type === 'video' ? 'וידאו' : 'PDF'}</span>
-        <span style="color:rgba(255,255,255,0.3);font-size:12px">#${item.order_num}</span>
-        <button class="btn-delete" onclick="deleteContent('${item.id}')">מחק</button>
-      </div>
+async function addContent() {
+  const btn = document.getElementById('addBtn');
+  btn.disabled = true; btn.textContent = 'שומר...';
+  try {
+    const title = document.getElementById('t' + tab).value.trim();
+    let url = uploadedUrl;
+    if (!url && tab === 'pdf') url = document.getElementById('url-pdf').value.trim();
+    if (!url && tab === 'video') url = document.getElementById('url-video').value.trim();
+    if (!title || !url) { alert('נא למלא כותרת ולהעלות קובץ או להזין קישור'); return; }
+    const { error } = await supabase.from('course_content').insert({ course_id: CID, title, type: tab, url, order_num: parseInt(document.getElementById('orderNum').value) || 1 });
+    if (error) throw error;
+    uploadedUrl = null;
+    document.getElementById('t' + tab).value = '';
+    if (tab === 'pdf') document.getElementById('url-pdf').value = '';
+    if (tab === 'video') document.getElementById('url-video').value = '';
+    document.getElementById('st-' + tab).textContent = '';
+    document.getElementById('pb-' + tab).style.display = 'none';
+    refresh();
+  } catch(e) { alert('שגיאה: ' + e.message); }
+  finally { btn.disabled = false; btn.textContent = 'הוסף לקורס'; }
+}
+
+async function refresh() {
+  const [ec, cc] = await Promise.all([
+    supabase.from('enrollments').select('*',{count:'exact',head:true}).eq('course_id',CID),
+    supabase.from('course_content').select('*',{count:'exact',head:true}).eq('course_id',CID)
+  ]);
+  document.getElementById('sEnroll').textContent = ec.count ?? 0;
+  document.getElementById('sContent').textContent = cc.count ?? 0;
+  loadContent(); loadEnrollments();
+}
+
+async function loadContent() {
+  const { data } = await supabase.from('course_content').select('*').eq('course_id', CID).order('order_num');
+  const el = document.getElementById('clist');
+  if (!data || !data.length) { el.innerHTML = '<div class="empty">אין תוכן עדיין</div>'; return; }
+  const ico = {pdf:'📄',video:'🎬',image:'🖼'};
+  el.innerHTML = data.map(i => `<div class="citem">
+    <div style="display:flex;align-items:center;gap:10px;min-width:0">
+      <span style="font-size:20px">${ico[i.type]||'📁'}</span>
+      <div class="cinfo"><h4>${esc(i.title)}</h4><span>${esc(i.url)}</span></div>
     </div>
-  `).join('');
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span class="tbadge t-${i.type}">${i.type}</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.3)">#${i.order_num}</span>
+      <button class="btn-del" onclick="del('${i.id}')">מחק</button>
+    </div>
+  </div>`).join('');
 }
 
-async function loadEnrollments(){
-  const {data, count} = await supabase
-    .from('enrollments')
-    .select('*', {count:'exact'})
-    .eq('course_id', COURSE_ID)
-    .order('created_at', {ascending:false})
-    .limit(10);
-
-  document.getElementById('enrollCount').textContent = count || 0;
-
-  if(!data || data.length === 0){
-    document.getElementById('enrollmentsList').innerHTML = '<p style="color:rgba(255,255,255,0.3)">אין נרשמות עדיין</p>';
-    return;
-  }
-
-  document.getElementById('enrollmentsList').innerHTML = `
-    <table style="width:100%;border-collapse:collapse">
-      <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
-        <th style="text-align:right;padding:8px;color:rgba(255,255,255,0.4);font-size:12px">User ID</th>
-        <th style="text-align:right;padding:8px;color:rgba(255,255,255,0.4);font-size:12px">תאריך</th>
-      </tr>
-      ${data.map(e=>`
-        <tr style="border-bottom:1px solid rgba(255,255,255,0.05)">
-          <td style="padding:8px;font-size:12px;color:rgba(255,255,255,0.6)">${e.user_id.substring(0,16)}...</td>
-          <td style="padding:8px;font-size:12px;color:rgba(255,255,255,0.4)">${new Date(e.created_at).toLocaleDateString('he-IL')}</td>
-        </tr>
-      `).join('')}
-    </table>
-  `;
+async function loadEnrollments() {
+  const { data } = await supabase.from('enrollments').select('*').eq('course_id',CID).order('created_at',{ascending:false}).limit(20);
+  const el = document.getElementById('elist');
+  if (!data || !data.length) { el.innerHTML = '<div class="empty">אין נרשמות עדיין</div>'; return; }
+  el.innerHTML = '<table style="width:100%;border-collapse:collapse;font-size:13px">' +
+    '<tr style="border-bottom:1px solid rgba(255,255,255,0.08)"><th style="text-align:right;padding:8px 4px;color:rgba(255,255,255,0.35)">User ID</th><th style="text-align:right;padding:8px 4px;color:rgba(255,255,255,0.35)">תאריך</th></tr>' +
+    data.map(e => `<tr style="border-bottom:1px solid rgba(255,255,255,0.04)"><td style="padding:10px 4px;color:rgba(255,255,255,0.5);font-size:12px">${esc(e.user_id.substring(0,24))}...</td><td style="padding:10px 4px;color:rgba(255,255,255,0.35)">${new Date(e.created_at).toLocaleDateString('he-IL')}</td></tr>`).join('') + '</table>';
 }
 
-async function addContent(){
-  const title = document.getElementById('contentTitle').value.trim();
-  const type  = document.getElementById('contentType').value;
-  const url   = document.getElementById('contentUrl').value.trim();
-  const order = parseInt(document.getElementById('contentOrder').value) || 1;
-
-  if(!title || !url){ alert('יש למלא כותרת וקישור'); return; }
-
-  const {error} = await supabase.from('course_content').insert({
-    course_id: COURSE_ID, title, type, url, order_num: order
-  });
-
-  if(error){ alert('שגיאה: ' + error.message); return; }
-
-  document.getElementById('addStatus').textContent = '✓ נוסף בהצלחה!';
-  setTimeout(()=>{ document.getElementById('addStatus').textContent=''; }, 3000);
-  document.getElementById('contentTitle').value='';
-  document.getElementById('contentUrl').value='';
-  loadContent();
-}
-
-async function deleteContent(id){
-  if(!confirm('למחוק פריט זה?')) return;
+async function del(id) {
+  if (!confirm('למחוק?')) return;
   await supabase.from('course_content').delete().eq('id', id);
-  loadContent();
+  refresh();
 }
 
-function logout(){
-  supabase.auth.signOut();
-  window.location.href='login.html';
-}
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 init();
 </script>
