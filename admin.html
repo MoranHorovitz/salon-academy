@@ -160,14 +160,14 @@ const ADMIN = 'morry4@gmail.com';
 let tab = 'pdf', uploadedUrl = null;
 
 async function init() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (!session || session.user.email !== ADMIN) { window.location.href = 'login.html'; return; }
   document.getElementById('loading').style.display = 'none';
   document.getElementById('main').style.display = 'block';
   refresh();
 }
 
-async function signOut() { await supabase.auth.signOut(); window.location.href = 'login.html'; }
+async function signOut() { await sb.auth.signOut(); window.location.href = 'login.html'; }
 
 function switchTab(t, el) {
   tab = t; uploadedUrl = null;
@@ -188,10 +188,10 @@ async function upload(type) {
   const iv = setInterval(() => { p = Math.min(p + 8, 80); pf.style.width = p + '%'; }, 250);
   try {
     const name = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const { error } = await supabase.storage.from('courses').upload(CID + '/' + name, file, { upsert: true });
+    const { error } = await sb.storage.from('courses').upload(CID + '/' + name, file, { upsert: true });
     if (error) throw error;
     clearInterval(iv); pf.style.width = '100%';
-    const { data: u } = supabase.storage.from('courses').getPublicUrl(CID + '/' + name);
+    const { data: u } = sb.storage.from('courses').getPublicUrl(CID + '/' + name);
     uploadedUrl = u.publicUrl;
     st.className = 'upload-status s-ok'; st.textContent = 'הועלה! ' + file.name;
   } catch(e) {
@@ -209,7 +209,7 @@ async function addContent() {
     if (!url && tab === 'pdf') url = document.getElementById('url-pdf').value.trim();
     if (!url && tab === 'video') url = document.getElementById('url-video').value.trim();
     if (!title || !url) { alert('נא למלא כותרת ולהעלות קובץ או להזין קישור'); return; }
-    const { error } = await supabase.from('course_content').insert({ course_id: CID, title, type: tab, url, order_num: parseInt(document.getElementById('orderNum').value) || 1 });
+    const { error } = await sb.from('course_content').insert({ course_id: CID, title, type: tab, url, order_num: parseInt(document.getElementById('orderNum').value) || 1 });
     if (error) throw error;
     uploadedUrl = null;
     document.getElementById('t' + tab).value = '';
@@ -224,8 +224,8 @@ async function addContent() {
 
 async function refresh() {
   const [ec, cc] = await Promise.all([
-    supabase.from('enrollments').select('*',{count:'exact',head:true}).eq('course_id',CID),
-    supabase.from('course_content').select('*',{count:'exact',head:true}).eq('course_id',CID)
+    sb.from('enrollments').select('*',{count:'exact',head:true}).eq('course_id',CID),
+    sb.from('course_content').select('*',{count:'exact',head:true}).eq('course_id',CID)
   ]);
   document.getElementById('sEnroll').textContent = ec.count ?? 0;
   document.getElementById('sContent').textContent = cc.count ?? 0;
@@ -233,7 +233,7 @@ async function refresh() {
 }
 
 async function loadContent() {
-  const { data } = await supabase.from('course_content').select('*').eq('course_id', CID).order('order_num');
+  const { data } = await sb.from('course_content').select('*').eq('course_id', CID).order('order_num');
   const el = document.getElementById('clist');
   if (!data || !data.length) { el.innerHTML = '<div class="empty">אין תוכן עדיין</div>'; return; }
   const ico = {pdf:'📄',video:'🎬',image:'🖼'};
@@ -251,7 +251,7 @@ async function loadContent() {
 }
 
 async function loadEnrollments() {
-  const { data } = await supabase.from('enrollments').select('*').eq('course_id',CID).order('created_at',{ascending:false}).limit(20);
+  const { data } = await sb.from('enrollments').select('*').eq('course_id',CID).order('created_at',{ascending:false}).limit(20);
   const el = document.getElementById('elist');
   if (!data || !data.length) { el.innerHTML = '<div class="empty">אין נרשמות עדיין</div>'; return; }
   el.innerHTML = '<table style="width:100%;border-collapse:collapse;font-size:13px">' +
@@ -261,7 +261,7 @@ async function loadEnrollments() {
 
 async function del(id) {
   if (!confirm('למחוק?')) return;
-  await supabase.from('course_content').delete().eq('id', id);
+  await sb.from('course_content').delete().eq('id', id);
   refresh();
 }
 
