@@ -159,6 +159,50 @@ const CID = 'lo-mishtabedet-latochan';
 const ADMIN = 'morry4@gmail.com';
 let tab = 'pdf', uploadedUrl = null;
 
+async function uploadMultiple() {
+ const files = Array.from(document.getElementById('fimage').files);
+ if (!files.length) return;
+ const prefix = document.getElementById('timage').value.trim() || 'עמוד';
+ let startNum = parseInt(document.getElementById('imgStart').value) || 1;
+ const curOrder = parseInt(document.getElementById('orderNum').value) || 1;
+ const total = files.length;
+ let done = 0;
+ document.getElementById('st-image').className = 'upload-status';
+ document.getElementById('st-image').textContent = 'מעלה 0/' + total + '...';
+ document.getElementById('imgQueue').textContent = '';
+ // Sort files by name to preserve order
+ files.sort((a,b) => a.name.localeCompare(b.name, undefined, {numeric:true}));
+ for (let i = 0; i < files.length; i++) {
+   const file = files[i];
+   const pct = Math.round(((i) / total) * 100);
+   document.getElementById('pf-image').style.width = pct + '%';
+   try {
+     const name = Date.now() + '_' + i + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+     const { error } = await sb.storage.from('courses').upload(CID + '/' + name, file, { upsert: true });
+     if (error) throw error;
+     const { data: u } = sb.storage.from('courses').getPublicUrl(CID + '/' + name);
+     const title = prefix + ' ' + (startNum + i);
+     const { error: e2 } = await sb.from('course_content').insert({
+       course_id: CID, title, type: 'image', url: u.publicUrl, order_num: curOrder + i
+     });
+     if (e2) throw e2;
+     done++;
+     document.getElementById('pf-image').style.width = Math.round((done/total)*100) + '%';
+     document.getElementById('st-image').textContent = 'הועלו ' + done + '/' + total;
+   } catch(e) {
+     document.getElementById('st-image').className = 'upload-status s-err';
+     document.getElementById('st-image').textContent = 'שגיאה בקובץ ' + file.name + ': ' + e.message;
+     break;
+   }
+ }
+ if (done === total) {
+   document.getElementById('pf-image').style.width = '100%';
+   document.getElementById('st-image').className = 'upload-status s-ok';
+   document.getElementById('st-image').textContent = '✓ הועלו ' + total + ' תמונות בהצלחה!';
+   refresh();
+ }
+}
+
 async function init() {
   const { data: { session } } = await sb.auth.getSession();
   if (!session || session.user.email !== ADMIN) { window.location.href = 'login.html'; return; }
