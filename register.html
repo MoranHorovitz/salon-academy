@@ -156,7 +156,7 @@
     });
 
     if (error) {
-      errorMsg.textContent = translateError(error.message);
+      errorMsg.innerHTML = translateError(error.message);
       errorMsg.classList.add('show');
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'הרשמה ← גישה לקורס';
