@@ -166,9 +166,8 @@
     // Registration success
     if (data.user && data.session) {
       // Auto-confirmed (email confirmation disabled in Supabase)
-      window.location.href = course
-        ? `thank-you.html?course=${course}`
-        : 'thank-you.html?course=' + COURSE_ID;
+      const paymentUrl = 'https://secure.cardcom.solutions/EA/EA5/fbVckAhX8UGsi46x0TO9Q/PaymentSP';
+      window.location.href = paymentUrl;
     } else {
       // Email confirmation required
       successMsg.textContent = 'נשלח אימייל אימות! בדקי את תיבת הדואר שלך ולחצי על הקישור לאישור.';
