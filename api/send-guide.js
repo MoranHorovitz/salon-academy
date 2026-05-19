@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const GUIDE_URL = process.env.GUIDE_URL || 'https://salon-hayazamiot.co.il/guides/reels/';
+  const GUIDE_URL = process.env.GUIDE_URL || 'https://drive.google.com/file/d/17jX83dbVVGLzitmgMSXM6kRraF-dft-y/view?usp=sharing';
 
   const firstName = (name || '').split(' ')[0] || 'יקרה';
 
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     <h1>ברוכה הבאה, ${firstName}!</h1>
     <p>תודה שהצטרפת לקורס <strong style="color:#ff3cbe">לא משתעבדת לתוכן</strong> 🎉</p>
     <p>הגישה שלך פעילה. הנה המדריך שלך:</p>
-    <a href="${GUIDE_URL}" class="btn">פתחי את המדריך ←</a>
+    <a href="${GUIDE_URL}" class="btn">פתחי את המדריך (PDF) ←</a>
     <p style="font-size:14px;color:#6666aa;">אם הכפתור לא עובד, העתיקי את הקישור:<br>
       <a href="${GUIDE_URL}" style="color:#ff3cbe;">${GUIDE_URL}</a>
     </p>
