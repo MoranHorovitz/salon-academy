@@ -117,7 +117,7 @@
 
     <div class="status-box loading" id="statusBox">
       <span class="spinner"></span>
-      <span>מעבדת את הגישה שלך...</span>
+      <span>מעדכנת את הגישה שלך...</span>
     </div>
 
     <div id="ctaArea" style="display:none;">
@@ -169,7 +169,7 @@
 
       if (existing) {
         // Already enrolled - just proceed
-        showSuccess('✓ הגישה לקורס כבר מופעלת!');
+        showSuccess('✓ הגישה לקורס כבר מופעלת!', session);
         return;
       }
 
@@ -185,7 +185,7 @@
         console.error('Enrollment insert error:', insertError);
         // If RLS error, it might mean row already exists or policy blocks it
         if (insertError.code === '23505') {
-          showSuccess('✓ הגישה לקורס כבר מופעלת!');
+          showSuccess('✓ הגישה לקורס כבר מופעלת!', session);
         } else {
           statusBox.innerHTML = `⚠️ שגיאה בהוספת הגישה. <a href="mailto:info@salon-hayazamiot.co.il">צרי קשר</a>`;
           statusBox.className = 'status-box';
@@ -194,7 +194,7 @@
         return;
       }
 
-      showSuccess('✓ הגישה לקורס הופעלה בהצלחה!');
+      showSuccess('✓ הגישה לקורס הופעלה בהצלחה!', session);
 
     } catch (err) {
       console.error('Enrollment error:', err);
@@ -204,12 +204,29 @@
     }
   }
 
-  function showSuccess(msg) {
+  async function sendGuide(session) {
+    try {
+      const email = session.user.email;
+      const name = session.user.user_metadata?.full_name || '';
+      await fetch('/api/send-guide', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name }),
+      });
+    } catch (e) {
+      console.warn('Guide email failed (non-critical):', e);
+    }
+  }
+
+  function showSuccess(msg, session) {
     const statusBox = document.getElementById('statusBox');
     const ctaArea = document.getElementById('ctaArea');
     statusBox.innerHTML = msg;
     statusBox.className = 'status-box success';
     ctaArea.style.display = 'block';
+
+    // Send guide email (fire & forget)
+    if (session) sendGuide(session);
 
     // Auto-redirect after 3 seconds
     setTimeout(() => {
