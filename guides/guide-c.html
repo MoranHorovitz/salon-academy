@@ -3,80 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שעה אחת בשבוע  -  היוצרת | סלון היזמיות</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;
-  --lime:#c6ff00;--border:rgba(255,255,255,0.08);
-  --text:#f0f0f0;--muted:#777;
-}
+<title>שעה אחת בשבוע - היוצרת | Salon Academy</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-.wrap{max-width:680px;margin:0 auto;padding:60px 32px 80px;}
-@media(max-width:600px){.wrap{padding:36px 20px 60px;}}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
+@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
 .top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero{margin-bottom:52px;}
-.hero-icon{font-size:52px;margin-bottom:16px;}
-.hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:#aaa;margin-bottom:6px;font-style:italic;}
-.hero-tagline{font-size:clamp(18px,3.5vw,24px);color:#ccc;font-weight:600;margin-top:8px;}
-.divider{height:1px;background:var(--border);margin:44px 0;}
-.body-text{font-size:15px;color:#ccc;line-height:1.85;}
-.body-text p{margin-bottom:18px;}
-.body-text h3{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
-.body-text ul{padding-right:22px;margin-bottom:18px;}
-.body-text ul li{margin-bottom:9px;}
-.body-text strong{color:var(--text);font-weight:700;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px;margin:32px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;}
-.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:14px;color:#bbb;}
-.action-item .num{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:28px 0;font-size:15px;color:#ccc;line-height:1.75;}
-.outro{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;margin-top:52px;}
+.hero-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
+h1 em{font-style:normal;color:var(--lime);}
+.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
+h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
+p strong{color:#e8e8f0;}
+ul,ol{padding-right:22px;margin-bottom:20px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
+ul li strong,ol li strong{color:#e8e8f0;}
+.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
+.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
+.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.step-text strong{color:#e8e8f0;}
+.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
+.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
+.price-ex .price-note{font-size:13px;color:var(--muted);}
+table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
+table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
+table.compare td:first-child{color:#e8e8f0;font-weight:600;}
+.highlight{color:var(--lime);font-weight:700;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
 .outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
 .outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
 .btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 20px 16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}
-</style>
+footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">סלון היזמיות • מדריך אישי</div>
-  <div class="hero">
-    <div class="hero-icon">✨</div>
-    <h1>שעה אחת<br>בשבוע  - <br><em>היוצרת</em></h1>
-    <div class="hero-sub">"יש לי רעיונות אינסופיים אבל לא יודעת איך לתמחר אותם"</div>
-    <div class="hero-tagline">מה שבראש שלך  -  שווה כסף</div>
-  </div>
+  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-icon">✨</div>
+  <h1>שעה אחת בשבוע -<br><em>היוצרת</em></h1>
+  <p class="tagline">איך לתמחר את היצירתיות שלך ולמכור סדנה ראשונה עוד החודש</p>
+
+  
+<div class="section-num">חלק א' - הבעיה שלך בדיוק</div>
+<h2>את יודעת שיש לך משהו לתת — אבל לא יודעת מאיפה להתחיל לגבות</h2>
+<p>היוצרות הן הסוג שהכי קשה להן לתמחר — כי מה שהן עושות נראה להן "טבעי". <strong>זה לא טבעי. זה כישרון.</strong> ואנשים משלמים על כישרון.</p>
+<p>הסיבה שרוב היוצרות לא מרוויחות מהכישרון שלהן היא אחת: הן מחכות להיות "מוכנות מספיק". <strong>אין דבר כזה מוכנה מספיק. יש רק מתחילה.</strong></p>
+
+<div class="callout">
+<div class="callout-label">המספר שיפתיע אותך</div>
+סדנה של שעתיים. 10 משתתפות. ₪280 לאחת. <strong>₪2,800 בשעתיים.</strong> זה ₪1,400 לשעה. לא צריך תואר שני. לא צריך "5 שנות ניסיון". צריך לדעת משהו שאחרות רוצות ללמוד.
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ב' - 4 מסלולים ליוצרת</div>
+
+<h2>מסלול 1: הסדנה (הכי מהיר לכסף)</h2>
+<p>אירוע חד-פעמי, 2-3 שעות, נושא ספציפי מאוד. <strong>הסוד: ככל שהנושא ספציפי יותר — כוח הקנייה גבוה יותר.</strong></p>
+
+<h3>דוגמאות לנושאים שנמכרים</h3>
+<ul>
+<li>"איך לכתוב אימייל עסקי שגורם לאנשים לפתוח" — לבעלות עסק קטן</li>
+<li>"עיצוב ה-Instagram שלך ב-2 שעות" — ליזמות בתחילת דרך</li>
+<li>"הכנה לוועידת שנה: איך מנהלות שיחה על קידום" — לנשים בהייטק</li>
+<li>"בישול שבועי חכם ב-3 שעות" — לאמהות עסוקות</li>
+</ul>
+
+<div class="action-box">
+<h4>🗓️ תכנון סדנה ב-10 ימים</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>יום 1:</strong> בחרי נושא. כתבי 3 שורות תיאור + מחיר. שלחי ל-15 אנשים.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>יום 2-3:</strong> אם 4+ ענו "מעוניינת" — קבעי תאריך. פתחי רישום ב-Google Form + Paybox/ביט.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>יום 4-7:</strong> הכני את החומר. מצגת + workbook פשוט (אפשר ב-Canva). לא להשקיע יותר מ-3-4 שעות.</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-text"><strong>יום 8-10:</strong> 2 פוסטים/סטוריז. תזכורת למי שנרשמה. בדוק סידורים לוגיסטיים.</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-text"><strong>הסדנה:</strong> תעשי. תהני. בסוף — בקשי המלצות ושאלי מי רוצה לחלק הבא.</div></div>
+</div>
+
+<h2>מסלול 2: תוכן בתשלום (Substack / ניוזלטר)</h2>
+<p>אם את כותבת טוב, חושבת בצורה מעניינת, ורואה העולם בזווית ייחודית — <strong>יש אנשים שישלמו לקרוא אותך.</strong></p>
+
+<h3>המודל שעובד</h3>
+<ul>
+<li><strong>Substack:</strong> חלק חינמי (כדי לבנות קהל) + חלק בתשלום ₪29-79/חודש</li>
+<li><strong>100 מנויים ב-₪49/חודש = ₪4,900/חודש</strong> פסיבי כמעט לחלוטין</li>
+<li>כתיבה פעם בשבוע. 1-2 שעות לפרסום. זה הכל.</li>
+</ul>
+
+<div class="callout">
+<div class="callout-label">הטיפ שרוב הכותבות מפספסות</div>
+אל תנסי לכתוב ל"כולם". <strong>כתבי לאחת — האישה שהיית לפני 3 שנים.</strong> מה היית רוצה שמישהי תגיד לך? כתבי את זה.
+</div>
+
+<h2>מסלול 3: שירות יצירתי 1:1</h2>
+<p>יש יוצרות שמעדיפות עומק על רוחב. עבודה עם לקוחה אחת לעומק, ולא עם 20 בסדנה. זה לגיטימי לחלוטין.</p>
+
+<h3>דוגמאות לשירותים שנמכרים</h3>
+<ul>
+<li><strong>כתיבת תוכן לעסקים:</strong> ₪1,500-5,000 לחבילה חודשית</li>
+<li><strong>עיצוב ויזואלי:</strong> ₪800-3,000 לפרויקט</li>
+<li><strong>הפקת תוכן:</strong> ₪2,000-8,000 לחבילה</li>
+<li><strong>ייעוץ יצירתי:</strong> ₪400-800 לשיחה</li>
+</ul>
+
+<div class="divider"></div>
+<div class="section-num">חלק ג' - איך תומחרת</div>
+
+<h2>הסוד שיוצרות לא יודעות: תמחרי לפי ערך, לא לפי זמן</h2>
+<p>השאלה היא לא "כמה שעות השקעתי" — השאלה היא <strong>"כמה שווה לאדם מה שאני נותנת?"</strong></p>
+
+<table class="compare">
+<tr><th>השירות</th><th>עלות זמן שלך</th><th>ערך ללקוחה</th><th>מחיר נכון</th></tr>
+<tr><td>סדנת כתיבה 2 שעות</td><td>4 שעות עבודה</td><td>חוסכת 10 שעות טעויות</td><td class="highlight">₪250-400</td></tr>
+<tr><td>מדריך PDF</td><td>5-8 שעות</td><td>תהליך מובנה שנמכר פעמים רבות</td><td class="highlight">₪97-197</td></tr>
+<tr><td>שיחת ייעוץ 60 דקות</td><td>שעה + הכנה</td><td>מנהלת ג'אנגל של מחשבות</td><td class="highlight">₪350-600</td></tr>
+</table>
+
+<div class="action-box">
+<h4>✍️ המשימה שלך השבוע</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text">רשמי 3 נושאים שאת יכולה לדבר עליהם שעה בלי הכנה — <strong>מבלי לשפוט אם הם "מספיק מעניינים".</strong></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text">לכל נושא: כתבי "מי הכי ירוויח מסדנה על זה?" — שמי, גיל, מה מציק לה.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text">בחרי נושא אחד. כתבי כותרת לסדנה. <strong>שלחי לוואטסאפ של הקהל הרלוונטי: "מי מעוניינת?"</strong></div></div>
+</div>
+
+
   <div class="divider"></div>
-  <div class="body-text">
-    
-    <p>את חיה עם רעיונות. חוויות. זוויות ייחודיות על העולם. ואת תמיד שואלת את עצמך  -  אבל מי ישלם על זה? מי ירצה את זה?</p>
-    <p>הבשורה: <strong>יש אנשים שמחפשים בדיוק את הזווית שלך.</strong> הם פשוט לא יודעים שאת קיימת.</p>
-    <h3>הדרכים לתמחר את היצירתיות שלך</h3>
-    <ul>
-      <li><strong>סדנה חד-פעמית:</strong> שעתיים על נושא שאת אוהבת, 10–15 משתתפות, ₪200–400/אישה.</li>
-      <li><strong>תוכן בתשלום:</strong> Substack / ניוזלטר פרימיום / קהילת Patreon. ₪29–99/חודש.</li>
-      <li><strong>שירות יצירתי 1:1:</strong> כתיבה, עיצוב, הפקה, ייעוץ  -  לפי פרויקט. ₪1,000–5,000.</li>
-    </ul>
-    <div class="action-box">
-      <h4>המשימה של השעה הראשונה שלך</h4>
-      <div class="action-item"><div class="num">1</div><span>רשמי 3 נושאים שאת יכולה לדבר עליהם שעה בלי הכנה</span></div>
-      <div class="action-item"><div class="num">2</div><span>בחרי אחד ותארי סדנה של שעתיים  -  כותרת + 3 נקודות עיקריות</span></div>
-      <div class="action-item"><div class="num">3</div><span>שלחי לקבוצת הוואטסאפ הכי רלוונטית שיש לך: "מי מעוניינת?"</span></div>
-    </div>
-    <div class="callout">לא צריך ש-1000 אנשים ירצו את זה. צריך שעשרה אנשים <strong>מאוד</strong> ירצו את זה.</div>
-  </div>
   <div class="outro">
-    <h3>שעה אחת. שבוע אחד.</h3>
-    <p>לא צריך להחליט הכל היום. צריך רק לקחת את השעה הקרובה ולעשות את המשימה הראשונה שכתובה כאן.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה יותר רחוק? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על המחזור הבא ←</a>
+    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
+    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
+    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
   </div>
 </div>
-<footer>סלון היזמיות • רמת גן | המדריך הזה נשלח אישית אלייך ולא מיועד להפצה.</footer>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
 </body>
 </html>

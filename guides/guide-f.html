@@ -3,80 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שעה אחת בשבוע  -  הרב תחומית | סלון היזמיות</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;
-  --lime:#c6ff00;--border:rgba(255,255,255,0.08);
-  --text:#f0f0f0;--muted:#777;
-}
+<title>שעה אחת בשבוע - הרב תחומית | Salon Academy</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-.wrap{max-width:680px;margin:0 auto;padding:60px 32px 80px;}
-@media(max-width:600px){.wrap{padding:36px 20px 60px;}}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
+@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
 .top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero{margin-bottom:52px;}
-.hero-icon{font-size:52px;margin-bottom:16px;}
-.hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:#aaa;margin-bottom:6px;font-style:italic;}
-.hero-tagline{font-size:clamp(18px,3.5vw,24px);color:#ccc;font-weight:600;margin-top:8px;}
-.divider{height:1px;background:var(--border);margin:44px 0;}
-.body-text{font-size:15px;color:#ccc;line-height:1.85;}
-.body-text p{margin-bottom:18px;}
-.body-text h3{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
-.body-text ul{padding-right:22px;margin-bottom:18px;}
-.body-text ul li{margin-bottom:9px;}
-.body-text strong{color:var(--text);font-weight:700;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px;margin:32px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;}
-.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:14px;color:#bbb;}
-.action-item .num{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:28px 0;font-size:15px;color:#ccc;line-height:1.75;}
-.outro{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;margin-top:52px;}
+.hero-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
+h1 em{font-style:normal;color:var(--lime);}
+.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
+h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
+p strong{color:#e8e8f0;}
+ul,ol{padding-right:22px;margin-bottom:20px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
+ul li strong,ol li strong{color:#e8e8f0;}
+.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
+.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
+.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.step-text strong{color:#e8e8f0;}
+.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
+.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
+.price-ex .price-note{font-size:13px;color:var(--muted);}
+table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
+table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
+table.compare td:first-child{color:#e8e8f0;font-weight:600;}
+.highlight{color:var(--lime);font-weight:700;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
 .outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
 .outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
 .btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 20px 16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}
-</style>
+footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">סלון היזמיות • מדריך אישי</div>
-  <div class="hero">
-    <div class="hero-icon">🌐</div>
-    <h1>שעה אחת<br>בשבוע  - <br><em>הרב תחומית</em></h1>
-    <div class="hero-sub">"אני מתעניינת בהמון דברים ולא יודעת על מה להתמקד"</div>
-    <div class="hero-tagline">הרוחב שלך הוא לא בלגן  -  הוא יתרון</div>
-  </div>
+  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-icon">🌐</div>
+  <h1>שעה אחת בשבוע -<br><em>הרב תחומית</em></h1>
+  <p class="tagline">איך להפוך את "אני מתעניינת בהכל" מחולשה ליתרון כלכלי מובהק</p>
+
+  
+<div class="section-num">חלק א' - למה את שונה (ולמה זה טוב)</div>
+<h2>הרב תחומית היא לא מישהי שלא הצליחה להתמקד — היא מישהי שרואה חיבורים שאחרות מפספסות</h2>
+<p>שנים שאמרו לך "תתמקדי". "בחרי תחום". "אי אפשר להיות מומחית בהכל".</p>
+<p>הן טעו. ולא רק זה — <strong>הרב-תחומיות היא אחד מהנכסים הכי מבוקשים בשוק של 2025.</strong> חברות מחפשות אנשים שיכולים לגשר בין עולמות. יוזמות מחפשות מי שמבין גם X וגם Y. לקוחות מחפשים מי שיכולה לראות את כל התמונה.</p>
+
+<div class="callout">
+<div class="callout-label">האמת על שוק הייעוץ</div>
+"Generalist Consultant" — מישהי שמבינה גם עסקים וגם טכנולוגיה, או גם שיווק וגם פסיכולוגיה, או גם ניהול וגם עיצוב — <strong>גובה פרמיה של 30-60% על "מומחית" בתחום אחד.</strong> כי היא רואה מה האחרות מפספסות.
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ב' - מציאת ה"חיבור הזהב" שלך</div>
+
+<h2>ה-Framework: תחום A + תחום B = נישה שאף אחד אחר לא ממלא</h2>
+<p>הנכס שלך הוא לא כל תחום בנפרד — אלא ה<strong>חיבור ביניהם.</strong></p>
+
+<h3>תרגיל: "מפת החיבורים שלי"</h3>
+<div class="action-box">
+<h4>📋 עשי את זה עכשיו (10 דקות)</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>רשמי 5 תחומים</strong> שאת שולטת בהם, מתעניינת בהם, או עבדת בהם (גם תחביבים נחשבים)</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>חפשי חיבורים:</strong> לכל זוג — שאלי "מי צריכה מישהי שמבינה גם A וגם B?" — כתבי תשובה</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>בחרי את החיבור הכי חזק</strong> — איפה את מרגישה "רק אני רואה את זה"? שם הנישה שלך.</div></div>
+</div>
+
+<h3>דוגמאות לחיבורים זהב</h3>
+<table class="compare">
+<tr><th>תחום A</th><th>תחום B</th><th>הנישה</th></tr>
+<tr><td>פסיכולוגיה</td><td>UX/Product</td><td class="highlight">ייעוץ לצוותי מוצר בהטיות קוגניטיביות של משתמשים</td></tr>
+<tr><td>חינוך</td><td>AI/טכנולוגיה</td><td class="highlight">הטמעת AI בכיתה — הדרכה למורות</td></tr>
+<tr><td>משפטים</td><td>Startups</td><td class="highlight">ייעוץ משפטי-עסקי לסטארטאפים בשלב הזריעה</td></tr>
+<tr><td>בישול</td><td>ניהול זמן</td><td class="highlight">מנטורינג "אמא יעילה" — בישול + ארגון לאמהות עסוקות</td></tr>
+<tr><td>הנדסה</td><td>תקשורת</td><td class="highlight">כתיבת תיעוד טכני + הכשרת מהנדסים לתקשורת עם לקוחות</td></tr>
+</table>
+
+<div class="divider"></div>
+<div class="section-num">חלק ג' - 3 מסלולי הכנסה לרב תחומית</div>
+
+<h2>מסלול 1: Fractional Role — עובדת חלקית בתפקיד מנהלתי</h2>
+<p>חברות קטנות צריכות CMO, CPO, CTO — אבל לא יכולות לשלם על full-time. <strong>הפתרון: Fractional — את עובדת שבוע-שבועיים בחודש, מקבלת שכר חלקי.</strong></p>
+<ul>
+<li>Fractional CMO: ₪8,000-20,000 לחודש, 2-3 ימי עבודה</li>
+<li>Fractional Product Advisor: ₪5,000-12,000 לחודש</li>
+<li>Fractional Operations: ₪4,000-10,000 לחודש</li>
+</ul>
+
+<h2>מסלול 2: Innovation Consultant — מחברת עולמות לפתרון בעיות</h2>
+<p>כשחברה תקועה בבעיה — היא מסתכלת תמיד מאותה זווית. <strong>את — שרואה מ-5 זוויות — מביאה פתרונות שהם לא ראו.</strong></p>
+<ul>
+<li>Workshop חד-פעמי ל-team: ₪3,000-12,000 ליום</li>
+<li>Retainer חודשי: ₪4,000-10,000 ל-4-8 שעות בחודש</li>
+<li>פרויקט ספציפי (חקירת שוק, בניית אסטרטגיה): ₪8,000-30,000</li>
+</ul>
+
+<h2>מסלול 3: Multi-Revenue — כמה זרמי הכנסה קטנים</h2>
+<p>לא חייבים עסק אחד. אפשר 3-4 זרמים שמצטברים.</p>
+
+<div class="callout">
+<div class="callout-label">דוגמה לתמהיל חודשי</div>
+ייעוץ 1:1 × 4 לקוחות ₪600 = <strong>₪2,400</strong><br>
+ניוזלטר בתשלום × 80 מנויים ₪39 = <strong>₪3,120</strong><br>
+סדנה אחת בחודש × 10 אנשים ₪250 = <strong>₪2,500</strong><br>
+<strong>סה"כ: ₪8,020 לחודש, ~15 שעות עבודה</strong>
+</div>
+
+<div class="action-box">
+<h4>🌐 המשימה שלך השבוע</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>עשי את "מפת החיבורים"</strong> מחלק ב'. לקח 10 דקות.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>כתבי לינקדאין על החיבור שמצאת:</strong> "מה שמעניין בלהיות X וגם Y הוא ש..." — 3-5 שורות. לא מכירה.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>שאלי בפוסט:</strong> "יש מישהי שנתקלת בבעיה של [חיבור]? מחפשת לדבר עם 2-3 אנשים כדי להבין את הצורך." — גיוס ראשוני בלי להתחייב לכלום.</div></div>
+</div>
+
+
   <div class="divider"></div>
-  <div class="body-text">
-    
-    <p>שנים אמרו לך "תתמקדי". "בחרי תחום". "את לא יכולה לעשות הכל".</p>
-    <p>הבשורה: <strong>הן טעו.</strong> העולם כרגע מוכן לשלם בדיוק על מי שיודעת לחבר בין עולמות שרוב האנשים לא רואים שהם קשורים.</p>
-    <h3>הדרכים לנצל את הרוחב שלך</h3>
-    <ul>
-      <li><strong>חיבורים בין-תחומיים:</strong> ייעוץ לחברות שצריכות מישהי שמבינה גם X וגם Y. לרוב נדיר ויקר.</li>
-      <li><strong>תוכן רב-תחומי:</strong> ניוזלטר / פודקאסט שמחבר בין תחומים שונים  -  נישה ייחודית.</li>
-      <li><strong>פרויקטים צדדיים מגוונים:</strong> לאו דווקא "עסק אחד". אפשר כמה זרמי הכנסה קטנים שמצטברים.</li>
-    </ul>
-    <div class="action-box">
-      <h4>המשימה של השעה הראשונה שלך</h4>
-      <div class="action-item"><div class="num">1</div><span>רשמי את 5 התחומים שהכי מעניינים אותך (גם אם "לא קשורים")</span></div>
-      <div class="action-item"><div class="num">2</div><span>חפשי: האם יש חיבור בין שניים מהם שאף אחד אחר לא עושה?</span></div>
-      <div class="action-item"><div class="num">3</div><span>כתבי משפט: "אני עוזרת ל___ שרוצות גם ___ וגם ___"</span></div>
-    </div>
-    <div class="callout"><strong>הרב-תחומיות היא לא בעיה לפתור  -  היא מוצר למכור.</strong> הייחודיות שלך היא בדיוק שאף אחד אחר לא רואה את מה שאת רואה.</div>
-  </div>
   <div class="outro">
-    <h3>שעה אחת. שבוע אחד.</h3>
-    <p>לא צריך להחליט הכל היום. צריך רק לקחת את השעה הקרובה ולעשות את המשימה הראשונה שכתובה כאן.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה יותר רחוק? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על המחזור הבא ←</a>
+    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
+    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
+    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
   </div>
 </div>
-<footer>סלון היזמיות • רמת גן | המדריך הזה נשלח אישית אלייך ולא מיועד להפצה.</footer>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
 </body>
 </html>

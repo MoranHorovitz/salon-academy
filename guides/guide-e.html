@@ -3,80 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שעה אחת בשבוע  -  החוקרת | סלון היזמיות</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;
-  --lime:#c6ff00;--border:rgba(255,255,255,0.08);
-  --text:#f0f0f0;--muted:#777;
-}
+<title>שעה אחת בשבוע - החוקרת | Salon Academy</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-.wrap{max-width:680px;margin:0 auto;padding:60px 32px 80px;}
-@media(max-width:600px){.wrap{padding:36px 20px 60px;}}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
+@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
 .top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero{margin-bottom:52px;}
-.hero-icon{font-size:52px;margin-bottom:16px;}
-.hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:#aaa;margin-bottom:6px;font-style:italic;}
-.hero-tagline{font-size:clamp(18px,3.5vw,24px);color:#ccc;font-weight:600;margin-top:8px;}
-.divider{height:1px;background:var(--border);margin:44px 0;}
-.body-text{font-size:15px;color:#ccc;line-height:1.85;}
-.body-text p{margin-bottom:18px;}
-.body-text h3{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
-.body-text ul{padding-right:22px;margin-bottom:18px;}
-.body-text ul li{margin-bottom:9px;}
-.body-text strong{color:var(--text);font-weight:700;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px;margin:32px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;}
-.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:14px;color:#bbb;}
-.action-item .num{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:28px 0;font-size:15px;color:#ccc;line-height:1.75;}
-.outro{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;margin-top:52px;}
+.hero-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
+h1 em{font-style:normal;color:var(--lime);}
+.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
+h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
+p strong{color:#e8e8f0;}
+ul,ol{padding-right:22px;margin-bottom:20px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
+ul li strong,ol li strong{color:#e8e8f0;}
+.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
+.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
+.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.step-text strong{color:#e8e8f0;}
+.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
+.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
+.price-ex .price-note{font-size:13px;color:var(--muted);}
+table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
+table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
+table.compare td:first-child{color:#e8e8f0;font-weight:600;}
+.highlight{color:var(--lime);font-weight:700;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
 .outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
 .outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
 .btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 20px 16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}
-</style>
+footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">סלון היזמיות • מדריך אישי</div>
-  <div class="hero">
-    <div class="hero-icon">🔬</div>
-    <h1>שעה אחת<br>בשבוע  - <br><em>החוקרת</em></h1>
-    <div class="hero-sub">"אני יודעת המון  -  פשוט לא בטוחה שמישהו ישלם על זה"</div>
-    <div class="hero-tagline">העומק שלך הוא הנכס</div>
-  </div>
+  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-icon">🔬</div>
+  <h1>שעה אחת בשבוע -<br><em>החוקרת</em></h1>
+  <p class="tagline">איך להפוך ידע עמוק להכנסה ריאלית — צעד צעד</p>
+
+  
+<div class="section-num">חלק א' - האמת שאת צריכה לשמוע</div>
+<h2>את לא צריכה לחכות להיות "מומחית מוסמכת"</h2>
+<p>החוקרות הן הסוג שהכי מחכה. מחכות לתואר שני. לניסיון של 10 שנים. לאישור מבחוץ. <strong>בינתיים, מישהו עם חצי הידע שלהן כבר מרוויח.</strong></p>
+<p>הגדרה מעשית של מומחית: <strong>אם את יודעת יותר על נושא X מ-90% מהאנשים שצריכים עזרה בנושא X — את מומחית מספיק לגבות עליו.</strong></p>
+
+<div class="callout">
+<div class="callout-label">הבדיקה המהירה</div>
+חשבי על נושא שאת שולטת בו. עכשיו חשבי: כמה שעות לאדם ממוצע ייקח ללמוד את מה שאת יודעת על הנושא הזה? אם התשובה היא "יותר מ-20 שעות" — יש פה ערך שאפשר לתמחר.
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ב' - 4 מסלולים לחוקרת</div>
+
+<h2>מסלול 1: ייעוץ שעתי — הכי מהיר לכסף</h2>
+<p>שיחה של 60 דקות. הלקוח מגיע עם בעיה. את עוזרת לפתור אותה. <strong>זה הכל.</strong></p>
+
+<h3>איך מתחילים</h3>
+<ul>
+<li>פוסט לינקדאין אחד: "אני פותחת 5 slots לשיחות ייעוץ חד-פעמיות של 60 דקות בנושא X. ₪[מחיר]. לינק לקביעה בתגובות."</li>
+<li>כלים חינמיים: Calendly לקביעה, Zoom לשיחה, ביט/Paybox לתשלום</li>
+<li>מחיר התחלתי: ₪300-400 לשעה. אחרי 5 שיחות — העלי ל-₪500-600</li>
+</ul>
+<div class="price-ex"><span class="price">₪350-800</span><span class="price-note">לשעת ייעוץ</span></div>
+
+<div class="action-box">
+<h4>📝 הפוסט הראשון שגורם ללקוחות לבוא</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>פתח בבעיה:</strong> "אחד הדברים שאני שומעת הכי הרבה ב[תחום] הוא [בעיה נפוצה]."</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>הצג תובנה:</strong> "מה שרוב האנשים לא יודעים זה ש[תובנה מפתיעה שלמדת]."</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>CTA פשוט:</strong> "אם זה רלוונטי אלייך — אני פותחת 3 שיחות ייעוץ ב-₪[X]. שלחי לי הודעה."</div></div>
+</div>
+
+<h2>מסלול 2: ניוזלטר מקצועי בתשלום</h2>
+<p>כתיבה שבועית על נושא שאת שולטת בו. <strong>הדגש: ניתוח, לא פרסום. עומק, לא שטחיות.</strong></p>
+
+<h3>הדגם שעובד</h3>
+<ul>
+<li>מהדורה חינמית: פעם בשבועיים. בונה קהל ואמון.</li>
+<li>מהדורה בתשלום (₪29-89/חודש): ניתוחים מעמיקים, כלים, ראיונות עם מומחים</li>
+<li>50 מנויים × ₪49 = <strong>₪2,450/חודש</strong> עבור ~4-6 שעות כתיבה בחודש</li>
+</ul>
+
+<h3>נושאים שניוזלטרים בתשלום עובדים עליהם</h3>
+<ul>
+<li>ניתוח שוק/טכנולוגיה ספציפי</li>
+<li>סקירת מחקרים ותרגומם לפרקטיקה</li>
+<li>עדכונים רגולטוריים בתחום</li>
+<li>ניתוח case studies מהתחום</li>
+</ul>
+
+<h2>מסלול 3: מחקר ו-White Papers לחברות</h2>
+<p>חברות קטנות ובינוניות צריכות תוכן מומחה. הן לא תמיד יכולות לשכור עובד פנימי. <strong>הן יכולות לשכור אותך לפרויקט.</strong></p>
+
+<table class="compare">
+<tr><th>סוג פרויקט</th><th>זמן</th><th>מחיר</th></tr>
+<tr><td>White Paper (10-20 עמ')</td><td>10-15 שעות</td><td class="highlight">₪3,000-8,000</td></tr>
+<tr><td>מחקר שוק ממוקד</td><td>8-12 שעות</td><td class="highlight">₪2,500-6,000</td></tr>
+<tr><td>ניתוח מתחרים</td><td>5-8 שעות</td><td class="highlight">₪1,500-4,000</td></tr>
+<tr><td>תוכן מקצועי (בלוג/LinkedIn)</td><td>2-4 שעות לפיסה</td><td class="highlight">₪800-2,500</td></tr>
+</table>
+
+<div class="divider"></div>
+<div class="section-num">חלק ג' - תכנית הפעולה</div>
+
+<h2>השלב שרוב החוקרות מדלגות עליו: הגדרת הנישה</h2>
+<p>לא "ייעוץ בתחום X". <strong>ייעוץ ל-[מי ספציפי] ב-[תת-תחום ספציפי].</strong></p>
+
+<div class="callout">
+<div class="callout-label">דוגמה</div>
+לא: "ייעוץ בניהול מוצר"<br>
+כן: <strong>"ייעוץ למנהלות מוצר שעוברות ל-startup הראשון שלהן"</strong><br><br>
+לא: "כתיבה על AI"<br>
+כן: <strong>"ניוזלטר שבועי לצוותי פיתוח שרוצים להבין LLMs בלי לטבוע בז'רגון"</strong>
+</div>
+
+<div class="action-box">
+<h4>🔬 המשימה השבוע</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>כתבי פוסט לינקדאין אחד</strong> — תובנה מפתיעה שלמדת בחצי שנה האחרונה. לא מכירה. רק ידע. ראי מי עונה.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>הציעי שיחה חינמית לאחד שעונה:</strong> "שמחה שזה עזר. אם יש נושא ספציפי שמעסיק אותך בהקשר הזה — 20 דקות שיחה? ללא עלות."</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>בסוף השיחה שאלי:</strong> "האם זה שימושי? יש לי פורמט ייעוץ קצר ב-₪X. היית מעוניינת?" — לא "חייבת" לשאול. אבל אם לא שואלת — לא תדעי.</div></div>
+</div>
+
+
   <div class="divider"></div>
-  <div class="body-text">
-    
-    <p>את לא "סתם" מעניינת. את אחת מהאנשים הבודדים שיושבים לעומק על נושא ומבינים אותו באמת. זה נדיר. זה יקר.</p>
-    <p>הבשורה: <strong>הידע שנראה לך "בסיסי"  -  הוא לגמרי לא בסיסי לאנשים אחרים.</strong></p>
-    <h3>איך לתמחר ידע עמוק</h3>
-    <ul>
-      <li><strong>ייעוץ שעתי:</strong> ₪300–800 לשעה. אחת הדרכים המהירות ביותר להתחיל להרוויח מידע.</li>
-      <li><strong>ניוזלטר מקצועי:</strong> ניתוח שבועי / דו-שבועי של תחום שאת שולטת בו. ₪49–199/חודש.</li>
-      <li><strong>מחקר/כתיבה לעסקים:</strong> חברות משלמות על ניתוחים, white papers, מחקר שוק. ₪2,000–8,000 לפרויקט.</li>
-    </ul>
-    <div class="action-box">
-      <h4>המשימה של השעה הראשונה שלך</h4>
-      <div class="action-item"><div class="num">1</div><span>רשמי את 3 הנושאים שאת הכי בקיאה בהם  -  גם אם נראים לך "משעממים"</span></div>
-      <div class="action-item"><div class="num">2</div><span>גוגלי: כמה גובים יועצים/מומחים בתחום הזה בישראל?</span></div>
-      <div class="action-item"><div class="num">3</div><span>כתבי פוסט לינקדאין אחד על תובנה שלמדת לאחרונה  -  ותראי מי מגיב</span></div>
-    </div>
-    <div class="callout">אל תמתיני להיות "מומחית מוסמכת". <strong>אם את יודעת יותר ממישהו אחד  -  את כבר יכולה ללמד אותו.</strong></div>
-  </div>
   <div class="outro">
-    <h3>שעה אחת. שבוע אחד.</h3>
-    <p>לא צריך להחליט הכל היום. צריך רק לקחת את השעה הקרובה ולעשות את המשימה הראשונה שכתובה כאן.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה יותר רחוק? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על המחזור הבא ←</a>
+    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
+    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
+    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
   </div>
 </div>
-<footer>סלון היזמיות • רמת גן | המדריך הזה נשלח אישית אלייך ולא מיועד להפצה.</footer>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
 </body>
 </html>

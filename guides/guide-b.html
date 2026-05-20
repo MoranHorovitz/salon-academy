@@ -3,80 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שעה אחת בשבוע  -  הבונה | סלון היזמיות</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;
-  --lime:#c6ff00;--border:rgba(255,255,255,0.08);
-  --text:#f0f0f0;--muted:#777;
-}
+<title>שעה אחת בשבוע - הבונה | Salon Academy</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-.wrap{max-width:680px;margin:0 auto;padding:60px 32px 80px;}
-@media(max-width:600px){.wrap{padding:36px 20px 60px;}}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
+@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
 .top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero{margin-bottom:52px;}
-.hero-icon{font-size:52px;margin-bottom:16px;}
-.hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:#aaa;margin-bottom:6px;font-style:italic;}
-.hero-tagline{font-size:clamp(18px,3.5vw,24px);color:#ccc;font-weight:600;margin-top:8px;}
-.divider{height:1px;background:var(--border);margin:44px 0;}
-.body-text{font-size:15px;color:#ccc;line-height:1.85;}
-.body-text p{margin-bottom:18px;}
-.body-text h3{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
-.body-text ul{padding-right:22px;margin-bottom:18px;}
-.body-text ul li{margin-bottom:9px;}
-.body-text strong{color:var(--text);font-weight:700;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px;margin:32px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;}
-.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:14px;color:#bbb;}
-.action-item .num{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:28px 0;font-size:15px;color:#ccc;line-height:1.75;}
-.outro{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;margin-top:52px;}
+.hero-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
+h1 em{font-style:normal;color:var(--lime);}
+.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
+h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
+p strong{color:#e8e8f0;}
+ul,ol{padding-right:22px;margin-bottom:20px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
+ul li strong,ol li strong{color:#e8e8f0;}
+.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
+.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
+.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.step-text strong{color:#e8e8f0;}
+.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
+.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
+.price-ex .price-note{font-size:13px;color:var(--muted);}
+table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
+table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
+table.compare td:first-child{color:#e8e8f0;font-weight:600;}
+.highlight{color:var(--lime);font-weight:700;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
 .outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
 .outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
 .btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 20px 16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}
-</style>
+footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">סלון היזמיות • מדריך אישי</div>
-  <div class="hero">
-    <div class="hero-icon">🏗️</div>
-    <h1>שעה אחת<br>בשבוע  - <br><em>הבונה</em></h1>
-    <div class="hero-sub">"אני רוצה משהו שיעבוד גם כשאני לא עובדת"</div>
-    <div class="hero-tagline">המוצר שלך כבר קיים בראש שלך</div>
-  </div>
+  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-icon">🏗️</div>
+  <h1>שעה אחת בשבוע -<br><em>הבונה</em></h1>
+  <p class="tagline">תוכנית צעד-אחר-צעד לבניית מוצר דיגיטלי ראשון ומכירתו תוך 30 יום</p>
+
+  
+<div class="section-num">חלק א' - האמת על מוצרים דיגיטליים</div>
+<h2>למה מוצר דיגיטלי — ולמה עכשיו</h2>
+<p>מוצר דיגיטלי הוא הדבר הכי קרוב להכנסה פסיבית אמיתית שיש: <strong>אחת בונה, מוכרת אינסוף פעמים.</strong> ובניגוד לקורסים של 3 חודשים — אפשר לבנות מוצר דיגיטלי ראשון ב-3-5 ימים.</p>
+
+<div class="callout">
+<div class="callout-label">הנתון שישנה את הדרך שבה את חושבת</div>
+מדריך PDF ב-₪97 שנמכר פעם ביום = <strong>₪2,910 בחודש</strong>. מדריך ב-₪197 שנמכר 3 פעמים בשבוע = <strong>₪2,561 בחודש</strong>. בלי שיחות. בלי תיאומים. בלי "אני בדרך".
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ב' - 4 פורמטים שעובדים</div>
+
+<h2>פורמט 1: מדריך PDF (הכי מהיר לייצור)</h2>
+<p>20-50 עמודים. כתוב ב-Notion, Canva, או Google Docs. ייצוא ל-PDF. מוכן.</p>
+<h3>מה כדאי לכתוב?</h3>
+<ul>
+<li>ה-Framework שאת משתמשת בו בעבודה שרוב האנשים לא מכירים</li>
+<li>תהליך שאת עוברת בכל פרויקט וכל פעם צריך להסביר מחדש</li>
+<li>שאלות שאנשים שואלים אותך שוב ושוב — פשוט כתבי את התשובות</li>
+</ul>
+<div class="price-ex"><span class="price">₪97-247</span><span class="price-note">מחיר מקובל למדריך PDF</span></div>
+
+<h2>פורמט 2: Notion Template (הכי מהיר למכירה)</h2>
+<p>תבנית Notion שאת כבר משתמשת בה — מנקה, מסבירה, מוכרת. אנשים אוהבים לקנות דברים שעובדים.</p>
+<h3>דוגמאות שנמכרות</h3>
+<ul>
+<li>לוח ניהול פרויקטים ל-Freelancer</li>
+<li>CRM אישי לניהול לקוחות</li>
+<li>מערכת מעקב הרגלים שבועי</li>
+<li>תבנית אחד על אחד לניהול עובדים</li>
+</ul>
+<div class="price-ex"><span class="price">₪49-149</span><span class="price-note">מחיר מקובל לתבנית Notion</span></div>
+
+<h2>פורמט 3: Mini Course (הכי רווחי)</h2>
+<p>3-5 הקלטות של 10-20 דקות כל אחת. Loom / Zoom / iPhone. ללא עריכה מיוחדת.</p>
+<div class="price-ex"><span class="price">₪197-697</span><span class="price-note">מחיר מקובל למיני קורס</span></div>
+
+<h2>פורמט 4: Workshop מוקלט (שילוב)</h2>
+<p>וובינאר חד-פעמי שמוקלט ונמכר שוב ושוב. 90-120 דקות. הכי קל לאנשים שאוהבים להרצות.</p>
+<div class="price-ex"><span class="price">₪147-397</span><span class="price-note">מחיר מקובל ל-Workshop מוקלט</span></div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ג' - תהליך בניית המוצר ב-30 יום</div>
+
+<h2>שבוע 1: ולידציה (לפני שכותבים מילה)</h2>
+<div class="action-box">
+<h4>📋 כלל הזהב: מוכרים לפני שמייצרים</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>כתבי כותרת + 3 שורות תיאור</strong> של המוצר שרוצה לבנות. זה הכל.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>שלחי ל-10 אנשים:</strong> "אני בונה X. עלות תהיה ₪Y. היית קונה? אם כן — אני מציעה Pre-Sale ב-50% הנחה לראשונים."</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>3 תשובות חיוביות = ממשיכים.</strong> פחות מ-3 = משנים את הנושא או המחיר. חוסכת 10 שעות עבודה על מוצר שאף אחד לא רוצה.</div></div>
+</div>
+
+<h2>שבוע 2-3: בנייה</h2>
+<p>רק לאחר ולידציה בונים. <strong>כלל הפשטות: המוצר הטוב ביותר הוא המוצר שנמסר.</strong> לא המושלם ביותר.</p>
+<ul>
+<li>שעה ביום × 5 ימים = 5 שעות. מספיק לבנות מדריך PDF מצוין</li>
+<li>כותבים ב-Notion: מבנה → תוכן → עיצוב בסיסי → ייצוא</li>
+<li>לא מחכות ל-"מוכן לגמרי". גרסה 1.0 מספיקה</li>
+</ul>
+
+<h2>שבוע 4: מכירה ואספקה</h2>
+<div class="action-box">
+<h4>🛒 3 דרכים למכור מוצר דיגיטלי בלי אתר</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>Gumroad / Payhip:</strong> 5 דקות להקמה. מקבלת תשלום, הם שולחים קובץ. עמלה: 5-10%. הכי פשוט.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>ביט / PayBox + Drive link:</strong> הלקוחה משלמת, את שולחת לינק לדרייב. קצת ידני אבל עובד מיידית.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>Cardcom / Grow:</strong> עמוד תשלום מקצועי בישראל. מתאים כשכבר יש מכירות.</div></div>
+</div>
+
+<h2>לוח הכנסות ריאלי לשנה ראשונה</h2>
+<table class="compare">
+<tr><th>חודש</th><th>יעד</th><th>הכנסה ריאלית</th></tr>
+<tr><td>1-2</td><td>ולידציה + בנייה + 10 מכירות ראשונות</td><td class="highlight">₪970-2,470</td></tr>
+<tr><td>3-4</td><td>שיפור + שיווק + 30 מכירות</td><td class="highlight">₪2,910-7,410</td></tr>
+<tr><td>5-6</td><td>מוצר שני + אפסל + 50 מכירות/חודש</td><td class="highlight">₪4,850-12,350</td></tr>
+</table>
+
+
   <div class="divider"></div>
-  <div class="body-text">
-    
-    <p>את הסוג שיודע שהיא רוצה משהו אמיתי  -  לא סתם "לייעץ" או "להרצות". את רוצה לבנות משהו שיש לו צורה, שיש לו שם, שאפשר למכור אותו.</p>
-    <p>הבשורה: <strong>המוצר הדיגיטלי הוא הדרך הכי ישרה שם.</strong></p>
-    <h3>המוצר הראשון שלך  -  תוך חודש</h3>
-    <ul>
-      <li><strong>Notion template:</strong> תבנית שעוזרת לאנשים לנהל תחום שאת מכירה  -  ₪50–200 לתבנית, passive income מיום ראשון.</li>
-      <li><strong>מדריך PDF:</strong> 20–40 עמודים על תחום שאת שולטת בו. ₪97–297. אחד המוצרים הכי קלים לבנות.</li>
-      <li><strong>מיני קורס (3–5 שיעורים):</strong> הקלטות קצרות + חומרים. ₪297–997.</li>
-    </ul>
-    <div class="action-box">
-      <h4>המשימה של השעה הראשונה שלך</h4>
-      <div class="action-item"><div class="num">1</div><span>רשמי: מה אנשים שואלים אותך הרבה? מה את עושה בעבודה שנראה לאחרים כ"קסם"?</span></div>
-      <div class="action-item"><div class="num">2</div><span>בחרי פורמט: PDF / Notion / הקלטה קצרה</span></div>
-      <div class="action-item"><div class="num">3</div><span>כתבי כותרת אחת. שלחי ל-5 חברות ושאלי: "האם היית משלמת ₪197 על זה?"</span></div>
-    </div>
-    <div class="callout"><strong>לא מתחילות בלוגו. לא מתחילות באתר. מתחילות בתוכן.</strong> מוכרות לפני שמייצרות.</div>
-  </div>
   <div class="outro">
-    <h3>שעה אחת. שבוע אחד.</h3>
-    <p>לא צריך להחליט הכל היום. צריך רק לקחת את השעה הקרובה ולעשות את המשימה הראשונה שכתובה כאן.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה יותר רחוק? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על המחזור הבא ←</a>
+    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
+    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
+    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
   </div>
 </div>
-<footer>סלון היזמיות • רמת גן | המדריך הזה נשלח אישית אלייך ולא מיועד להפצה.</footer>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
 </body>
 </html>
