@@ -194,19 +194,26 @@
     
 /* ── MOBILE OVERRIDES ── */
 @media (max-width: 768px) {
-  .course-layout { flex-direction: column; }
-  
-  /* Sidebar as slide-in drawer */
-  .sidebar {
+  /* Hide sidebar completely by default - it's a drawer */
+  .course-sidebar {
     position: fixed !important;
     top: 0; right: 0; bottom: 0;
-    width: 280px !important;
+    width: 80vw !important;
+    max-width: 300px;
     z-index: 200;
-    transform: translateX(100%);
+    transform: translateX(110%);
     transition: transform 0.25s ease;
-    box-shadow: -8px 0 32px rgba(0,0,0,0.5);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.6);
+    overflow-y: auto;
+    height: 100vh !important;
   }
-  .sidebar.open { transform: translateX(0); }
+  .course-sidebar.open { transform: translateX(0); }
+  
+  /* Grid becomes single column, sidebar not in flow */
+  .course-layout {
+    grid-template-columns: 1fr !important;
+  }
+  
   .sidebar-overlay {
     display: none;
     position: fixed; inset: 0;
@@ -214,9 +221,6 @@
     z-index: 199;
   }
   .sidebar-overlay.on { display: block; }
-  
-  /* Main content full width */
-  .main-content { width: 100% !important; }
   
   /* Image full width */
   #contentArea img {
@@ -226,10 +230,8 @@
   }
   
   /* Content area padding */
-  #contentArea { padding: 12px !important; }
-  
-  /* Top bar compact */
-  .course-topbar { padding: 10px 12px !important; }
+  .main-area { padding: 12px 12px 80px !important; }
+  #contentArea { padding: 0 !important; }
 }
 
 /* ── MOBILE NAV BAR (prev/next) ── */
@@ -431,7 +433,7 @@
     }
 
     container.innerHTML = items.map((item, i) => `
-      <a class="sidebar-item" data-id="${item.id}" onclick="renderContent(allContent[${i}]); setSidebarActive(this); return false;" href="#">
+      <a class="sidebar-item" data-id="${item.id}" onclick="renderContent(allContent[${i}]); setSidebarActive(this); closeSidebar(); return false;" href="#">
         <div class="item-num">${i + 1}</div>
         <div class="item-info">
           <div class="item-title">${escHtml(item.title)}</div>
@@ -491,14 +493,14 @@
   }
 
   function toggleSidebar() {
-    const sb = document.querySelector('.sidebar');
+    const sb = document.querySelector('.course-sidebar');
     const ov = document.getElementById('sidebar-overlay');
     if (sb) sb.classList.toggle('open');
     if (ov) ov.classList.toggle('on');
   }
 
   function closeSidebar() {
-    const sb = document.querySelector('.sidebar');
+    const sb = document.querySelector('.course-sidebar');
     const ov = document.getElementById('sidebar-overlay');
     if (sb) sb.classList.remove('open');
     if (ov) ov.classList.remove('on');
@@ -509,7 +511,7 @@
   document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
   document.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 60 && !document.querySelector('.sidebar.open')) {
+    if (Math.abs(dx) > 60 && !document.querySelector('.course-sidebar.open')) {
       if (dx > 0) mobilePrev(); else mobileNext();
     }
   });
