@@ -58,7 +58,26 @@ li strong{color:#e0e0f0;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
-footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}
+/* ACCORDION */
+.week-body { overflow: hidden; transition: max-height 0.35s ease; }
+.week.closed .week-body { max-height: 0; }
+.week.open .week-body { max-height: 9999px; }
+.week-header {
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: 16px;
+}
+.week-header:hover .week-title { color: var(--lime); }
+.week-chevron {
+  margin-right: auto;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -75,14 +94,15 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
   <div class="week-nav"><a href="#week1">שבוע 1: למה את מחכה "להיות מוכנה"</a><a href="#week2">שבוע 2: למה את לא יוצאת עם מה שיודעת</a><a href="#week3">שבוע 3: למה את לא גובה כסף על הידע שלך</a><a href="#week4">שבוע 4: למה את לא בונה קהל</a></div>
   <div class="divider"></div>
-  <div class="week" id="week1">
+  <div class="week open" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
       <div class="week-title">למה את מחכה "להיות מוכנה"</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "עוד לא מספיק מומחית. עוד צריך ללמוד X לפני שאצא."</h3>
@@ -113,15 +133,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לצאת לאוויר עם מה שיש</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - רשמי נושא אחד שידעת עליו הרבה לפני 3 שנים שלא ידעת היום. כמה זמן לקח לך ללמוד אותו? יש מישהי שצריכה לעשות את אותו הדרך עכשיו?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי פוסט/הודעה אחת שמלמד את הדבר הכי חשוב שהיית רוצה שמישהי תדע על הנושא הזה לפני שהתחילה.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שלחי לאחת בלבד. לא לפרסם - לשלוח. "חשבתי עלייך כשכתבתי את זה."</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שימי לב לתגובה. כמעט תמיד: "וואו, לא ידעתי." זה ה-data שמוכיח שאת מוסמכת.</div></div>
   </div>
-</div>
-<div class="week" id="week2">
+
+  </div>
+</div><div class="week closed" id="week2">
   <div class="week-header">
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
       <div class="week-title">למה את לא יוצאת עם מה שיודעת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני מסבירה ואנשים לא מבינים. אז אני מרחיבה ומוסיפה ויוצא ארוך מדי."</h3>
@@ -154,15 +176,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>BLUF - לכתוב קצר וחזק</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - בחרי תוכן שכתבת לאחרונה (פוסט, הסבר, תשובה למייל). האם המסקנה/מסר ראשי - בשורה הראשונה? כמעט בוודאות לא.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי מחדש עם BLUF: שורה 1 = המסקנה. שורות 2-4 = למה. שורה 5 = מה עושים.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שלחי את שתי הגרסאות לחברה: "איזו ברורה יותר?" שמי לב להבדל.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - הכניסי BLUF לכל תקשורת השבוע הקרוב. שימי לב לתגובות.</div></div>
   </div>
-</div>
-<div class="week" id="week3">
+
+  </div>
+</div><div class="week closed" id="week3">
   <div class="week-header">
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
       <div class="week-title">למה את לא גובה כסף על הידע שלך</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "ידע שמצאתי בגוגל / למדתי בקורס - איך אגבה עליו?"</h3>
@@ -195,15 +219,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לזהות ולתמחר את ה-Wisdom שלך</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - רשמי 3 טעויות יקרות שעשית בתחום שלך. מה למדת מכל אחת? כמה שוות הן ללקוחה שתמנע אותן?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - כתבי: "אני עוזרת ל___ לא לעשות ___ ובכך חוסכת להן ___." זה ה-pitch.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - קבעי מחיר: כמה שווה חיסכון הטעות הזאת? 5% מזה = המחיר שלך.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שלחי הצעה אחת. עם המחיר.</div></div>
   </div>
-</div>
-<div class="week" id="week4">
+
+  </div>
+</div><div class="week closed" id="week4">
   <div class="week-header">
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
       <div class="week-title">למה את לא בונה קהל</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני לא אוהבת "לשווק עצמי". זה נראה כהצגה."</h3>
@@ -244,5 +270,25 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
 </div>
 <footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
+
+<script>
+document.querySelectorAll('.week-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const week = header.closest('.week');
+    const isOpen = week.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week').forEach(w => {
+      w.classList.remove('open');
+      w.classList.add('closed');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      week.classList.remove('closed');
+      week.classList.add('open');
+      week.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 </body>
 </html>
