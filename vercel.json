@@ -3,6 +3,9 @@
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/$1" }
   ],
+  "redirects": [
+    { "source": "/course.html", "destination": "/courses/reels/", "permanent": true }
+  ],
   "crons": [
     { "path": "/api/ping", "schedule": "0 10 */5 * *" }
   ]

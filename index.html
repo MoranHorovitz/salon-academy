@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Academy | מורן הורוביץ ואופק פנקר</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;700;900&display=swap');
+
+:root {
+  --bg: #080808;
+  --bg2: #111;
+  --bg3: #1a1a1a;
+  --lime: #c6ff00;
+  --border: rgba(255,255,255,0.07);
+  --text: #f0f0f0;
+  --muted: #666;
+  --card-w: 320px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; color: #fff; text-decoration: none;
+  line-height: 1.1;
+}
+.nav-logo span { display: block; font-size: 9px; letter-spacing: 2px; color: var(--muted); font-weight: 400; }
+.nav-actions { display: flex; gap: 10px; }
+.nav-btn {
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 20px; border-radius: 10px;
+  text-decoration: none; cursor: pointer;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent; color: var(--muted);
+  transition: all 0.2s;
+}
+.nav-btn:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+.nav-btn.primary {
+  background: var(--lime); color: #000;
+  border-color: var(--lime); font-weight: 800;
+}
+.nav-btn.primary:hover { background: #d4ff33; }
+
+/* ── HERO ── */
+.hero {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 300px;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+  margin-top: 52px;
+}
+
+/* Wide cinematic overlay with dark sides */
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to left,  rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.4) 25%, transparent 45%),
+    linear-gradient(to right, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.4) 25%, transparent 45%),
+    linear-gradient(to top,   rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.2) 40%, transparent 70%),
+    linear-gradient(to bottom,rgba(8,8,8,0.6) 0%, transparent 30%);
+  z-index: 1;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.55;
+}
+.hero-placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 50%, #1a0a2e 100%);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 700px;
+}
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 16px;
+  display: block;
+}
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+}
+.hero-by {
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 18px;
+}
+.hero-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: rgba(255,255,255,0.6);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── INTRO ── */
+.intro {
+  text-align: center;
+  padding: 56px 24px 48px;
+  max-width: 680px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.intro p {
+  font-size: 17px;
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.intro strong { color: var(--text); }
+.intro .cta-note {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--lime);
+  font-weight: 700;
+  background: rgba(198,255,0,0.08);
+  border: 1px solid rgba(198,255,0,0.2);
+  border-radius: 20px;
+  padding: 8px 18px;
+}
+
+/* ── PRODUCTS GRID ── */
+.products-section {
+  padding: 56px 32px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ── PRODUCT CARD ── */
+.product-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,255,0,0.25);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(198,255,0,0.1);
+}
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--bg3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.card-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+}
+.thumb-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  padding: 0 16px;
+}
+.thumb-by {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.card-badge {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+  background: var(--lime); color: #000;
+  padding: 4px 10px; border-radius: 6px;
+}
+.card-body {
+  padding: 18px 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-name {
+  font-size: 16px; font-weight: 800;
+  color: #fff; margin-bottom: 4px;
+  line-height: 1.3;
+}
+.card-author {
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 14px;
+}
+.card-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.card-price {
+  font-size: 22px; font-weight: 900;
+  color: var(--lime);
+}
+.card-price span { font-size: 13px; font-weight: 400; color: var(--muted); }
+.card-btn {
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px; font-weight: 800;
+  background: rgba(198,255,0,0.1);
+  border: 1px solid rgba(198,255,0,0.25);
+  color: var(--lime);
+  padding: 8px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.card-btn:hover { background: var(--lime); color: #000; }
+
+/* Gradient backgrounds per card */
+.grad-1 { background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 50%, #2d1b69 100%); }
+.grad-2 { background: linear-gradient(135deg, #0d1117 0%, #1a2e1a 50%, #0d2e0d 100%); }
+.grad-3 { background: linear-gradient(135deg, #1a0d17 0%, #2e1a2e 50%, #3d0d2e 100%); }
+.grad-4 { background: linear-gradient(135deg, #0d1a1a 0%, #0d2e2e 50%, #0d1a3d 100%); }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer a { color: var(--muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .navbar { padding: 12px 16px; }
+  .products-section { padding: 40px 16px 60px; }
+  .hero { aspect-ratio: 4/3; max-height: 60vh; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#" class="nav-logo">
+    Salon Academy
+    <span>by Moran Horovitz &amp; Ofek Panker</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/login.html" class="nav-btn">כניסה</a>
+    <a href="/register.html" class="nav-btn primary">הרשמה</a>
+  </div>
+</nav>
+
+<!-- HERO — cinematic 21:9 -->
+<div class="hero">
+  <img class="hero-img" src="./salon-academy-hero.jpg" alt="מורן הורוביץ ואופק פנקר">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">ברוכות הבאות</span>
+    <h1 class="hero-title">Salon<br>Academy</h1>
+    <div class="hero-by">BY MORAN HOROVITZ &amp; OFEK PANKER</div>
+    <p class="hero-sub">כאן תמצאי את כל הקורסים והמדריכים שלי — במקום אחד</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>כאן תוכלי לראות את כל הקורסים והמדריכים שלנו מרוכזים במקום אחד.</p>
+  <p>מה שרכשת כבר — <strong>יהיה זמין לצפייה כאן</strong></p>
+  <p>ומה שלא נתן לרכוש מכאן במהירות 👇</p>
+  <span class="cta-note">מומלץ להתחיל מהמדריך שמתאים לסוג האישיות שלך ←</span>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-section">
+  <div class="section-title">כל הקורסים והמדריכים</div>
+  <div class="products-grid">
+
+    <!-- CARD 1: לא משתעבדת לתוכן -->
+    <a href="/course.html" class="product-card">
+      <div class="card-thumb">
+        <div class="card-thumb-placeholder grad-1">
+          <div class="thumb-title">לא משתעבדת<br>לתוכן</div>
+          <div class="thumb-by">BY MORAN PAHIMA</div>
+        </div>
+        <div class="card-badge">קורס</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">לא משתעבדת לתוכן</div>
+        <div class="card-author">מורן הורוביץ ואופק פנקר</div>
+        <div class="card-footer">
+          <div class="card-price">₪297 <span>חד פעמי</span></div>
+          <button class="card-btn">לפרטים ←</button>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 2: שעה אחת בשבוע -->
+    <a href="/salon-quiz.html" class="product-card">
+      <div class="card-thumb">
+        <div class="card-thumb-placeholder grad-2">
+          <div class="thumb-title">שעה אחת<br>בשבוע</div>
+          <div class="thumb-by">BY MORAN PAHIMA</div>
+        </div>
+        <div class="card-badge">מדריך</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">שעה אחת בשבוע — המדריך האישי</div>
+        <div class="card-author">מורן הורוביץ ואופק פנקר</div>
+        <div class="card-footer">
+          <div class="card-price">₪69 <span>חד פעמי</span></div>
+          <button class="card-btn">גלי את הסוג שלך ←</button>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 3: סלון היזמיות (ה-flagship) -->
+    <a href="https://salon-hayazamiot.co.il" class="product-card">
+      <div class="card-thumb">
+        <div class="card-thumb-placeholder grad-3">
+          <div class="thumb-title">סלון<br>היזמיות</div>
+          <div class="thumb-by">BY MORAN PAHIMA</div>
+        </div>
+        <div class="card-badge" style="background:#ff3cbe;color:#fff">פרימיום</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">סלון היזמיות — ליווי קבוצתי</div>
+        <div class="card-author">מורן הורוביץ ואופק פנקר</div>
+        <div class="card-footer">
+          <div class="card-price">₪8,000 <span>למחזור</span></div>
+          <button class="card-btn">לפרטים ←</button>
+        </div>
+      </div>
+    </a>
+
+    <!-- CARD 4: COMING SOON placeholder -->
+    <div class="product-card" style="opacity:0.45;cursor:default;pointer-events:none;">
+      <div class="card-thumb">
+        <div class="card-thumb-placeholder grad-4">
+          <div class="thumb-title" style="color:rgba(255,255,255,0.3)">בקרוב</div>
+        </div>
+        <div class="card-badge" style="background:rgba(255,255,255,0.1);color:var(--muted)">בקרוב</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name" style="color:var(--muted)">מדריך חדש — בקרוב</div>
+        <div class="card-author">מורן הורוביץ ואופק פנקר</div>
+        <div class="card-footer">
+          <div class="card-price" style="color:var(--muted)">—</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Salon Academy by Moran Pahima • <a href="mailto:info@salon-hayazamiot.co.il">info@salon-hayazamiot.co.il</a></p>
+  <p style="margin-top:6px"><a href="/login.html">כניסה לקורסים</a> &nbsp;•&nbsp; <a href="https://salon-hayazamiot.co.il">האתר הראשי</a></p>
+</div>
+
+</body>
+</html>
