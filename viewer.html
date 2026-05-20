@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>לא משתעבדת לתוכן | Salon Academy</title>
+<style>
+  :root {
+    --bg: #0d0d1a;
+    --bg2: #13131f;
+    --bg3: #1a1a2e;
+    --pink: #ff3cbe;
+    --purple: #b44fff;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e8f0;
+    --muted: #6666aa;
+    --active-bg: rgba(255,60,190,0.12);
+    --sidebar-w: 256px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; height: 100dvh; overflow: hidden; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width 0.25s ease;
+    overflow: hidden;
+  }
+  .sidebar.closed { width: 0; border-left: none; }
+
+  .sidebar-header {
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-logo { font-size: 11px; font-weight: 700; color: var(--pink); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .sidebar-name { font-size: 14px; font-weight: 800; color: var(--text); line-height: 1.35; }
+  .prog-wrap { margin-top: 12px; }
+  .prog-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--purple)); border-radius: 2px; transition: width 0.3s; }
+  .prog-text { font-size: 10px; color: var(--muted); margin-top: 5px; }
+
+  .nav-list { flex: 1; overflow-y: auto; padding: 6px 0 16px; }
+  .nav-list::-webkit-scrollbar { width: 3px; }
+  .nav-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+  .ch-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 16px 4px;
+  }
+  .pg-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    color: var(--muted);
+    border-right: 2px solid transparent;
+    transition: all 0.12s;
+    white-space: nowrap;
+  }
+  .pg-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+  .pg-btn.active { background: var(--active-bg); color: var(--pink); border-right-color: var(--pink); font-weight: 600; }
+  .pg-btn.seen .pg-num { background: rgba(60,220,100,0.18); color: #3cdd82; }
+  .pg-num {
+    width: 20px; height: 20px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  /* MAIN */
+  .main { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+
+  .topbar {
+    height: 50px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .icon-btn {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 15px;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+  .topbar-ch { flex: 1; font-size: 13px; font-weight: 600; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .nav-btns { display: flex; align-items: center; gap: 6px; }
+  .nav-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 12px;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .nav-btn:hover:not(:disabled) { background: rgba(255,60,190,0.1); border-color: var(--pink); color: var(--pink); }
+  .nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .pg-counter { font-size: 12px; color: var(--muted); min-width: 52px; text-align: center; }
+
+  /* VIEWER */
+  .viewer {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 16px;
+    background: var(--bg);
+  }
+  .viewer::-webkit-scrollbar { width: 4px; }
+  .viewer::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+  .page-img {
+    max-width: 520px;
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 16px 56px rgba(0,0,0,0.65);
+    cursor: zoom-in;
+    animation: fadeUp 0.2s ease;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* LIGHTBOX */
+  .lb {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.93);
+    display: none; align-items: center; justify-content: center;
+    z-index: 999;
+    cursor: zoom-out;
+  }
+  .lb.on { display: flex; }
+  .lb img { max-width: 96vw; max-height: 96vh; border-radius: 8px; }
+
+  /* MOBILE OVERLAY */
+  .sb-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 49;
+  }
+  @media (max-width: 680px) {
+    .sidebar {
+      position: fixed;
+      right: 0; top: 0; bottom: 0;
+      z-index: 50;
+      width: var(--sidebar-w) !important;
+      transform: translateX(110%);
+      transition: transform 0.25s ease;
+      border-left: 1px solid var(--border);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sb-overlay.on { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sb-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">Salon Academy 🌸</div>
+    <div class="sidebar-name">לא משתעבדת לתוכן</div>
+    <div class="prog-wrap">
+      <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:1.5%"></div></div>
+      <div class="prog-text" id="prog-text">עמוד 1 מתוך 68</div>
+    </div>
+  </div>
+  <div class="nav-list" id="nav-list"></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="icon-btn" onclick="toggleSidebar()" title="תוכן עניינים">☰</div>
+    <div class="topbar-ch" id="topbar-ch">—</div>
+    <div class="nav-btns">
+      <button class="nav-btn" id="btn-prev" onclick="goTo(cur-1)">→ הקודם</button>
+      <span class="pg-counter" id="pg-counter">1 / 68</span>
+      <button class="nav-btn" id="btn-next" onclick="goTo(cur+1)">הבא ←</button>
+    </div>
+  </div>
+  <div class="viewer">
+    <img class="page-img" id="main-img" src="" alt="" onclick="openLb()">
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+const TOTAL = 68;
+const BASE = './pages/'; // path to images in GitHub repo
+
+const CHAPTERS = [
+  { title: 'פתיחה', from: 1, to: 5 },
+  { title: 'למה זה מרגיש קשה?', from: 6, to: 12 },
+  { title: 'לפני שמתחילים — הכלי שלך', from: 13, to: 20 },
+  { title: 'שלב 1 — ללכוד רגעים', from: 21, to: 30 },
+  { title: 'שלב 2 — בניית תסריט', from: 31, to: 40 },
+  { title: 'שלב 3 — צילום ועריכה', from: 41, to: 50 },
+  { title: 'בנק תוכן — איך ממשיכים', from: 51, to: 60 },
+  { title: 'סיכום ויישום', from: 61, to: 68 },
+];
+
+let cur = 1;
+let sidebarOpen = window.innerWidth > 680;
+const seen = new Set(JSON.parse(localStorage.getItem('seen') || '[]'));
+
+function buildNav() {
+  const el = document.getElementById('nav-list');
+  let html = '';
+  CHAPTERS.forEach(ch => {
+    html += `<div class="ch-label">${ch.title}</div>`;
+    for (let p = ch.from; p <= Math.min(ch.to, TOTAL); p++) {
+      const isSeen = seen.has(p);
+      html += `<div class="pg-btn${isSeen?' seen':''}" id="pb${p}" onclick="goTo(${p})">
+        <div class="pg-num">${p}</div>
+        <span>עמוד ${p}</span>
+      </div>`;
+    }
+  });
+  el.innerHTML = html;
+}
+
+function chapterOf(p) {
+  return CHAPTERS.find(c => p >= c.from && p <= c.to)?.title || '';
+}
+
+function goTo(p) {
+  if (p < 1 || p > TOTAL) return;
+  // Mark previous as seen
+  seen.add(cur);
+  const prevBtn = document.getElementById('pb' + cur);
+  if (prevBtn) prevBtn.classList.add('seen');
+
+  cur = p;
+
+  // Image
+  const img = document.getElementById('main-img');
+  img.style.opacity = '0';
+  img.onload = () => { img.style.transition = 'opacity 0.2s'; img.style.opacity = '1'; };
+  img.src = BASE + p + '.png';
+  img.alt = 'עמוד ' + p;
+
+  // Sidebar active
+  document.querySelectorAll('.pg-btn').forEach(el => el.classList.remove('active'));
+  const ab = document.getElementById('pb' + p);
+  if (ab) { ab.classList.add('active'); ab.scrollIntoView({block:'nearest', behavior:'smooth'}); }
+
+  // Topbar
+  document.getElementById('topbar-ch').textContent = chapterOf(p);
+  document.getElementById('pg-counter').textContent = p + ' / ' + TOTAL;
+
+  // Progress
+  const pct = Math.round(p / TOTAL * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = 'עמוד ' + p + ' מתוך ' + TOTAL + ' (' + pct + '%)';
+
+  // Buttons
+  document.getElementById('btn-prev').disabled = p <= 1;
+  document.getElementById('btn-next').disabled = p >= TOTAL;
+
+  // Save
+  localStorage.setItem('guide-page', p);
+  localStorage.setItem('seen', JSON.stringify([...seen]));
+
+  document.querySelector('.viewer').scrollTop = 0;
+
+  // Mobile: close sidebar after nav
+  if (window.innerWidth <= 680) closeSidebar();
+}
+
+function toggleSidebar() {
+  sidebarOpen = !sidebarOpen;
+  const sb = document.getElementById('sidebar');
+  if (window.innerWidth <= 680) {
+    sb.classList.toggle('open', sidebarOpen);
+    document.getElementById('overlay').classList.toggle('on', sidebarOpen);
+  } else {
+    sb.classList.toggle('closed', !sidebarOpen);
+  }
+}
+function closeSidebar() {
+  sidebarOpen = false;
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('on');
+}
+
+function openLb() {
+  document.getElementById('lb-img').src = document.getElementById('main-img').src;
+  document.getElementById('lb').classList.add('on');
+}
+function closeLb() { document.getElementById('lb').classList.remove('on'); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') goTo(cur + 1);
+  else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') goTo(cur - 1);
+  else if (e.key === 'Escape') closeLb();
+});
+
+// Swipe support (mobile)
+let touchX = 0;
+document.querySelector('.viewer') && document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 60) goTo(dx > 0 ? cur - 1 : cur + 1);
+});
+
+buildNav();
+const saved = parseInt(localStorage.getItem('guide-page')) || 1;
+goTo(saved);
+</script>
+</body>
+</html>
