@@ -10,62 +10,50 @@
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
 .wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
 @media(max-width:600px){.wrap{padding:32px 16px 80px;}}
-
-/* HERO */
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
 .hero-icon{font-size:52px;margin-bottom:14px;}
-.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+h1 em{font-style:normal;color:var(--lime);}
 .hero-sub{font-size:clamp(15px,2.5vw,18px);color:#999;margin-bottom:12px;line-height:1.6;}
 .hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
 .meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
 .meta-item strong{color:#ccc;}
-
-/* WEEK NAV */
 .week-nav{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;padding-bottom:4px;}
 .week-nav a{flex-shrink:0;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;transition:all 0.15s;white-space:nowrap;}
 .week-nav a:hover{border-color:rgba(198,255,0,0.4);color:var(--lime);}
-
-/* WEEK BLOCK */
-.week{margin-bottom:56px;scroll-margin-top:24px;}
+.week{margin-bottom:60px;scroll-margin-top:24px;}
 .week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);}
 .week-num{width:40px;height:40px;border-radius:50%;background:rgba(198,255,0,0.1);border:2px solid rgba(198,255,0,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime);flex-shrink:0;}
-.week-title-wrap{}
 .week-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .week-title{font-size:clamp(18px,3vw,22px);font-weight:900;color:#fff;line-height:1.2;}
-
-/* CONTENT */
-h2{font-size:17px;font-weight:800;color:#fff;margin:24px 0 10px;}
+h2{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
+h3{font-size:15px;font-weight:800;color:#ddd;margin:20px 0 8px;}
 p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
 p strong{color:#e0e0f0;}
 ul,ol{padding-right:22px;margin-bottom:16px;}
-ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:7px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
 li strong{color:#e0e0f0;}
-
-/* LESSON CARD */
+.block-psych{background:rgba(180,79,255,0.06);border:1px solid rgba(180,79,255,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-psych .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b44fff;margin-bottom:10px;}
+.block-psych p{font-size:14px;color:#ccc;margin-bottom:8px;}
+.block-trick{background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-trick .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;margin-bottom:10px;}
+.block-trick p,.block-trick li{font-size:14px;color:#ccc;}
+.block-trick ul{margin-bottom:0;}
+.block-reframe{background:rgba(198,255,0,0.04);border-right:3px solid var(--lime);border-radius:0 12px 12px 0;padding:18px 20px;margin:20px 0;font-size:14px;color:#bbb;line-height:1.7;}
+.block-reframe strong{color:#e0e0f0;}
 .lesson{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
 .lesson-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.lesson h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:12px;}
-.lesson p{font-size:14px;color:#bbb;margin-bottom:10px;}
-
-/* EXERCISE */
+.lesson h3{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise{background:rgba(198,255,0,0.05);border:1.5px solid rgba(198,255,0,0.25);border-radius:16px;padding:24px 26px;margin-top:20px;}
 .exercise-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
-.exercise h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;}
+.exercise h3{font-size:16px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
 .exercise-step .n{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.15);color:var(--lime);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .exercise-step .t{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
 .exercise-step .t strong{color:#fff;}
 .time-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--lime);background:rgba(198,255,0,0.1);border-radius:10px;padding:3px 10px;margin-bottom:14px;}
-
-/* CALLOUT */
-.callout{background:rgba(255,255,255,0.03);border-right:3px solid var(--lime);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;font-size:14px;color:#bbb;line-height:1.7;}
-.callout strong{color:#e0e0f0;}
-
-/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:40px 0;}
-
-/* OUTRO */
 .outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:32px;text-align:center;margin-top:48px;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
@@ -78,36 +66,53 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   <div class="hero-icon">🤝</div>
   <div class="hero">
     <h1>שעה אחת בשבוע -<br><em>המחברת</em></h1>
-    <p class="hero-sub">הרשת שלך שווה כסף. 4 שבועות לבנות הכנסה ממנה.</p>
+    <p class="hero-sub">את יודעת מה לעשות. עכשיו נבין למה את לא עושה את זה - ואיך לעשות בכל זאת.</p>
     <div class="hero-meta">
-      <div class="meta-item">📅 <strong>4 שבועות</strong></div>
-      <div class="meta-item">📖 <strong>4 שיעורים</strong></div>
-      <div class="meta-item">⏱ <strong>45 דקות לשבוע</strong></div>
+      <div class="meta-item">4 שבועות</div>
+      <div class="meta-item">4 שיעורים</div>
+      <div class="meta-item">45 דקות לשבוע</div>
     </div>
   </div>
-
-  <div class="week-nav"><a href="#week1">שבוע 1: למפות את הכוח שלך</a><a href="#week2">שבוע 2: לבחור מסלול ולתמחר</a><a href="#week3">שבוע 3: לצאת לדרך - מכירה ראשונה</a><a href="#week4">שבוע 4: לבנות מסגרת שמחזיקה לאורך זמן</a></div>
+  <div class="week-nav"><a href="#week1">שבוע 1: למה קשה לך לגבות על מה שטבעי לך</a><a href="#week2">שבוע 2: למה את לא מציגה מחיר</a><a href="#week3">שבוע 3: למה את לא מפרסמת</a><a href="#week4">שבוע 4: למה את לא ממשיכה</a></div>
   <div class="divider"></div>
   <div class="week" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
-      <div class="week-title">למפות את הכוח שלך</div>
+      <div class="week-title">למה קשה לך לגבות על מה שטבעי לך</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>מה זה אומר להיות מחברת ולמה זה כסף</h3>
-    <p>יש הבדל בין לחבר אנשים כי "כיף" לבין לחבר אנשים כי זה <strong>המוצר שלך</strong>. השבוע את עוצרת ומסתכלת על מה שכבר קורה סביבך.</p>
-<p>כל פעם שמישהי פנתה אלייך "מי את מכירה שיכולה לעזור לי עם...", כל פעם שהמלצת על ספק ויצאה עסקה, כל פעם שהפגשת שני אנשים שנהיו שותפים - <strong>זה ערך. ערך שאפשר לתמחר.</strong></p>
-<p>המחברת הטובה ביותר היא לא זו שמכירה הכי הרבה אנשים - אלא זו שיודעת <strong>מה לעשות עם הרשת שיש לה.</strong></p>
+    <h3>החסם: "זה בא לי בקלות, אז איך אפשר לגבות עליו?"</h3>
+    <p>כולם שמעו את זה: <strong>"אם זה קל לך - כנראה שכולם יכולים לעשות את זה."</strong> זו שגיאה קוגניטיבית שנקראת <em>curse of knowledge</em> - ברגע שאת יודעת משהו, קשה לך לדמיין שאחרות לא יודעות.</p>
+<p>האמת: <strong>ככל שמשהו בא לך בטבעיות - כך הוא יקר יותר.</strong> כי אחרות מנסות לרכוש אותו ולא מצליחות. הטבעיות שלך היא המוצר.</p>
+
+<div class="block-psych">
+<div class="label">🧠 הפסיכולוגיה מאחורי זה</div>
+<p>מחקרים על "Impostor Syndrome" מראים שנשים בפרט נוטות להמעיט בערך היכולות שלהן בדיוק כשהן הכי טובות בהן. ה"זה פשוט" שאת מרגישה הוא בדיוק מה שאחרות <strong>משלמות מאות עד אלפי שקלים</strong> ללמוד.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 הטכניקה: ראיון "לאחר ממני"</div>
+<p>שאלי את עצמך: <strong>"מה הייתי מספרת לעצמי לפני 5 שנים שלא ידעתי?"</strong></p>
+<ul>
+<li>רשמי 10 דברים שאת יודעת היום שהיו חוסכים לך זמן/כסף/כאב</li>
+<li>לכל דבר: האם מישהי אחרת עדיין לא יודעת את זה? (התשובה כמעט תמיד כן)</li>
+<li>זה בדיוק מה שאפשר למכור</li>
+</ul>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא מוכרת את "הכישרון שלי". מוכרת את <strong>הזמן שאחוות אהוב שלי לא יצטרכו לבזבז</strong> על ניסוי וטעייה.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>מפת הרשת שלי - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — פתחי דף ריק. כתבי 20 שמות - אנשים שפנו אלייך בחצי שנה האחרונה לבקש המלצה, חיבור, או עצה. לא חייב להיות אנשים שאת מכירה טוב.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — לכל שם - כתבי מה הם ביקשו. שימי לב לדפוסים: האם רוב הבקשות מתחום מסוים? (הייטק? יזמות? קריירה? הורות?)</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — בחרי את הנישה שחוזרת הכי הרבה. זו הנישה שלך.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי משפט אחד: "אני מחברת בין [מי] ל[מי] בתחום [מה]". זה הבסיס להכל.</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>מיפוי הערך הנסתר - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - רשמי 10 פעמים שאנשים אמרו לך "wow, איך ידעת?" או "את פשוט טבעית בזה". לא משנה אם זה נראה לך טריוויאלי.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - לכל אחד - כתבי: "כמה שעות לאדם ממוצע ייקח ללמוד את זה בלעדיי?" ו"כמה תסכול זה חוסך?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - בחרי את הדבר שחוסך הכי הרבה. כתבי: "אני עוזרת ל___ לחסוך ___ שעות של ___". זה המוצר שלך.</div></div>
   </div>
 </div>
 <div class="week" id="week2">
@@ -115,23 +120,41 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
-      <div class="week-title">לבחור מסלול ולתמחר</div>
+      <div class="week-title">למה את לא מציגה מחיר</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>3 דרכים לגבות על חיבורים - ואיך לבחור</h3>
-    <p>יש שלוש דרכים עיקריות שמחברות בונות הכנסה:</p>
-<p><strong>1. קהילה בתשלום</strong> - קבוצה שבה אנשים משלמים כדי להיות קרובים אלייך ולרשת שלך. ₪99-299 לחודש. מינימום עבודה שוטפת.</p>
-<p><strong>2. ערבי חיבורים</strong> - אירוע חד-פעמי, 10-20 משתתפים, ₪150-350 לאחד. רווח נקי ₪1,500-4,000 לערב.</p>
-<p><strong>3. עמלת חיבור</strong> - מסכימה מראש עם עסקים שכל לקוח שאת מביאה = X% עמלה. ₪500-3,000 לחיבור.</p>
-<div class="callout"><strong>הכלל:</strong> תתחילי עם המסלול שמרגיש הכי טבעי - לא הכי רווחי. כי המסלול שתעשי אותו - הוא זה שיביא כסף.</div>
+    <h3>החסם: "אני לא יודעת כמה לבקש ומפחדת לצאת יוקרתית/זולה מדי"</h3>
+    <p>אחת ההתנהגויות הכי נפוצות: <strong>לתת הנחה לפני שמישהי ביקשה.</strong> "אני אגיד לה ₪200 אבל אם היא תגיד יקר אוריד ל-150." זה קורה לפני שהיא אמרה מילה.</p>
+<p>הסיבה: אנחנו מנהלים מו"מ בראש שלנו <strong>לפני</strong> שהוא מתחיל. ומפסידים מראש.</p>
+
+<div class="block-psych">
+<div class="label">🧠 Price Anchoring - איך המחיר הראשון שמוזכר קובע הכל</div>
+<p>מחקר של Ariely ו-Simonson: המחיר הראשון שנאמר בשיחה הופך ל"עוגן". <strong>מי שאומרת מחיר קודם - שולטת בשיחה.</strong> מי שממתינה לשאול - מפסידה.</p>
+<p>הפתרון: תמיד את זו שאומרת מחיר ראשונה. ותמיד גבוה מה"מינימום" שלך.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 הטכניקה: "Bracketing"</div>
+<p>בקבעי בראשך שלוש מחיר: <strong>חלום / ריאלי / רצפה.</strong></p>
+<ul>
+<li><strong>חלום:</strong> מה הייתי גובה אם הייתי בטוחה ב-100%? (לרוב גבוה פי 3 מהרצפה)</li>
+<li><strong>ריאלי:</strong> ממוצע בין חלום לרצפה. <strong>זה המחיר שתגידי.</strong></li>
+<li><strong>רצפה:</strong> המינימום שתקבלי בלי להרגיש פגועה</li>
+</ul>
+<p>כשמישהי שואלת "כמה עולה?" - אמרי את ה"ריאלי" בלי להסביר. שתיקה אחרי המחיר = כוח.</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> המחיר לא עליי. הוא על <strong>הערך שהיא מקבלת</strong>. אם היא לא תקנה - היא תמשיך לסבול מהבעיה. זה לא בסדר שאני מסייעת לה בכך על ידי מחיר נמוך מדי.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לבחור ולתמחר - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — קראי שוב את 3 המסלולים. בלי לחשוב יותר מ-2 דקות - איזה אחד מרגיש הכי "זה אני"?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לפי המסלול שבחרת: גוגלי מה אנשים דומים לך גובים. כתבי 3 מחירים שמצאת. בחרי מחיר שנמצא באמצע.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — כתבי תיאור של מה שאת מציעה ב-3 שורות. לא מושלם - רק ברור.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי את התיאור ל-3 חברות וכתבי: "אני שוקלת להתחיל לעשות X. מה את חושבת? האם היית קונה?"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>קביעת מחיר עם "Bracketing" - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - לשירות שבחרת: כתבי את שלוש המחירים. חלום / ריאלי / רצפה. ללא יחס לשוק - לפי תחושת בטן.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - גוגלי 3 אנשים שמציעים משהו דומה. מה הם גובים? האם ה"ריאלי" שלך בטווח?</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - תרגול: אמרי בקול רם "המחיר הוא ___" ואז שתקי 5 שניות. תרגלי עד שזה לא מרגיש מביך.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שלחי הצעה אחת. לא "כמה מתאים לך?" - "המחיר הוא ___. מתאים?" ותחכי לתשובה.</div></div>
   </div>
 </div>
 <div class="week" id="week3">
@@ -139,22 +162,42 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
-      <div class="week-title">לצאת לדרך - מכירה ראשונה</div>
+      <div class="week-title">למה את לא מפרסמת</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>איך לגייס 10 אנשים ראשונים בלי "לשווק"</h3>
-    <p>הטעות הכי גדולה של מחברות בתחילת הדרך: הן מחכות שהאתר יהיה מוכן, שהלוגו יהיה מושלם, שיהיו לפחות 30 חברות לפני שהן מתחילות.</p>
-<p><strong>לא. מתחילות עם 5 אנשים. גובות כסף. ואז מגדילות.</strong></p>
-<p>המשפט שעובד: "אני מתחילה קבוצה/אירוע/שירות ל-[נישה]. יש מקום ל-[מספר] בלבד. עלות [מחיר]. מי רלוונטי?"</p>
-<div class="callout">לא צריך לשכנע. לא צריך להסביר ארוך. מי שזה מתאים לה - תדע מיד. מי שלא - לא תהפוך ללקוחה גם אחרי 10 פוסטים.</div>
+    <h3>החסם: "מה יחשבו עליי?" ו"מי אני שאציע את זה?"</h3>
+    <p>שני פחדים שונים שנראים אחד: <strong>הפחד מביקורת</strong> ו<strong>הפחד מהצלחה.</strong> כן, גם מהצלחה. כי הצלחה אומרת שיש עוד ציפיות, שיש יותר מה להפסיד.</p>
+<p>הסימפטום: דחיינות בפרסום, "עוד לא מוכנה", "אולי השבוע הבא". <strong>זה לא עצלות. זה הגנה.</strong></p>
+
+<div class="block-psych">
+<div class="label">🧠 Spotlight Effect - את בוהה בך יותר ממה שאחרות עושות</div>
+<p>מחקר של Gilovich: אנשים מאמינים שאחרים שמים לב להם <strong>בין 2-3 פעמים יותר</strong> ממה שקורה בפועל. הפוסט שאת דואגת לו - 80% מהאנשים יגללו עליו תוך 2 שניות בלי לזכור שקראו.</p>
+<p>ו<strong>אלה שכן שמים לב</strong> - חלקם יהפכו ללקוחות. הם בדיוק מה שאת מחפשת.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 טכניקת ה-"5-4-3-2-1" של מל רובינס</div>
+<p>כשאת מרגישה שאת "לא מוכנה לפרסם": <strong>ספרי בקול 5-4-3-2-1 ולחצי שלח.</strong></p>
+<p>הסיבה שזה עובד: הפחד גדל בפרופורציה לזמן שחולף. ה-5 שניות הן חלון שבו המוח עדיין לא הצליח לבנות סיפור חדש למה לא.</p>
+<ul>
+<li>כתבי את הפוסט</li>
+<li>קראי פעם אחת</li>
+<li>5-4-3-2-1 - שלחי</li>
+<li>סגרי את הטלפון ל-30 דקות</li>
+</ul>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> "מה יחשבו עליי" הוא שאלה שגויה. השאלה הנכונה: <strong>"מי מחכה לראות את זה ולא יודעת שאני קיימת?"</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>הגיוס הראשון - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — כתבי רשימה של 20 אנשים שהנישה שלך רלוונטית להם. מהרשימה מהשבוע הראשון + עוד.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — נסחי הודעה אחת קצרה - 3-4 שורות. לא מסחרית מדי. "חושבת על..." או "מתחילה..." - לא "קני עכשיו".</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> — שלחי ב-וואטסאפ אישי ל-10 אנשים מהרשימה. לא פוסט ציבורי - הודעה אישית.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי לי בסוף השבוע כמה ענו. 3 תשובות חיוביות = ממשיכים. פחות = משנים ניסוח, לא רעיון.</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לפרסם בלי לחשוב - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - כתבי פוסט/סטורי אחד. לא מושלם - ברור. נושא: משהו שלמדת השבוע שמישהי אחרת לא יודעת.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - קראי פעם אחת. תקני שגיאות דקדוק בלבד. לא לשנות תוכן.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>5 דקות</strong> - 5-4-3-2-1 - פרסמי. סגרי מסך ל-30 דקות.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>15 דקות</strong> - אחרי 30 דקות - בדקי תגובות. לכל תגובה חיובית: "תודה! יש לי שירות שאולי רלוונטי - רוצה לשמוע?"</div></div>
   </div>
 </div>
 <div class="week" id="week4">
@@ -162,28 +205,43 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
-      <div class="week-title">לבנות מסגרת שמחזיקה לאורך זמן</div>
+      <div class="week-title">למה את לא ממשיכה</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>מה ההבדל בין "פעם אחת" ל"הכנסה חודשית קבועה"</h3>
-    <p>הרבה מחברות עושות ערב חיבורים נהדר אחד ואז... עוצרות. לא כי הן לא יכולות - כי לא הגדירו מסגרת שחוזרת.</p>
-<p><strong>המסגרת שחוזרת:</strong> "כל חודש יש ערב חיבורים ל[נישה]. הרשמה מוקדמת ב-₪X". פתחת את ה-recurring, לא event חד-פעמי.</p>
-<p>לקהילה בתשלום: קובעת תאריך קבוע לפגישה/תוכן שבועי. האנשים יודעים מה לצפות. הם משלמים על הוודאות, לא רק על התוכן.</p>
+    <h3>החסם: "התחלתי, אבל אחרי שבוע-שבועיים זה נגמר"</h3>
+    <p>הבעיה לא מוטיבציה. הבעיה <strong>מערכת.</strong> מוטיבציה היא רגש - היא עולה ויורדת. מערכת היא תהליך - היא עובדת גם כשלא מתחשק.</p>
+<p>הסימפטום: "הייתה לי תנופה בהתחלה ואחרי זה..." <strong>התנופה תמיד נגמרת. המערכת לא.</strong></p>
+
+<div class="block-psych">
+<div class="label">🧠 Motivation follows action - לא להפך</div>
+<p>מחקר של פסיכולוג Mark Muraven: אנשים שמחכים "לרצות" לעשות משהו לפני שעושים אותו - <strong>עושים פחות</strong> מאלה שמתחייבים לפעולה ספציפית בזמן ספציפי, בין אם מתחשק ובין אם לא.</p>
+<p>ה"חשק" מגיע <strong>אחרי</strong> שמתחילים - לא לפני.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 Implementation Intention - המשפט שמכפיל סיכויי ביצוע</div>
+<p>מחקרי Gollwitzer: אנשים שכותבים <strong>"אעשה X ב-Y ביום Z"</strong> (Implementation Intention) מבצעים את המשימה פי 2-3 יותר מאלה שאומרים רק "אני אעשה את זה".</p>
+<p><strong>הנוסחה:</strong> "כאשר [מצב מפעיל], אני אעשה [פעולה ספציפית] ב[מקום/זמן]"</p>
+<p>דוגמה: "כאשר יום שני 20:00, אני אשלח הודעת פולו-אפ לשלוש נשים מהרשימה שלי, ב-Whatsapp בסלון."</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא שואלת "האם מתחשק לי?" אלא: <strong>"האם זה זמן X?"</strong> אם כן - עושה. תחושות הן מידע, לא הוראות.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לתכנן 3 חודשים קדימה - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — פתחי לוח שנה. סמני 3 תאריכים בחודשיים הקרובים לאירוע/פגישה הראשון, השני, השלישי.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — חשבי: כמה אנשים בכל פגישה? מה המחיר? מה ה-commit שלהן (חודשי/חד-פעמי)?</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — כתבי "תקנון" פשוט - משפט על מה הקבוצה, מה מקבלים, מה המחיר. שמרי לשימוש עתידי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שתפי עם חברה אחת שאת סומכת עליה. בקשי פידבק אחד: "מה לא ברור לך?"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>בניית מערכת שמחזיקה - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי 3 Implementation Intentions לשבוע הקרוב. בנוסחה: "כאשר [זמן/מצב], אעשה [פעולה] ב[מקום]".</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - הגדירי "Minimum Viable Action" לכל שבוע - הפעולה הכי קטנה שתוכלי להצדיק לעצמך שעשית משהו. דוגמה: "שלחתי הודעה אחת".</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - צרי תזכורת בטלפון. כותרת: "שעה אחת בשבוע - [שם הפעולה]". כל שבוע, אותו יום ושעה.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שתפי עם חברה אחת: "אני מתחייבת לעשות X עד יום Y. תשאלי אותי אם עשיתי." - Accountability partner אחד שווה יותר מ-10 ספרי מוטיבציה.</div></div>
   </div>
 </div>
-
   <div class="outro">
-    <h3>עכשיו - לעשות את התרגיל של שבוע 1</h3>
-    <p>לא לקרוא הכל ולהמתין. לעשות את התרגיל של שבוע 1 עוד הערב.</p>
-    <p style="margin-bottom:24px">רוצה ליווי אישי? סלון היזמיות הוא המקום שנשים כמוך הופכות שעה אחת בשבוע לדבר אמיתי.</p>
+    <h3>את יודעת מה לעשות. עכשיו - ללכת לעשות.</h3>
+    <p>לא לקרוא הכל ולהמתין. שבוע 1, תרגיל 1. עכשיו.</p>
+    <p style="margin-bottom:24px">רוצה ליווי ותמיכה? סלון היזמיות הוא המקום שנשים כמוך הופכות את "אני יודעת" ל"עשיתי".</p>
     <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון</a>
   </div>
 </div>

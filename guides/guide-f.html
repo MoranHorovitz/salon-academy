@@ -10,62 +10,50 @@
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
 .wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
 @media(max-width:600px){.wrap{padding:32px 16px 80px;}}
-
-/* HERO */
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
 .hero-icon{font-size:52px;margin-bottom:14px;}
-.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+h1 em{font-style:normal;color:var(--lime);}
 .hero-sub{font-size:clamp(15px,2.5vw,18px);color:#999;margin-bottom:12px;line-height:1.6;}
 .hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
 .meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
 .meta-item strong{color:#ccc;}
-
-/* WEEK NAV */
 .week-nav{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;padding-bottom:4px;}
 .week-nav a{flex-shrink:0;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;transition:all 0.15s;white-space:nowrap;}
 .week-nav a:hover{border-color:rgba(198,255,0,0.4);color:var(--lime);}
-
-/* WEEK BLOCK */
-.week{margin-bottom:56px;scroll-margin-top:24px;}
+.week{margin-bottom:60px;scroll-margin-top:24px;}
 .week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);}
 .week-num{width:40px;height:40px;border-radius:50%;background:rgba(198,255,0,0.1);border:2px solid rgba(198,255,0,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime);flex-shrink:0;}
-.week-title-wrap{}
 .week-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .week-title{font-size:clamp(18px,3vw,22px);font-weight:900;color:#fff;line-height:1.2;}
-
-/* CONTENT */
-h2{font-size:17px;font-weight:800;color:#fff;margin:24px 0 10px;}
+h2{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
+h3{font-size:15px;font-weight:800;color:#ddd;margin:20px 0 8px;}
 p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
 p strong{color:#e0e0f0;}
 ul,ol{padding-right:22px;margin-bottom:16px;}
-ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:7px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
 li strong{color:#e0e0f0;}
-
-/* LESSON CARD */
+.block-psych{background:rgba(180,79,255,0.06);border:1px solid rgba(180,79,255,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-psych .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b44fff;margin-bottom:10px;}
+.block-psych p{font-size:14px;color:#ccc;margin-bottom:8px;}
+.block-trick{background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-trick .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;margin-bottom:10px;}
+.block-trick p,.block-trick li{font-size:14px;color:#ccc;}
+.block-trick ul{margin-bottom:0;}
+.block-reframe{background:rgba(198,255,0,0.04);border-right:3px solid var(--lime);border-radius:0 12px 12px 0;padding:18px 20px;margin:20px 0;font-size:14px;color:#bbb;line-height:1.7;}
+.block-reframe strong{color:#e0e0f0;}
 .lesson{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
 .lesson-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.lesson h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:12px;}
-.lesson p{font-size:14px;color:#bbb;margin-bottom:10px;}
-
-/* EXERCISE */
+.lesson h3{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise{background:rgba(198,255,0,0.05);border:1.5px solid rgba(198,255,0,0.25);border-radius:16px;padding:24px 26px;margin-top:20px;}
 .exercise-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
-.exercise h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;}
+.exercise h3{font-size:16px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
 .exercise-step .n{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.15);color:var(--lime);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .exercise-step .t{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
 .exercise-step .t strong{color:#fff;}
 .time-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--lime);background:rgba(198,255,0,0.1);border-radius:10px;padding:3px 10px;margin-bottom:14px;}
-
-/* CALLOUT */
-.callout{background:rgba(255,255,255,0.03);border-right:3px solid var(--lime);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;font-size:14px;color:#bbb;line-height:1.7;}
-.callout strong{color:#e0e0f0;}
-
-/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:40px 0;}
-
-/* OUTRO */
 .outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:32px;text-align:center;margin-top:48px;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
@@ -78,37 +66,49 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   <div class="hero-icon">🌐</div>
   <div class="hero">
     <h1>שעה אחת בשבוע -<br><em>הרב תחומית</em></h1>
-    <p class="hero-sub">להפוך את הרוחב שלך ליתרון כלכלי - 4 שבועות.</p>
+    <p class="hero-sub">את יודעת יותר ממה שאת חושבת שאת יודעת. עכשיו - למה זה לא יוצא לאוויר.</p>
     <div class="hero-meta">
-      <div class="meta-item">📅 <strong>4 שבועות</strong></div>
-      <div class="meta-item">📖 <strong>4 שיעורים</strong></div>
-      <div class="meta-item">⏱ <strong>45 דקות לשבוע</strong></div>
+      <div class="meta-item">4 שבועות</div>
+      <div class="meta-item">4 שיעורים</div>
+      <div class="meta-item">45 דקות לשבוע</div>
     </div>
   </div>
-
-  <div class="week-nav"><a href="#week1">שבוע 1: למצוא את ה"חיבור הזהב" שלך</a><a href="#week2">שבוע 2: לבחור מסלול ומחיר</a><a href="#week3">שבוע 3: לגייס לקוח ראשון</a><a href="#week4">שבוע 4: לבנות זרמי הכנסה שמצטברים</a></div>
+  <div class="week-nav"><a href="#week1">שבוע 1: למה את לא מתמקדת</a><a href="#week2">שבוע 2: למה אחרות לא "מבינות" מה את עושה</a><a href="#week3">שבוע 3: למה את לא מתחילה</a><a href="#week4">שבוע 4: למה את מפסיקה באמצע</a></div>
   <div class="divider"></div>
   <div class="week" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
-      <div class="week-title">למצוא את ה"חיבור הזהב" שלך</div>
+      <div class="week-title">למה את לא מתמקדת</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>הרב תחומית לא "מתפזרת" - היא רואה מה אחרות מפספסות</h3>
-    <p>שנים אמרו לך "תתמקדי". הן טעו. הרב-תחומיות היא נכס - <strong>כשיודעים לארוז אותה נכון.</strong></p>
-<p>הבעיה לא שיש לך הרבה תחומים. הבעיה שלא מצאת עדיין <strong>מה שמחבר ביניהם</strong> - ולמה זה ייחודי.</p>
-<p>החיבור הזהב = שני תחומים שנראים לא קשורים + קהל שצריך מישהי שמבינה גם X וגם Y.</p>
-<div class="callout">דוגמה: "אני מבינה גם בפסיכולוגיה וגם ב-UX" = ייעוץ לצוותי מוצר על הטיות קוגניטיביות של משתמשים. נדיר. יקר.</div>
+    <h3>החסם: "אני מתעניינת בהכל ולא יכולה לבחור."</h3>
+    <p>"לבחור" לא אומר "לוותר על כל השאר לתמיד". אומר <strong>"להחליט מה ראשון."</strong> ולא-בחירה היא גם בחירה - לא להתקדם.</p>
+<p>הרב תחומית נתקעת כי כל בחירה מרגישה כסגירת דלת. <strong>אבל דלתות לא נסגרות - הן נשארות פתוחות ואת רק לא מסתכלת עליהן עכשיו.</strong></p>
+
+<div class="block-psych">
+<div class="label">🧠 "Paradox of Choice" - למה יותר אפשרויות = פחות החלטות</div>
+<p>Barry Schwartz: יותר בחירות = יותר חרדת החלטה + פחות שביעות רצון מהבחירה שנעשתה. <strong>המוח שלנו לא בנוי להחלטות עם אפשרויות אינסופיות.</strong> הפתרון: "satisfice" - לבחור "טוב מספיק" במקום "מושלם".</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "Coin Flip Test" + "2-Year Experiment"</div>
+<p><strong>Coin Flip Test:</strong> כשאינך יכולה להחליט בין שתי אפשרויות - הטילי מטבע. כשהוא נחת - שימי לב לתחושה שלך. אם הרגשת "תקווה" שיצא צד אחד - זה ה-אחד.</p>
+<p><strong>2-Year Experiment:</strong> לא "בחרתי את זה לכל החיים" אלא <strong>"אני מנסה את זה שנתיים."</strong> שנתיים הן מספיק זמן לבנות, לא מספיק זמן לכלוא.</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא "בוחרת תחום". <strong>"בוחרת מה לעשות ראשון."</strong> השאר לא נעלם - הוא ממתין.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>מפת החיבורים שלי - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — רשמי 6 תחומים שאת שולטת בהם/מתעניינת בהם (עבודה, לימודים, תחביבים, ניסיון חיים). לא לסנן - הכל על השולחן.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לכל זוג תחומים (A+B) - שאלי: "מי צריכה מישהי שמבינה גם A וגם B?" - כתבי תשובה גם אם לא ברורה.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — בחרי את החיבור שנראה לך הכי ייחודי וברור. הגדירי: "אני עוזרת ל[מי] שצריכה גם [A] וגם [B]."</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>5 דקות</strong> — שלחי למישהי שמכירה אותך: "מה לדעתך הדבר הכי ייחודי שאני יכולה לתת שאחרות לא?"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>להחליט עם ה-Coin Flip Test</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - רשמי 3 כיוונים שמעניינים אותך. לא "כל מה שמעניין" - 3 הכי חזקים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - Coin Flip Test: בחרי שניים. הטילי. שימי לב לתחושה. כתבי מה הרגשת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - על ה-winner: כתבי "Experiment Plan": מה תנסי בשנתיים הקרובות? מה תבדקי? מה יגיד לך שזה עובד?</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>15 דקות</strong> - פעולה ראשונה קונקרטית: מה תעשי בשבוע הקרוב? לא "אחקור" - "אשלח הודעה ל-X" או "אכתוב X".</div></div>
   </div>
 </div>
 <div class="week" id="week2">
@@ -116,25 +116,39 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
-      <div class="week-title">לבחור מסלול ומחיר</div>
+      <div class="week-title">למה אחרות לא "מבינות" מה את עושה</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>Generalist Premium: למה רב-תחומית גובה יותר</h3>
-    <p>מחקרים מראים שאנשים שמבינים שני תחומים שונים גובים פרמיה של 30-60% על "מומחים" בתחום אחד. <strong>כי הם רואים פתרונות שהמומחה לא רואה.</strong></p>
-<p>3 מסלולים שמתאימים לרב-תחומית:</p>
+    <h3>החסם: "אני לא יודעת איך להסביר מה אני מציעה."</h3>
+    <p>כשמציעה שירות רחב - אנשים לא יודעים לאן לשים אותך. <strong>"ייעוץ עסקי" + "פסיכולוגיה" + "כתיבה" = "אה, מעניין" ושכחו.</strong></p>
+<p>הפתרון לא להצטמצם - אלא <strong>לאגד תחת narrative אחד.</strong> "אני עוזרת ל-X בגלל שאני מביאה גם A וגם B." זה לא צמצום - זה בהירות.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "Narrative Transportation" - סיפור > רשימת תכונות</div>
+<p>מחקר Melanie Green: אנשים שנכנסים ל-"narrative transportation" (מחוברים לסיפור) - <strong>משנים עמדות ומחליטים רכישה פי 2-3 יותר מאלה שקיבלו עובדות.</strong> הסיפור שלך - לא ה-skills שלך - הוא מה שמוכר.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "The And Story" - להפוך "אני עושה הכל" ל"אני עושה X+Y=Z"</div>
+<p><strong>הנוסחה:</strong> "אני [תחום A] ואני [תחום B]. ולכן אני יכולה לעזור ל[מי] שצריכות [מה שרק מי שמבינה גם A וגם B יכולה לתת]."</p>
 <ul>
-<li><strong>Fractional Role</strong> - עובדת חלקית כ-CMO/CPO/COO לחברה קטנה. ₪5,000-15,000 לחודש, 2-3 ימים בשבוע.</li>
-<li><strong>Innovation Workshop</strong> - יום עבודה עם צוות בבעיה ספציפית. ₪3,000-10,000 ליום.</li>
-<li><strong>Multi-Revenue Stack</strong> - כמה זרמי הכנסה קטנים (ייעוץ + ניוזלטר + סדנה). ₪5,000-12,000 בחודש מצירוף.</li>
+<li>הAND הופך לנכס - לא לבעיה</li>
+<li>מגדיר קהל שמחפש בדיוק את השילוב</li>
+<li>מייחד אותך ממי שמתמחה באחד בלבד</li>
 </ul>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא "אני יודעת הכל". <strong>"אני הגשר שאף אחת אחרת לא מציעה."</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לבחור מסלול - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — קראי את 3 המסלולים. בחרי אחד - לא לפי מה שנשמע הכי יוקרתי, אלא לפי מה שנשמע הכי "אפשרי עכשיו".</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — חקרי מה אחרים גובים במסלול שבחרת. לינקדאין + גוגל. כתבי 3 מחירים שמצאת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — כתבי הצעת ערך: "אני [שם], מביאה [תחום A] ו[תחום B] יחד כדי לעזור ל[מי] ל[מה]. מחיר: [X]"</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי לשתי חברות שמתאימות לתיאור: "חושבת על [מסלול]. רלוונטי לך? יש לך 15 דקות?"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לנסח את "ה-AND Story" שלך</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - כתבי 5 גרסאות של המשפט: "אני [A] ו[B], ולכן אני יכולה לעזור ל[מי] ל[מה]." 5 גרסאות שונות - אל תתמקדי.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - שלחי ל-3 אנשים שמכירים אותך: "איזה משפט הכי מדויק לדעתך?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - בחרי גרסה אחת. עדכני LinkedIn Headline ו-Bio בה.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שלחי ל-2 אנשים חדשים (לא מהרשימה) את ה-Headline החדש. "מה את מבינה שאני עושה?" - Data מהשטח.</div></div>
   </div>
 </div>
 <div class="week" id="week3">
@@ -142,26 +156,39 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
-      <div class="week-title">לגייס לקוח ראשון</div>
+      <div class="week-title">למה את לא מתחילה</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>לינקדאין: הכלי שהכי עובד לרב-תחומית</h3>
-    <p>לרב-תחומית - לינקדאין הוא הפלטפורמה הנכונה. כי שם אנשים מחפשים ניסיון מגוון, לא מומחיות צרה.</p>
-<p>שלושה צעדים לפרופיל שמושך:</p>
-<ol>
-<li><strong>כותרת:</strong> לא "Product Manager at X" - "Bridging [תחום A] + [תחום B] for [מי]"</li>
-<li><strong>About:</strong> פסקה אחת שמסבירה את החיבור הייחודי שלך</li>
-<li><strong>פוסט שבועי:</strong> על חיבורים בין התחומים שלך. לא "שיתוף מ-X" - דעה משלך.</li>
-</ol>
-<div class="callout">לא צריך 1,000 followers. 100 אנשים הנכונים מספיקים ללקוח ראשון.</div>
+    <h3>החסם: "אני יודעת שאני צריכה להתחיל, אבל לא מוצאת את הנקודה הנכונה."</h3>
+    <p>לרב תחומית יש "problem of too many entry points". מאיפה מתחילים כשהכל נכון? <strong>ה-answer: מהמקום שגורם להכי פחות התנגדות.</strong> לא מהכי חכם.</p>
+<p>Perfect entry point הוא אויב ה-progress. <strong>כל entry point מוביל לאותו מקום - לפעולה.</strong> והפעולה מגלה מה הבא.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "Action Precedes Clarity" - מה שנראה כחוסר כיוון הוא חוסר פעולה</div>
+<p>מחקרי Bandura על self-efficacy: <strong>אמונה ביכולת עצמית לא מגיעה מחשיבה - מגיעה מניסיון הצלחה.</strong> כל פעולה קטנה שמסתיימת בהצלחה = בניית אמונה. בלי פעולה - אין אמונה. עם אמונה - מגיעה הבהירות.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "Minimum Viable Start" - הצעד הכי קטן שאפשר</div>
+<p><strong>שאלה:</strong> "מה הדבר הכי קטן שאפשר לעשות השבוע שיגרום להתקדם?"</p>
+<ul>
+<li>לא "לפתוח עסק" - "לשלוח הודעה לאחת"</li>
+<li>לא "לבנות אתר" - "לכתוב משפט על מה שאני מציעה"</li>
+<li>לא "להבין מה אני רוצה" - "לדבר עם אדם אחד שעשה את זה"</li>
+</ul>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא מחפשת "את הנקודה הנכונה". <strong>"כל נקודה נכונה כל עוד מתחילה."</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לינקדאין + שיחת אבחון - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — עדכני את כותרת ה-LinkedIn שלך לנוסחת החיבור. עדכני את ה-About ב-3-5 שורות שמסבירות מה ייחודי בחיבור שלך.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — כתבי פוסט אחד: "שנים עבדתי גם ב[A] וגם ב[B]. מה שלמדתי זה ש[תובנה מפתיעה]. [2-3 שורות פרוט]. מי עוד רואה את זה?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — פרסמי את הפוסט. שלחי ל-3 אנשים שמכירים אותך: "פרסמתי משהו על החיבור בין [A] ל-[B]. מה את חושבת?"</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי לאחת מהנשים שאמרה "כן" בשבוע הקודם: "מוכנה ל-15 דקות שיחה השבוע?"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>Minimum Viable Start - עכשיו</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>5 דקות</strong> - מה הדבר שאת "אמורה לעשות" ולא עשית? כתבי אותו.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - מה הצעד הכי קטן שאפשר? (לא "לעשות" - "לשלוח הודעה/לכתוב שורה/לגוגל")</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>25 דקות</strong> - עשי את הצעד הזה עכשיו. לא מחר.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - כתבי מה הצעד הבא. קבעי זמן ספציפי. שתפי עם אחת.</div></div>
   </div>
 </div>
 <div class="week" id="week4">
@@ -169,34 +196,46 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
-      <div class="week-title">לבנות זרמי הכנסה שמצטברים</div>
+      <div class="week-title">למה את מפסיקה באמצע</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>Multi-Revenue: לא חייבים להתמקד</h3>
-    <p>הרב-תחומית לא חייבת לבחור "עסק אחד". היא יכולה לבנות כמה זרמים שונים שמצטברים לסכום יפה.</p>
-<p>דוגמה לתמהיל שעובד:</p>
+    <h3>החסם: "התחלתי, ואז התעניינתי במשהו חדש, ועזבתי."</h3>
+    <p>ה-"shiny object syndrome" של הרב תחומית: כל דבר חדש מרגיש יותר מעניין ממה שכבר עשיתי. <strong>כי המוח כבר פתר את חידת מה שעשיתי - ורוצה חידה חדשה.</strong></p>
+<p>הפתרון לא להפסיק להתעניין. <strong>הפתרון לבנות מנגנון שמוביל גם דברים ישנים לסיום.</strong></p>
+
+<div class="block-psych">
+<div class="label">🧠 "Novelty Bias" - המוח שלך אוהב חדש</div>
+<p>Neuroscience research: חשיפה לstimulus חדש מפעילה dopamine. <strong>novelty כשלעצמה מתגמלת את המוח.</strong> הבעיה: מה שהיה חדש נהיה ישן מהר. ואז צריך חדש אחר.</p>
+<p>הפתרון: לייצר novelty <strong>בתוך</strong> הפרויקט הקיים. Reframe: "Milestone 3 הוא חדש לי - זה לא המשך, זה פרויקט חדש בתוך הישן."</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "Bright Shiny Objects List" - לתעד ולא לעזוב</div>
 <ul>
-<li>ייעוץ 1:1 × 3 לקוחות ₪700/שיחה × 2 שיחות/חודש = ₪4,200</li>
-<li>ניוזלטר בתשלום × 60 מנויים × ₪49 = ₪2,940</li>
-<li>Workshop חד-פעמי בחודש × 12 אנשים × ₪250 = ₪3,000</li>
-<li>סה"כ: <strong>₪10,140 בחודש, כ-15-20 שעות עבודה</strong></li>
+<li>צרי קובץ: "BSO List" (Bright Shiny Objects)</li>
+<li>כל רעיון חדש שמגיע - <strong>כתבי אותו שם.</strong> לא "תזניחי אותו" - "תכבדי אותו על ידי תיעוד"</li>
+<li>אחרי שתסיימי את הפרויקט הנוכחי - תראי אם ה-BSO עדיין מרגיש חשוב</li>
+<li>80% מה-BSOs מתייאשים לבד תוך שבועיים</li>
 </ul>
-<p>הסוד: כל זרם מבוסס על אותה נישה ואותה מומחיות - רק פורמטים שונים.</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> כשרעיון חדש מגיע - לא "זה חשוב יותר". <strong>"זה מעניין. אכניס ל-BSO List ואחזור אליו."</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לתכנן את ה-Revenue Stack - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — בחרי 2 זרמי הכנסה מהרשימה שלמעלה שמתאימים לך. לא שלושה - שניים. עם מחירים ריאליים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — חשבי: כמה לקוחות/מנויים צריך כדי להגיע ל-₪3,000 בחודש מכל זרם? כתבי מספרים.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — קבעי יעד לחודש הראשון: "₪X מ-Y לקוחות/מנויים". לא שאפתני מדי - ריאלי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי "צעד 1" לכל זרם שבחרת. לא "אבנה קורס" - "אכתוב פוסט LinkedIn אחד על [נושא]".</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לבנות BSO List + לסיים דבר אחד</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - פתחי Notion/Notes. שמי "BSO List". כתבי כל הרעיונות שעפים לך בראש כרגע. תני להם מקום.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - בחרי פרויקט אחד שהתחלת ולא סיימת. מה ה-Milestone הבא? מה לוקח פחות מ-45 דקות?</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>25 דקות</strong> - עשי את ה-Milestone הבא עכשיו.</div></div>
   </div>
 </div>
-
   <div class="outro">
-    <h3>עכשיו - לעשות את התרגיל של שבוע 1</h3>
-    <p>לא לקרוא הכל ולהמתין. לעשות את התרגיל של שבוע 1 עוד הערב.</p>
-    <p style="margin-bottom:24px">רוצה ליווי אישי? סלון היזמיות הוא המקום שנשים כמוך הופכות שעה אחת בשבוע לדבר אמיתי.</p>
+    <h3>את יודעת מה לעשות. עכשיו - ללכת לעשות.</h3>
+    <p>לא לקרוא הכל ולהמתין. שבוע 1, תרגיל 1. עכשיו.</p>
+    <p style="margin-bottom:24px">רוצה ליווי ותמיכה? סלון היזמיות הוא המקום שנשים כמוך הופכות את "אני יודעת" ל"עשיתי".</p>
     <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון</a>
   </div>
 </div>
