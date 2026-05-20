@@ -35,6 +35,7 @@ footer{text-align:center;padding:20px;font-size:12px;color:var(--muted);}
 <footer>Salon Academy</footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const TYPES = {
   a: { icon: '🤝', name: 'המחברת' },
@@ -53,6 +54,26 @@ document.getElementById('type-icon').textContent = t.icon;
 document.getElementById('type-badge').textContent = 'את ' + t.name;
 document.getElementById('type-sub').textContent = 'המדריך "שעה אחת בשבוע" - ' + t.name + ' - נכתב בדיוק עבור הסוג שלך';
 document.getElementById('guide-btn').href = '/guides/guide-' + type + '.html';
+
+// Save personality type to Supabase user metadata
+(async () => {
+  try {
+    const { createClient } = supabase;
+    const SUPA_URL = 'https://sbuwxhijqfdrznblnieb.supabase.co';
+    const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNidXd4aGlqcWZkcnpuYmxuaWViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjAzNDcsImV4cCI6MjA5MjkzNjM0N30.WCPTa7vRQ77MeMAigjbYMKONkXiRH-ynlpzPrXBrPbM';
+    const sb = createClient(SUPA_URL, SUPA_KEY);
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      await sb.auth.updateUser({
+        data: {
+          personality_type: type,
+          personality_name: t.name,
+          guide_purchased_at: new Date().toISOString(),
+        }
+      });
+    }
+  } catch(e) {}
+})();
 
 // Auto-redirect after 3 seconds
 setTimeout(() => {
