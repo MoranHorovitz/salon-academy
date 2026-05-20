@@ -8,133 +8,198 @@
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
-.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
-@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
-.top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero-icon{font-size:56px;margin-bottom:16px;}
-h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
-h1 em{font-style:normal;color:var(--lime);}
-.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
+@media(max-width:600px){.wrap{padding:32px 16px 80px;}}
+
+/* HERO */
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
+.hero-icon{font-size:52px;margin-bottom:14px;}
+.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+.hero h1 em{font-style:normal;color:var(--lime);}
+.hero-sub{font-size:clamp(15px,2.5vw,18px);color:#999;margin-bottom:12px;line-height:1.6;}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
+.meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
+.meta-item strong{color:#ccc;}
+
+/* WEEK NAV */
+.week-nav{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;padding-bottom:4px;}
+.week-nav a{flex-shrink:0;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;transition:all 0.15s;white-space:nowrap;}
+.week-nav a:hover{border-color:rgba(198,255,0,0.4);color:var(--lime);}
+
+/* WEEK BLOCK */
+.week{margin-bottom:56px;scroll-margin-top:24px;}
+.week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);}
+.week-num{width:40px;height:40px;border-radius:50%;background:rgba(198,255,0,0.1);border:2px solid rgba(198,255,0,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime);flex-shrink:0;}
+.week-title-wrap{}
+.week-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.week-title{font-size:clamp(18px,3vw,22px);font-weight:900;color:#fff;line-height:1.2;}
+
+/* CONTENT */
+h2{font-size:17px;font-weight:800;color:#fff;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
+p strong{color:#e0e0f0;}
+ul,ol{padding-right:22px;margin-bottom:16px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:7px;}
+li strong{color:#e0e0f0;}
+
+/* LESSON CARD */
+.lesson{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
+.lesson-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.lesson h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:12px;}
+.lesson p{font-size:14px;color:#bbb;margin-bottom:10px;}
+
+/* EXERCISE */
+.exercise{background:rgba(198,255,0,0.05);border:1.5px solid rgba(198,255,0,0.25);border-radius:16px;padding:24px 26px;margin-top:20px;}
+.exercise-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
+.exercise h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;}
+.exercise-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.exercise-step .n{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.15);color:var(--lime);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.exercise-step .t{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.exercise-step .t strong{color:#fff;}
+.time-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--lime);background:rgba(198,255,0,0.1);border-radius:10px;padding:3px 10px;margin-bottom:14px;}
+
+/* CALLOUT */
+.callout{background:rgba(255,255,255,0.03);border-right:3px solid var(--lime);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;font-size:14px;color:#bbb;line-height:1.7;}
+.callout strong{color:#e0e0f0;}
+
+/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:40px 0;}
-h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
-h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
-p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
-p strong{color:#e8e8f0;}
-ul,ol{padding-right:22px;margin-bottom:20px;}
-ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
-ul li strong,ol li strong{color:#e8e8f0;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
-.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
-.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
-.step-text strong{color:#e8e8f0;}
-.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
-.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
-.price-ex .price-note{font-size:13px;color:var(--muted);}
-table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
-table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
-table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
-table.compare td:first-child{color:#e8e8f0;font-weight:600;}
-.highlight{color:var(--lime);font-weight:700;}
-.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
-.outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
-.outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
-.btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
-.btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
+
+/* OUTRO */
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:32px;text-align:center;margin-top:48px;}
+.outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
+.outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
+.btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-badge">Salon Academy - מדריך אישי</div>
   <div class="hero-icon">🌐</div>
-  <h1>שעה אחת בשבוע -<br><em>הרב תחומית</em></h1>
-  <p class="tagline">איך להפוך את "אני מתעניינת בהכל" מחולשה ליתרון כלכלי מובהק</p>
+  <div class="hero">
+    <h1>שעה אחת בשבוע -<br><em>הרב תחומית</em></h1>
+    <p class="hero-sub">להפוך את הרוחב שלך ליתרון כלכלי - 4 שבועות.</p>
+    <div class="hero-meta">
+      <div class="meta-item">📅 <strong>4 שבועות</strong></div>
+      <div class="meta-item">📖 <strong>4 שיעורים</strong></div>
+      <div class="meta-item">⏱ <strong>45 דקות לשבוע</strong></div>
+    </div>
+  </div>
 
-  
-<div class="section-num">חלק א' - למה את שונה (ולמה זה טוב)</div>
-<h2>הרב תחומית היא לא מישהי שלא הצליחה להתמקד — היא מישהי שרואה חיבורים שאחרות מפספסות</h2>
-<p>שנים שאמרו לך "תתמקדי". "בחרי תחום". "אי אפשר להיות מומחית בהכל".</p>
-<p>הן טעו. ולא רק זה — <strong>הרב-תחומיות היא אחד מהנכסים הכי מבוקשים בשוק של 2025.</strong> חברות מחפשות אנשים שיכולים לגשר בין עולמות. יוזמות מחפשות מי שמבין גם X וגם Y. לקוחות מחפשים מי שיכולה לראות את כל התמונה.</p>
-
-<div class="callout">
-<div class="callout-label">האמת על שוק הייעוץ</div>
-"Generalist Consultant" — מישהי שמבינה גם עסקים וגם טכנולוגיה, או גם שיווק וגם פסיכולוגיה, או גם ניהול וגם עיצוב — <strong>גובה פרמיה של 30-60% על "מומחית" בתחום אחד.</strong> כי היא רואה מה האחרות מפספסות.
-</div>
-
-<div class="divider"></div>
-<div class="section-num">חלק ב' - מציאת ה"חיבור הזהב" שלך</div>
-
-<h2>ה-Framework: תחום A + תחום B = נישה שאף אחד אחר לא ממלא</h2>
-<p>הנכס שלך הוא לא כל תחום בנפרד — אלא ה<strong>חיבור ביניהם.</strong></p>
-
-<h3>תרגיל: "מפת החיבורים שלי"</h3>
-<div class="action-box">
-<h4>📋 עשי את זה עכשיו (10 דקות)</h4>
-<div class="step"><div class="step-num">1</div><div class="step-text"><strong>רשמי 5 תחומים</strong> שאת שולטת בהם, מתעניינת בהם, או עבדת בהם (גם תחביבים נחשבים)</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-text"><strong>חפשי חיבורים:</strong> לכל זוג — שאלי "מי צריכה מישהי שמבינה גם A וגם B?" — כתבי תשובה</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-text"><strong>בחרי את החיבור הכי חזק</strong> — איפה את מרגישה "רק אני רואה את זה"? שם הנישה שלך.</div></div>
-</div>
-
-<h3>דוגמאות לחיבורים זהב</h3>
-<table class="compare">
-<tr><th>תחום A</th><th>תחום B</th><th>הנישה</th></tr>
-<tr><td>פסיכולוגיה</td><td>UX/Product</td><td class="highlight">ייעוץ לצוותי מוצר בהטיות קוגניטיביות של משתמשים</td></tr>
-<tr><td>חינוך</td><td>AI/טכנולוגיה</td><td class="highlight">הטמעת AI בכיתה — הדרכה למורות</td></tr>
-<tr><td>משפטים</td><td>Startups</td><td class="highlight">ייעוץ משפטי-עסקי לסטארטאפים בשלב הזריעה</td></tr>
-<tr><td>בישול</td><td>ניהול זמן</td><td class="highlight">מנטורינג "אמא יעילה" — בישול + ארגון לאמהות עסוקות</td></tr>
-<tr><td>הנדסה</td><td>תקשורת</td><td class="highlight">כתיבת תיעוד טכני + הכשרת מהנדסים לתקשורת עם לקוחות</td></tr>
-</table>
-
-<div class="divider"></div>
-<div class="section-num">חלק ג' - 3 מסלולי הכנסה לרב תחומית</div>
-
-<h2>מסלול 1: Fractional Role — עובדת חלקית בתפקיד מנהלתי</h2>
-<p>חברות קטנות צריכות CMO, CPO, CTO — אבל לא יכולות לשלם על full-time. <strong>הפתרון: Fractional — את עובדת שבוע-שבועיים בחודש, מקבלת שכר חלקי.</strong></p>
-<ul>
-<li>Fractional CMO: ₪8,000-20,000 לחודש, 2-3 ימי עבודה</li>
-<li>Fractional Product Advisor: ₪5,000-12,000 לחודש</li>
-<li>Fractional Operations: ₪4,000-10,000 לחודש</li>
-</ul>
-
-<h2>מסלול 2: Innovation Consultant — מחברת עולמות לפתרון בעיות</h2>
-<p>כשחברה תקועה בבעיה — היא מסתכלת תמיד מאותה זווית. <strong>את — שרואה מ-5 זוויות — מביאה פתרונות שהם לא ראו.</strong></p>
-<ul>
-<li>Workshop חד-פעמי ל-team: ₪3,000-12,000 ליום</li>
-<li>Retainer חודשי: ₪4,000-10,000 ל-4-8 שעות בחודש</li>
-<li>פרויקט ספציפי (חקירת שוק, בניית אסטרטגיה): ₪8,000-30,000</li>
-</ul>
-
-<h2>מסלול 3: Multi-Revenue — כמה זרמי הכנסה קטנים</h2>
-<p>לא חייבים עסק אחד. אפשר 3-4 זרמים שמצטברים.</p>
-
-<div class="callout">
-<div class="callout-label">דוגמה לתמהיל חודשי</div>
-ייעוץ 1:1 × 4 לקוחות ₪600 = <strong>₪2,400</strong><br>
-ניוזלטר בתשלום × 80 מנויים ₪39 = <strong>₪3,120</strong><br>
-סדנה אחת בחודש × 10 אנשים ₪250 = <strong>₪2,500</strong><br>
-<strong>סה"כ: ₪8,020 לחודש, ~15 שעות עבודה</strong>
-</div>
-
-<div class="action-box">
-<h4>🌐 המשימה שלך השבוע</h4>
-<div class="step"><div class="step-num">1</div><div class="step-text"><strong>עשי את "מפת החיבורים"</strong> מחלק ב'. לקח 10 דקות.</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-text"><strong>כתבי לינקדאין על החיבור שמצאת:</strong> "מה שמעניין בלהיות X וגם Y הוא ש..." — 3-5 שורות. לא מכירה.</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-text"><strong>שאלי בפוסט:</strong> "יש מישהי שנתקלת בבעיה של [חיבור]? מחפשת לדבר עם 2-3 אנשים כדי להבין את הצורך." — גיוס ראשוני בלי להתחייב לכלום.</div></div>
-</div>
-
-
+  <div class="week-nav"><a href="#week1">שבוע 1: למצוא את ה"חיבור הזהב" שלך</a><a href="#week2">שבוע 2: לבחור מסלול ומחיר</a><a href="#week3">שבוע 3: לגייס לקוח ראשון</a><a href="#week4">שבוע 4: לבנות זרמי הכנסה שמצטברים</a></div>
   <div class="divider"></div>
-  <div class="outro">
-    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
-    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
+  <div class="week" id="week1">
+  <div class="week-header">
+    <div class="week-num">1</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 1</div>
+      <div class="week-title">למצוא את ה"חיבור הזהב" שלך</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>הרב תחומית לא "מתפזרת" - היא רואה מה אחרות מפספסות</h3>
+    <p>שנים אמרו לך "תתמקדי". הן טעו. הרב-תחומיות היא נכס - <strong>כשיודעים לארוז אותה נכון.</strong></p>
+<p>הבעיה לא שיש לך הרבה תחומים. הבעיה שלא מצאת עדיין <strong>מה שמחבר ביניהם</strong> - ולמה זה ייחודי.</p>
+<p>החיבור הזהב = שני תחומים שנראים לא קשורים + קהל שצריך מישהי שמבינה גם X וגם Y.</p>
+<div class="callout">דוגמה: "אני מבינה גם בפסיכולוגיה וגם ב-UX" = ייעוץ לצוותי מוצר על הטיות קוגניטיביות של משתמשים. נדיר. יקר.</div>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>מפת החיבורים שלי - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — רשמי 6 תחומים שאת שולטת בהם/מתעניינת בהם (עבודה, לימודים, תחביבים, ניסיון חיים). לא לסנן - הכל על השולחן.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לכל זוג תחומים (A+B) - שאלי: "מי צריכה מישהי שמבינה גם A וגם B?" - כתבי תשובה גם אם לא ברורה.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — בחרי את החיבור שנראה לך הכי ייחודי וברור. הגדירי: "אני עוזרת ל[מי] שצריכה גם [A] וגם [B]."</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>5 דקות</strong> — שלחי למישהי שמכירה אותך: "מה לדעתך הדבר הכי ייחודי שאני יכולה לתת שאחרות לא?"</div></div>
   </div>
 </div>
-<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
+<div class="week" id="week2">
+  <div class="week-header">
+    <div class="week-num">2</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 2</div>
+      <div class="week-title">לבחור מסלול ומחיר</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>Generalist Premium: למה רב-תחומית גובה יותר</h3>
+    <p>מחקרים מראים שאנשים שמבינים שני תחומים שונים גובים פרמיה של 30-60% על "מומחים" בתחום אחד. <strong>כי הם רואים פתרונות שהמומחה לא רואה.</strong></p>
+<p>3 מסלולים שמתאימים לרב-תחומית:</p>
+<ul>
+<li><strong>Fractional Role</strong> - עובדת חלקית כ-CMO/CPO/COO לחברה קטנה. ₪5,000-15,000 לחודש, 2-3 ימים בשבוע.</li>
+<li><strong>Innovation Workshop</strong> - יום עבודה עם צוות בבעיה ספציפית. ₪3,000-10,000 ליום.</li>
+<li><strong>Multi-Revenue Stack</strong> - כמה זרמי הכנסה קטנים (ייעוץ + ניוזלטר + סדנה). ₪5,000-12,000 בחודש מצירוף.</li>
+</ul>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>לבחור מסלול - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — קראי את 3 המסלולים. בחרי אחד - לא לפי מה שנשמע הכי יוקרתי, אלא לפי מה שנשמע הכי "אפשרי עכשיו".</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — חקרי מה אחרים גובים במסלול שבחרת. לינקדאין + גוגל. כתבי 3 מחירים שמצאת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — כתבי הצעת ערך: "אני [שם], מביאה [תחום A] ו[תחום B] יחד כדי לעזור ל[מי] ל[מה]. מחיר: [X]"</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי לשתי חברות שמתאימות לתיאור: "חושבת על [מסלול]. רלוונטי לך? יש לך 15 דקות?"</div></div>
+  </div>
+</div>
+<div class="week" id="week3">
+  <div class="week-header">
+    <div class="week-num">3</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 3</div>
+      <div class="week-title">לגייס לקוח ראשון</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>לינקדאין: הכלי שהכי עובד לרב-תחומית</h3>
+    <p>לרב-תחומית - לינקדאין הוא הפלטפורמה הנכונה. כי שם אנשים מחפשים ניסיון מגוון, לא מומחיות צרה.</p>
+<p>שלושה צעדים לפרופיל שמושך:</p>
+<ol>
+<li><strong>כותרת:</strong> לא "Product Manager at X" - "Bridging [תחום A] + [תחום B] for [מי]"</li>
+<li><strong>About:</strong> פסקה אחת שמסבירה את החיבור הייחודי שלך</li>
+<li><strong>פוסט שבועי:</strong> על חיבורים בין התחומים שלך. לא "שיתוף מ-X" - דעה משלך.</li>
+</ol>
+<div class="callout">לא צריך 1,000 followers. 100 אנשים הנכונים מספיקים ללקוח ראשון.</div>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>לינקדאין + שיחת אבחון - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — עדכני את כותרת ה-LinkedIn שלך לנוסחת החיבור. עדכני את ה-About ב-3-5 שורות שמסבירות מה ייחודי בחיבור שלך.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — כתבי פוסט אחד: "שנים עבדתי גם ב[A] וגם ב[B]. מה שלמדתי זה ש[תובנה מפתיעה]. [2-3 שורות פרוט]. מי עוד רואה את זה?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — פרסמי את הפוסט. שלחי ל-3 אנשים שמכירים אותך: "פרסמתי משהו על החיבור בין [A] ל-[B]. מה את חושבת?"</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי לאחת מהנשים שאמרה "כן" בשבוע הקודם: "מוכנה ל-15 דקות שיחה השבוע?"</div></div>
+  </div>
+</div>
+<div class="week" id="week4">
+  <div class="week-header">
+    <div class="week-num">4</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 4</div>
+      <div class="week-title">לבנות זרמי הכנסה שמצטברים</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>Multi-Revenue: לא חייבים להתמקד</h3>
+    <p>הרב-תחומית לא חייבת לבחור "עסק אחד". היא יכולה לבנות כמה זרמים שונים שמצטברים לסכום יפה.</p>
+<p>דוגמה לתמהיל שעובד:</p>
+<ul>
+<li>ייעוץ 1:1 × 3 לקוחות ₪700/שיחה × 2 שיחות/חודש = ₪4,200</li>
+<li>ניוזלטר בתשלום × 60 מנויים × ₪49 = ₪2,940</li>
+<li>Workshop חד-פעמי בחודש × 12 אנשים × ₪250 = ₪3,000</li>
+<li>סה"כ: <strong>₪10,140 בחודש, כ-15-20 שעות עבודה</strong></li>
+</ul>
+<p>הסוד: כל זרם מבוסס על אותה נישה ואותה מומחיות - רק פורמטים שונים.</p>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>לתכנן את ה-Revenue Stack - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> — בחרי 2 זרמי הכנסה מהרשימה שלמעלה שמתאימים לך. לא שלושה - שניים. עם מחירים ריאליים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — חשבי: כמה לקוחות/מנויים צריך כדי להגיע ל-₪3,000 בחודש מכל זרם? כתבי מספרים.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — קבעי יעד לחודש הראשון: "₪X מ-Y לקוחות/מנויים". לא שאפתני מדי - ריאלי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי "צעד 1" לכל זרם שבחרת. לא "אבנה קורס" - "אכתוב פוסט LinkedIn אחד על [נושא]".</div></div>
+  </div>
+</div>
+
+  <div class="outro">
+    <h3>עכשיו - לעשות את התרגיל של שבוע 1</h3>
+    <p>לא לקרוא הכל ולהמתין. לעשות את התרגיל של שבוע 1 עוד הערב.</p>
+    <p style="margin-bottom:24px">רוצה ליווי אישי? סלון היזמיות הוא המקום שנשים כמוך הופכות שעה אחת בשבוע לדבר אמיתי.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון</a>
+  </div>
+</div>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
 </body>
 </html>
