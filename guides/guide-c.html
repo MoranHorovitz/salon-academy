@@ -58,7 +58,26 @@ li strong{color:#e0e0f0;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
-footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}
+/* ACCORDION */
+.week-body { overflow: hidden; transition: max-height 0.35s ease; }
+.week.closed .week-body { max-height: 0; }
+.week.open .week-body { max-height: 9999px; }
+.week-header {
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: 16px;
+}
+.week-header:hover .week-title { color: var(--lime); }
+.week-chevron {
+  margin-right: auto;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -75,14 +94,15 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
   <div class="week-nav"><a href="#week1">שבוע 1: למה את לא מפרסמת</a><a href="#week2">שבוע 2: למה את לא תומחרת</a><a href="#week3">שבוע 3: למה את לא נשארת עקבית</a><a href="#week4">שבוע 4: למה את לא מאמינה שזה ישתלם</a></div>
   <div class="divider"></div>
-  <div class="week" id="week1">
+  <div class="week open" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
       <div class="week-title">למה את לא מפרסמת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "זה לא מספיק טוב. מישהי יחשוב שזה שטחי/נאיבי/לא מקצועי."</h3>
@@ -115,15 +135,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לפרסם עם הפחד - לא בלעדיו</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - כתבי את הפיסת תוכן הכי קטנה שאפשר: משפט אחד + תמונה, או 3 שורות. לא יותר. קטן = פחות מאיים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - קראי ושאלי: "האם יש מישהי שזה יעזור לה?" אם כן - פרסמי.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>5 דקות</strong> - 5-4-3-2-1 - פרסמי. סגרי מסך 30 דקות.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>20 דקות</strong> - אחרי - תכתבי בנייר: "מה שהיה הכי מפחיד" ו-"מה שבאמת קרה". השווי. זה ה-data שמאמן את המוח.</div></div>
   </div>
-</div>
-<div class="week" id="week2">
+
+  </div>
+</div><div class="week closed" id="week2">
   <div class="week-header">
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
       <div class="week-title">למה את לא תומחרת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "מי אני שאגבה ₪300 על שעתיים?"</h3>
@@ -155,15 +177,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לקבוע מחיר ולגבות</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי את הסדנה/שירות בשורה אחת. קבעי מחיר שמרגיש "גבוה מדי ב-20%".</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - שלחי ל-3 אנשים: "אני עושה [X] ב-[תאריך]. עלות [₪Y]. רלוונטי?" - לא להסביר, לא להצטדק.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - לכל "כמה?" - אמרי את המחיר ותחכי. לא להוסיף מילה. הדממה שלהם לא בקשה להנחה.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - רשמי כמה אמרו כן / לא / שאלו שאלה. זה ה-data לסדנה הבאה.</div></div>
   </div>
-</div>
-<div class="week" id="week3">
+
+  </div>
+</div><div class="week closed" id="week3">
   <div class="week-header">
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
       <div class="week-title">למה את לא נשארת עקבית</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני יוצרת כשמתחשק, וכשלא - עוצרת."</h3>
@@ -195,15 +219,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לבנות "Content Date" שמחזיק</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>5 דקות</strong> - קבעי יום ושעה קבועים לשבוע הבא. סמני ביומן: "Content Date"</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי 5 רעיונות לתוכן שבועות. לא לכתוב אותם - רק רשימה. זה "מאגר" שממנו תשאבי.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - כתבי פיסת תוכן אחת מהרשימה. עכשיו.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - קבעי "toolkit": מה השיר הראשון שתפעילי? באיזה כוס תשתי? איפה תשבי? הטקס קצר - 2-3 פעולות. עקבי עליו.</div></div>
   </div>
-</div>
-<div class="week" id="week4">
+
+  </div>
+</div><div class="week closed" id="week4">
   <div class="week-header">
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
       <div class="week-title">למה את לא מאמינה שזה ישתלם</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "עשיתי הרבה בלי תוצאות. למה יהיה אחרת?"</h3>
@@ -244,5 +270,25 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
 </div>
 <footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
+
+<script>
+document.querySelectorAll('.week-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const week = header.closest('.week');
+    const isOpen = week.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week').forEach(w => {
+      w.classList.remove('open');
+      w.classList.add('closed');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      week.classList.remove('closed');
+      week.classList.add('open');
+      week.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 </body>
 </html>

@@ -58,7 +58,26 @@ li strong{color:#e0e0f0;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
-footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}
+/* ACCORDION */
+.week-body { overflow: hidden; transition: max-height 0.35s ease; }
+.week.closed .week-body { max-height: 0; }
+.week.open .week-body { max-height: 9999px; }
+.week-header {
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: 16px;
+}
+.week-header:hover .week-title { color: var(--lime); }
+.week-chevron {
+  margin-right: auto;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -75,14 +94,15 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
   <div class="week-nav"><a href="#week1">שבוע 1: למה את לא מתמקדת</a><a href="#week2">שבוע 2: למה אחרות לא "מבינות" מה את עושה</a><a href="#week3">שבוע 3: למה את לא מתחילה</a><a href="#week4">שבוע 4: למה את מפסיקה באמצע</a></div>
   <div class="divider"></div>
-  <div class="week" id="week1">
+  <div class="week open" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
       <div class="week-title">למה את לא מתמקדת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני מתעניינת בהכל ולא יכולה לבחור."</h3>
@@ -110,15 +130,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>להחליט עם ה-Coin Flip Test</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - רשמי 3 כיוונים שמעניינים אותך. לא "כל מה שמעניין" - 3 הכי חזקים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - Coin Flip Test: בחרי שניים. הטילי. שימי לב לתחושה. כתבי מה הרגשת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - על ה-winner: כתבי "Experiment Plan": מה תנסי בשנתיים הקרובות? מה תבדקי? מה יגיד לך שזה עובד?</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>15 דקות</strong> - פעולה ראשונה קונקרטית: מה תעשי בשבוע הקרוב? לא "אחקור" - "אשלח הודעה ל-X" או "אכתוב X".</div></div>
   </div>
-</div>
-<div class="week" id="week2">
+
+  </div>
+</div><div class="week closed" id="week2">
   <div class="week-header">
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
       <div class="week-title">למה אחרות לא "מבינות" מה את עושה</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני לא יודעת איך להסביר מה אני מציעה."</h3>
@@ -150,15 +172,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לנסח את "ה-AND Story" שלך</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - כתבי 5 גרסאות של המשפט: "אני [A] ו[B], ולכן אני יכולה לעזור ל[מי] ל[מה]." 5 גרסאות שונות - אל תתמקדי.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - שלחי ל-3 אנשים שמכירים אותך: "איזה משפט הכי מדויק לדעתך?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - בחרי גרסה אחת. עדכני LinkedIn Headline ו-Bio בה.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שלחי ל-2 אנשים חדשים (לא מהרשימה) את ה-Headline החדש. "מה את מבינה שאני עושה?" - Data מהשטח.</div></div>
   </div>
-</div>
-<div class="week" id="week3">
+
+  </div>
+</div><div class="week closed" id="week3">
   <div class="week-header">
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
       <div class="week-title">למה את לא מתחילה</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני יודעת שאני צריכה להתחיל, אבל לא מוצאת את הנקודה הנכונה."</h3>
@@ -190,15 +214,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>Minimum Viable Start - עכשיו</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>5 דקות</strong> - מה הדבר שאת "אמורה לעשות" ולא עשית? כתבי אותו.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - מה הצעד הכי קטן שאפשר? (לא "לעשות" - "לשלוח הודעה/לכתוב שורה/לגוגל")</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>25 דקות</strong> - עשי את הצעד הזה עכשיו. לא מחר.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - כתבי מה הצעד הבא. קבעי זמן ספציפי. שתפי עם אחת.</div></div>
   </div>
-</div>
-<div class="week" id="week4">
+
+  </div>
+</div><div class="week closed" id="week4">
   <div class="week-header">
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
       <div class="week-title">למה את מפסיקה באמצע</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "התחלתי, ואז התעניינתי במשהו חדש, ועזבתי."</h3>
@@ -240,5 +266,25 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
 </div>
 <footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
+
+<script>
+document.querySelectorAll('.week-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const week = header.closest('.week');
+    const isOpen = week.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week').forEach(w => {
+      w.classList.remove('open');
+      w.classList.add('closed');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      week.classList.remove('closed');
+      week.classList.add('open');
+      week.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 </body>
 </html>

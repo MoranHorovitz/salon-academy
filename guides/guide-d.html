@@ -58,7 +58,26 @@ li strong{color:#e0e0f0;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
-footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}
+/* ACCORDION */
+.week-body { overflow: hidden; transition: max-height 0.35s ease; }
+.week.closed .week-body { max-height: 0; }
+.week.open .week-body { max-height: 9999px; }
+.week-header {
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: 16px;
+}
+.week-header:hover .week-title { color: var(--lime); }
+.week-chevron {
+  margin-right: auto;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -75,14 +94,15 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
   <div class="week-nav"><a href="#week1">שבוע 1: למה את מתחילה ולא מסיימת</a><a href="#week2">שבוע 2: למה את מחכה לאישור</a><a href="#week3">שבוע 3: למה את לא מתמחרת גבוה</a><a href="#week4">שבוע 4: למה את מתרוקנת</a></div>
   <div class="divider"></div>
-  <div class="week" id="week1">
+  <div class="week open" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
       <div class="week-title">למה את מתחילה ולא מסיימת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני נפלאה בהתחלות ומתפזרת לפני הסוף."</h3>
@@ -114,15 +134,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לבנות Progress Loop לפרויקט אחד</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - בחרי פרויקט אחד. פרקי אותו ל-5-7 Milestones קטנים. כל אחד: פעולה אחת, תוצאה ברורה, זמן מוגדר.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - לכל Milestone: קבעי תגמול קטן. ספציפי. לא "אשמח" - "אשתה קפה מיוחד"/"אראה אפיזודה".</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שתפי עם אחת. בקשי שתשאל אחרי כל Milestone: "כבר?"</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>15 דקות</strong> - עשי Milestone 1 עכשיו. כל פרק מתחיל בעשייה - לא תכנון.</div></div>
   </div>
-</div>
-<div class="week" id="week2">
+
+  </div>
+</div><div class="week closed" id="week2">
   <div class="week-header">
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
       <div class="week-title">למה את מחכה לאישור</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני רוצה שמישהי תגיד לי שזה טוב לפני שאצא עם זה."</h3>
@@ -155,15 +177,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>להחליט בלי אישור - 45 דקות</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - רשמי החלטה אחת שאת מחכה לה "אישור". שאלי: "האם היא הפיכה?" כמעט בוודאות - כן.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - קבעי time-box: "בעוד 15 דקות אחליט, גם ללא מידע נוסף." הגדירי שעון.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - החלטי ועשי פעולה ראשונה.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - כתבי: "הפחד שהיה לי" ו"מה שבאמת קרה". 9 מתוך 10 - הפחד היה גדול מהמציאות.</div></div>
   </div>
-</div>
-<div class="week" id="week3">
+
+  </div>
+</div><div class="week closed" id="week3">
   <div class="week-header">
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
       <div class="week-title">למה את לא מתמחרת גבוה</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "לא נוח לי לבקש הרבה כסף על מה שעושה לי טוב ועוזר לאחרות."</h3>
@@ -195,15 +219,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לחשב את המחיר האמיתי</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - לשירות שלך: כתבי מה התוצאה שהלקוחה מקבלת. כמה שווה לה התוצאה הזאת? (כסף, זמן, שקט נפשי) חשבי בשקלים.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - קחי 5% מהסכום הזה. זה המחיר שלך. האם הוא גבוה ממה שגבית עד עכשיו? כמעט בוודאות.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שלחי הצעה חדשה אחת עם המחיר החדש. לא להסביר. רק לשלוח.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - כל תגובה - כן, לא, שאלה - היא מידע. רשמי.</div></div>
   </div>
-</div>
-<div class="week" id="week4">
+
+  </div>
+</div><div class="week closed" id="week4">
   <div class="week-header">
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
       <div class="week-title">למה את מתרוקנת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "עשיתי הכל ואז הייתי כל כך עייפה שלא יכולתי להמשיך."</h3>
@@ -243,5 +269,25 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
 </div>
 <footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
+
+<script>
+document.querySelectorAll('.week-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const week = header.closest('.week');
+    const isOpen = week.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week').forEach(w => {
+      w.classList.remove('open');
+      w.classList.add('closed');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      week.classList.remove('closed');
+      week.classList.add('open');
+      week.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 </body>
 </html>

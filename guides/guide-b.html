@@ -58,7 +58,26 @@ li strong{color:#e0e0f0;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
-footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}
+/* ACCORDION */
+.week-body { overflow: hidden; transition: max-height 0.35s ease; }
+.week.closed .week-body { max-height: 0; }
+.week.open .week-body { max-height: 9999px; }
+.week-header {
+  cursor: pointer;
+  user-select: none;
+  padding-bottom: 16px;
+}
+.week-header:hover .week-title { color: var(--lime); }
+.week-chevron {
+  margin-right: auto;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -75,14 +94,15 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
   <div class="week-nav"><a href="#week1">שבוע 1: למה עוד לא התחלת</a><a href="#week2">שבוע 2: למה את לא גומרת מה שהתחלת</a><a href="#week3">שבוע 3: למה את לא מוכרת</a><a href="#week4">שבוע 4: למה את לא מגדילה</a></div>
   <div class="divider"></div>
-  <div class="week" id="week1">
+  <div class="week open" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
       <div class="week-title">למה עוד לא התחלת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "עוד לא מוכנה. עוד לא מספיק טובה."</h3>
@@ -116,15 +136,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>ה-MVP שלך בשעה אחת</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי את המוצר שרצית לבנות. עכשיו שאלי: "מה הגרסה הכי פשוטה שאפשר לבדוק אם מישהי תשלם?" - רשמי תשובה.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>20 דקות</strong> - בני את ה-MVP עכשיו. לא מחר. לא "כשיהיה זמן". כתבי 5 משפטים על מה שאת מציעה. זה המוצר לעכשיו.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - שלחי ל-3 אנשים. לא "מה דעתך?" - "האם תשלמי ₪X על זה? כן/לא ולמה?"</div></div>
   </div>
-</div>
-<div class="week" id="week2">
+
+  </div>
+</div><div class="week closed" id="week2">
   <div class="week-header">
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
       <div class="week-title">למה את לא גומרת מה שהתחלת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני מתחילה ונלהבת, ואחרי שבועיים..."</h3>
@@ -153,15 +175,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>לבנות חיסון ל"messy middle"</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי: "ב-שבוע 2-3 אני בדרך כלל [מה קורה לך]." - לזהות את הדפוס.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי Pre-commitment: "כשיתחשק לעזוב - אני אעשה [פעולה אחת] לפני שאחליט." + Temptation Bundle שלך.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - הגדירי Milestone קטן לשבוע הבא. לא "לסיים" - "להגיע עד [נקודה ספציפית]".</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - כתבי ל-חברה אחת: "אני בונה X. אם לא שלחתי לך עדכון עד יום Y - שאלי אותי."</div></div>
   </div>
-</div>
-<div class="week" id="week3">
+
+  </div>
+</div><div class="week closed" id="week3">
   <div class="week-header">
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
       <div class="week-title">למה את לא מוכרת</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "לא נעים לי לבקש כסף על משהו שאני נהנית לעשות"</h3>
@@ -194,15 +218,17 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <h3>מכירה ראשונה בלי להרגיש "מוכרת"</h3>
     <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - בחרי אחד שפנה אלייך לאחרונה עם שאלה/בקשה. כתבי תגובה שמביאה ערך אמיתי - ספציפי ומעשי.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - בסוף התגובה: "יש לי [מה שאת מציעה] שמרחיב על זה. ₪[מחיר]. מעניין?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - שלחי. לא לערוך. לא לדחות. 5-4-3-2-1 ושלחי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - בין אם קנתה ובין אם לא - רשמי מה הרגשת לפני ואחרי. זה חומר גלם לשינוי.</div></div>
   </div>
-</div>
-<div class="week" id="week4">
+
+  </div>
+</div><div class="week closed" id="week4">
   <div class="week-header">
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
       <div class="week-title">למה את לא מגדילה</div>
-    </div>
+      <div class="week-chevron">▼</div>
   </div>
+  <div class="week-body">
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
     <h3>החסם: "אני עסוקה מספיק. אין זמן לגדול."</h3>
@@ -245,5 +271,25 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   </div>
 </div>
 <footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
+
+<script>
+document.querySelectorAll('.week-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const week = header.closest('.week');
+    const isOpen = week.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week').forEach(w => {
+      w.classList.remove('open');
+      w.classList.add('closed');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      week.classList.remove('closed');
+      week.classList.add('open');
+      week.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
 </body>
 </html>
