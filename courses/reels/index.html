@@ -342,7 +342,7 @@
           <div class="item-title">${escHtml(item.title)}</div>
           <div class="item-type">
             <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}">
-              ${item.type === 'video' ? ' וידאו' : ' PDF'}
+              ${item.type === 'video' ? ' וידאו' : item.type === 'image' ? ' עמוד' : ' PDF'}
             </span>
           </div>
         </div>
@@ -383,6 +383,13 @@
         <a href="${escHtml(item.url)}" target="_blank" class="btn btn-outline" style="margin-bottom:16px;">
            הורד PDF
         </a>`;
+    } else if (item.type === 'image') {
+      embedHtml = `
+        <div style="text-align:center;padding:16px 0">
+          <img src="${escHtml(item.url)}" alt="${escHtml(item.title)}"
+            style="max-width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);cursor:zoom-in;"
+            onclick="this.style.maxWidth=this.style.maxWidth==='100%'?'none':'100%'">
+        </div>`;
     } else {
       embedHtml = `<div class="no-content-admin">סוג תוכן לא מוכר: ${escHtml(item.type)}</div>`;
     }
@@ -391,7 +398,7 @@
       <div class="content-header">
         <div class="content-type-badge">
           <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}" style="padding:4px 12px;font-size:0.8rem;">
-            ${item.type === 'video' ? '🎬 שיעור וידאו' : '📄 חומר עזר PDF'}
+            ${item.type === 'video' ? '🎬 שיעור וידאו' : item.type === 'image' ? '🖼️ עמוד' : '📄 חומר עזר PDF'}
           </span>
         </div>
         <h1>${escHtml(item.title)}</h1>
