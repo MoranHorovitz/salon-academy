@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>מה סוג הבקאפ שמחכה לצאת ממך? | סלון היזמיות</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #181818;
+  --lime: #c6ff00;
+  --lime2: #d4ff33;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f0f0;
+  --muted: #666;
+  --card: #141414;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* SCREENS */
+.screen {
+  display: none;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px 40px;
+}
+.screen.active { display: flex; animation: fadeIn 0.35s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* HERO */
+.hero-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: rgba(198,255,0,0.1);
+  border: 1px solid rgba(198,255,0,0.2);
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-bottom: 28px;
+}
+.hero-h1 {
+  font-size: clamp(26px, 6vw, 46px);
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--lime);
+}
+.hero-sub {
+  font-size: clamp(15px, 3.5vw, 18px);
+  color: #aaa;
+  text-align: center;
+  max-width: 440px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.hero-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--lime);
+  color: #000;
+  font-family: 'Heebo', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover { background: var(--lime2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(198,255,0,0.25); }
+.btn-primary:active { transform: translateY(0); }
+
+/* PROGRESS */
+.progress-wrap {
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.progress-label { font-size: 12px; color: var(--muted); }
+.progress-pct { font-size: 12px; color: var(--lime); font-weight: 700; }
+.progress-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--lime);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 8px rgba(198,255,0,0.4);
+}
+
+/* QUESTION */
+.q-wrap { width: 100%; max-width: 520px; }
+.q-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 12px;
+}
+.q-text {
+  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.answers { display: flex; flex-direction: column; gap: 12px; }
+.answer-btn {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  text-align: right;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.answer-btn:hover {
+  border-color: var(--lime);
+  background: rgba(198,255,0,0.06);
+  color: #fff;
+  transform: translateX(-3px);
+}
+.answer-btn.selected {
+  border-color: var(--lime);
+  background: rgba(198,255,0,0.1);
+  color: var(--lime);
+}
+.answer-num {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.answer-btn:hover .answer-num,
+.answer-btn.selected .answer-num {
+  border-color: var(--lime);
+  color: var(--lime);
+  background: rgba(198,255,0,0.1);
+}
+
+/* RESULT */
+.result-wrap {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+.result-icon {
+  font-size: 52px;
+  margin-bottom: 16px;
+  animation: pop 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+.result-type {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 8px;
+}
+.result-title {
+  font-size: clamp(32px, 8vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+.result-desc {
+  font-size: 16px;
+  color: #aaa;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+.result-cta-text {
+  background: rgba(198,255,0,0.06);
+  border: 1px solid rgba(198,255,0,0.2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  text-align: right;
+}
+.result-cta-text p {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.7;
+}
+.result-cta-text strong { color: var(--lime); }
+
+/* LEAD FORM */
+.form-wrap {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+.form-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.form-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.form-group { margin-bottom: 14px; }
+.form-inp {
+  width: 100%;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 15px 18px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  text-align: right;
+}
+.form-inp:focus { border-color: var(--lime); }
+.form-inp::placeholder { color: var(--muted); }
+.form-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+.success-msg {
+  display: none;
+  background: rgba(198,255,0,0.08);
+  border: 1px solid rgba(198,255,0,0.25);
+  border-radius: 14px;
+  padding: 20px;
+  color: var(--lime);
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  width: 100%;
+}
+
+/* GLOW BG */
+.glow-bg {
+  position: fixed;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(198,255,0,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.screen { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+<div class="glow-bg"></div>
+
+<!-- SCREEN 0: HERO -->
+<div class="screen active" id="s0">
+  <div class="hero-badge">סלון היזמיות</div>
+  <h1 class="hero-h1">מה סוג ה<em>בקאפ העתידי</em> שהמוח שלך מנסה לבנות לך?</h1>
+  <p class="hero-sub">עני על כמה שאלות קצרות וגלי איזה סוג פוטנציאל כנראה כבר מחכה לצאת ממך החוצה.</p>
+  <button class="btn-primary" onclick="startQuiz()">אני רוצה לגלות</button>
+  <p class="hero-meta">9 שאלות • 3 דקות</p>
+</div>
+
+<!-- SCREENS 1-9: QUESTIONS -->
+<!-- JS generated -->
+
+<!-- SCREEN R: RESULT -->
+<div class="screen" id="sr">
+  <div class="result-wrap">
+    <div class="result-icon" id="r-icon">🌟</div>
+    <div class="result-type">הסוג שלך</div>
+    <div class="result-title" id="r-title"></div>
+    <p class="result-desc" id="r-desc"></p>
+    <div class="result-cta-text" id="r-cta"></div>
+    <button class="btn-primary" onclick="openEmailPopup(window._quizResult, null)">קראי את המדריך שלי ←</button>
+  </div>
+</div>
+
+<!-- SCREEN F: LEAD FORM -->
+<div class="screen" id="sf">
+  <div class="form-wrap">
+    <div class="form-title">מגניב. נישמח להכיר 🌿</div>
+    <p class="form-sub">השאירי פרטים ונחזור אלייך עם משהו שדווקא מתאים לסוג שלך.</p>
+    <form onsubmit="submitLead(event)">
+      <div class="form-group">
+        <input class="form-inp" id="f-name" type="text" placeholder="שם מלא" required>
+      </div>
+      <div class="form-group">
+        <input class="form-inp" id="f-email" type="email" placeholder="אימייל" required>
+      </div>
+      <div class="form-group">
+        <input class="form-inp" id="f-phone" type="tel" placeholder="טלפון" required>
+      </div>
+      <button class="btn-primary" type="submit" id="f-btn" style="width:100%">שלחי לי פרטים ←</button>
+      <p class="form-note">לא ספאם. בטיחות מוחלטת.</p>
+    </form>
+    <div class="success-msg" id="success-msg">
+      ✓ מעולה! נחזור אלייך בקרוב 🌸<br>
+      <span style="font-size:13px;font-weight:400;color:#aaa;display:block;margin-top:8px">בינתיים  -  תשתפי את השאלון עם חברה שאולי גם היא לא יודעת מה הבקאפ שמחכה לה</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- EMAIL POPUP -->
+<div class="popup-overlay" id="email-popup">
+  <div class="popup-card">
+    <div class="popup-icon" id="popup-icon">🌿</div>
+    <div class="popup-h" id="popup-title">המדריך שלך מוכן</div>
+    <p class="popup-sub" id="popup-sub">הכניסי מייל כדי לראות את המדריך האישי שלך  -  בחינם, ללא התחייבות.</p>
+    <input class="popup-inp" type="email" id="popup-email" placeholder="האימייל שלך" required>
+    <button class="btn-primary" onclick="goToSales()" style="width:100%;font-size:16px;padding:15px">קראי את המדריך שלי ←</button>
+    <p class="popup-note">לא ספאם. רק הדף שלך.</p>
+  </div>
+</div>
+
+<footer>סלון היזמיות • רמת גן</footer>
+
+<script>
+// Supabase
+
+function openEmailPopup(type, r) {
+  const icons = {a:'🤝',b:'🏗️',c:'✨',d:'⚡',e:'🔬',f:'🌐'};
+  const names = {a:'המחברת',b:'הבונה',c:'היוצרת',d:'המניעה',e:'החוקרת',f:'הרב תחומית'};
+  const t = type ? type.toLowerCase() : 'f';
+  document.getElementById('popup-icon').textContent = icons[t] || '🌿';
+  document.getElementById('popup-title').textContent = 'המדריך של ' + (names[t]||'') + ' מוכן לך';
+  document.getElementById('popup-sub').textContent = 'הכניסי מייל כדי לראות את המדריך האישי שלך  -  ואיך להפוך את ' + (names[t]||'הכוח שלך') + ' להכנסה אמיתית.';
+  window._popupType = t;
+  document.getElementById('email-popup').classList.add('open');
+  setTimeout(() => document.getElementById('popup-email').focus(), 100);
+}
+
+function goToSales() {
+  const email = document.getElementById('popup-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('popup-email').focus();
+    document.getElementById('popup-email').style.borderColor = '#ff4444';
+    setTimeout(() => document.getElementById('popup-email').style.borderColor = '', 1500);
+    return;
+  }
+  const type = window._popupType || 'f';
+  // Save email to Supabase (non-blocking)
+  fetch(SUPA_URL + '/rest/v1/quiz_leads', {
+    method: 'POST',
+    headers: {'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+    body: JSON.stringify({email, result: type, source: 'quiz-popup', created_at: new Date().toISOString()})
+  }).catch(()=>{});
+  // Redirect to sales page
+  window.location.href = '/sales/sales-' + type + '.html?email=' + encodeURIComponent(email);
+}
+
+// Close popup on overlay click
+document.getElementById('email-popup').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+// Enter key on email field
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('email-popup').classList.contains('open')) goToSales();
+});
+
+const SUPA_URL = 'https://sbuwxhijqfdrznblnieb.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNidXd4aGlqcWZkcnpuYmxuaWViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNjAzNDcsImV4cCI6MjA5MjkzNjM0N30.WCPTa7vRQ77MeMAigjbYMKONkXiRH-ynlpzPrXBrPbM';
+
+const QUESTIONS = [
+  {
+    q: 'מה הכי מתסכל אותך בעבודה רגילה?',
+    answers: [
+      { text: 'שאני מרגישה שאני יכולה הרבה יותר', type: 'F' },
+      { text: 'שאין מספיק אנשים מעניינים סביבי', type: 'A' },
+      { text: 'שהכל חוזר על עצמו', type: 'E' },
+      { text: 'שיש לי רעיונות אבל אין מתי להוציא אותם', type: 'C' },
+    ]
+  },
+  {
+    q: 'אם היה לך ערב פנוי קבוע בשבוע, מה הכי מסקרן אותך לעשות?',
+    answers: [
+      { text: 'לבנות משהו חדש', type: 'B' },
+      { text: 'להרים קבוצה / קהילה', type: 'A' },
+      { text: 'ליצור תוכן / סדנה / חוויה', type: 'C' },
+      { text: 'ללמוד משהו חדש ולהעמיק בו', type: 'E' },
+    ]
+  },
+  {
+    q: 'מה אנשים אומרים לך הרבה?',
+    answers: [
+      { text: 'את מחברת בין אנשים', type: 'A' },
+      { text: 'איך את מספיקה כל כך הרבה דברים?', type: 'D' },
+      { text: 'יש לך רעיונות לא רגילים', type: 'C' },
+      { text: 'את יודעת להסביר דברים ממש טוב', type: 'E' },
+    ]
+  },
+  {
+    q: 'מה הכי מפחיד אותך?',
+    answers: [
+      { text: 'להישאר תלויה רק במשכורת אחת', type: 'B' },
+      { text: 'לבזבז את הפוטנציאל שלי', type: 'F' },
+      { text: 'להתחיל משהו ולהישאר לבד', type: 'A' },
+      { text: 'להתפקס על משהו אחד לכל החיים', type: 'F' },
+    ]
+  },
+  {
+    q: 'מה הכי קל לך לעשות טבעית?',
+    answers: [
+      { text: 'לחבר בין אנשים', type: 'A' },
+      { text: 'להוציא דברים לפועל', type: 'D' },
+      { text: 'לחשוב על רעיונות', type: 'C' },
+      { text: 'ללמוד מהר תחום חדש', type: 'E' },
+    ]
+  },
+  {
+    q: 'איפה את הכי נתקעת?',
+    answers: [
+      { text: 'יש לי רעיון אבל אין לי עם מי לזוז', type: 'A' },
+      { text: 'אני מתחילה ולא מסיימת', type: 'D' },
+      { text: 'יש לי יותר מדי רעיונות', type: 'F' },
+      { text: 'אני צריכה להבין הכל לעומק לפני שאני זזה', type: 'E' },
+    ]
+  },
+  {
+    q: 'מה היה נותן לך הכי הרבה ביטחון כרגע?',
+    answers: [
+      { text: 'עוד מקור הכנסה קטן מהצד', type: 'B' },
+      { text: 'קבוצה קבועה שמתקדמת איתי', type: 'A' },
+      { text: 'מוצר / תוכן / סדנה שכבר יצאו לעולם', type: 'C' },
+      { text: 'תכנית מסודרת וברורה', type: 'D' },
+    ]
+  },
+  {
+    q: 'מה הכי מדליק אותך?',
+    answers: [
+      { text: 'לראות רעיון הופך לדבר אמיתי', type: 'B' },
+      { text: 'חדר מלא נשים חזקות שמרימות אחת לשנייה', type: 'A' },
+      { text: 'ליצור משהו שאנשים אומרים עליו וואו', type: 'C' },
+      { text: 'להבין תחום חדש ולפצח אותו', type: 'E' },
+    ]
+  },
+  {
+    q: 'איזה משפט הכי את?',
+    answers: [
+      { text: 'אני לא רוצה לעזוב הכל, אני רוצה לבנות לעצמי עוד אופציה', type: 'B' },
+      { text: 'לבד זה לא מחזיק לי', type: 'A' },
+      { text: 'יש בי משהו שלא בא מספיק לידי ביטוי', type: 'F' },
+      { text: 'אני צריכה מסגרת שתגרום לי לסיים', type: 'D' },
+    ]
+  },
+];
+
+const RESULTS = {
+  A: {
+    icon: '🤝',
+    title: 'המחברת',
+    desc: 'יש לך כוח מיוחד  -  את הגשר. בלעדייך, הרעיונות נשארים ברעיון. הכשרון שלך הוא לחבר אנשים לאנשים, ורעיונות למציאות. את רואה מה שאחרים מפספסים  -  את הפוטנציאל הנסתר שנמצא בחדר.',
+    cta: '<p>נשים כמוך בנו <strong>קהילות, פלטפורמות ושיתופי פעולה</strong> שנראו בלתי אפשריים  -  פשוט כי ידעו לחבר את האנשים הנכונים.</p>',
+  },
+  B: {
+    icon: '🏗️',
+    title: 'הבונה',
+    desc: 'את לא מחפשת להפוך את העולם  -  את מחפשת לבנות משהו שהוא שלך. משהו יציב. משהו אמיתי. הכוח שלך הוא ביצוע: לקחת רעיון ולהפוך אותו לדבר שקיים בעולם.',
+    cta: '<p>נשים כמוך הן אלה שבונות <strong>הכנסות משניות, מוצרים, ועסקים צדדיים</strong> שהתחילו מרצון לא להיות תלויות במשכורת אחת.</p>',
+  },
+  C: {
+    icon: '✨',
+    title: 'היוצרת',
+    desc: 'יש לך עולם שלם בראש  -  ולא תמיד יש לו מקום לצאת החוצה. את תחושת ה"יש לי משהו לתת לעולם" לא עוזבת אותך. הכוח שלך הוא בלהפוך רגשות ורעיונות לחוויות שאנשים מרגישים.',
+    cta: '<p>נשים כמוך יצרו <strong>תכנים, סדנאות, קורסים וסדרות</strong> שאנשים שילמו עליהם  -  כי הן לא פחדו להוציא את מה שבפנים.</p>',
+  },
+  D: {
+    icon: '⚡',
+    title: 'המניעה',
+    desc: 'את יודעת לזוז. כשיש לך מסגרת ומטרה  -  אין מי שעוצר אותך. הכוח שלך הוא בביצוע ובהוצאה לפועל. הבעיה היחידה? לפעמים חסרה לך הדחיפה הנכונה לכיוון הנכון.',
+    cta: '<p>נשים כמוך הן אלה שכשהן נכנסות למסגרת הנכונה  -  <strong>הן בדרך כלל מי שמסיימת ראשונה</strong>, ומביאה את כולן איתה.</p>',
+  },
+  E: {
+    icon: '🔬',
+    title: 'החוקרת',
+    desc: 'את לא זורמת בלי להבין. אמעמוק. את הכוח הסמוי בחדר  -  זו שמבינה את הנושא יותר טוב מכולן, אבל לא תמיד יודעת איך לתרגם את זה לצעד הבא.',
+    cta: '<p>נשים כמוך בנו <strong>מוצרים מבוססי ידע, ייעוץ ופלטפורמות תוכן</strong> שהפכו את העומק שלהן לנכס כלכלי אמיתי.</p>',
+  },
+  F: {
+    icon: '🌐',
+    title: 'הרב תחומית',
+    desc: 'את לא ניתנת לקטלוג. וזה בדיוק הכוח שלך. את רואה חיבורים שאחרים לא רואים, מתחברת לתחומים שלכאורה לא קשורים, ויש לך פוטנציאל רחב ממה שכל תואר או תפקיד יוכל לתאר.',
+    cta: '<p>נשים כמוך הן אלה שמביאות <strong>חדשנות אמיתית</strong>  -  כי הן לא מוגבלות לתיבה אחת. הרב-תחומיות היא לא בעיה, היא היתרון שלך.</p>',
+  },
+};
+
+let scores = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+let currentQ = 0;
+const LABELS = ['א', 'ב', 'ג', 'ד'];
+
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function startQuiz() {
+  scores = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0 };
+  currentQ = 0;
+  buildQuestion(0);
+  show('sq0');
+}
+
+function buildQuestion(idx) {
+  const existing = document.getElementById('sq' + idx);
+  if (existing) return;
+
+  const q = QUESTIONS[idx];
+  const div = document.createElement('div');
+  div.className = 'screen';
+  div.id = 'sq' + idx;
+
+  const pct = Math.round((idx / QUESTIONS.length) * 100);
+
+  div.innerHTML = `
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="progress-label">שאלה ${idx+1} מתוך ${QUESTIONS.length}</span>
+        <span class="progress-pct">${pct}%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="q-wrap">
+      <div class="q-number">שאלה ${idx+1}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="answers">
+        ${q.answers.map((a, i) => `
+          <button class="answer-btn" onclick="answer(${idx},'${a.type}',this)">
+            <div class="answer-num">${LABELS[i]}</div>
+            <span>${a.text}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+  document.body.insertBefore(div, document.getElementById('sr'));
+}
+
+// Pre-build all questions
+for (let i = 0; i < QUESTIONS.length; i++) buildQuestion(i);
+
+function answer(qIdx, type, btn) {
+  // Animate selection
+  btn.closest('.answers').querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  scores[type]++;
+
+  setTimeout(() => {
+    if (qIdx < QUESTIONS.length - 1) {
+      show('sq' + (qIdx + 1));
+    } else {
+      showResult();
+    }
+  }, 350);
+}
+
+function showResult() {
+  // Find winner
+  let max = 0;
+  let winners = [];
+  for (const [k, v] of Object.entries(scores)) {
+    if (v > max) { max = v; winners = [k]; }
+    else if (v === max) winners.push(k);
+  }
+
+  let resultKey;
+  if (winners.length === 1) {
+    resultKey = winners[0];
+  } else {
+    // Tie  -  pick alphabetically (simple)
+    resultKey = winners.sort()[0];
+  }
+
+  const r = RESULTS[resultKey];
+  document.getElementById('r-icon').textContent = r.icon;
+  document.getElementById('r-title').textContent = r.title;
+  document.getElementById('r-desc').textContent = r.desc;
+  document.getElementById('r-cta').innerHTML = r.cta;
+
+  // Store result for form
+  window._quizResult = resultKey;
+  window._quizResultName = r.title;
+
+  show('sr');
+  // Show popup after short delay for emotional connection
+  setTimeout(() => openEmailPopup(resultKey, r), 2000);
+}
+
+function showForm() { show('sf'); }
+
+async function submitLead(e) {
+  e.preventDefault();
+  const btn = document.getElementById('f-btn');
+  btn.disabled = true;
+  btn.textContent = 'שולחת...';
+
+  const payload = {
+    name: document.getElementById('f-name').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    phone: document.getElementById('f-phone').value.trim(),
+    result: window._quizResult || '',
+    source: 'quiz',
+    created_at: new Date().toISOString(),
+  };
+
+  // Save to Supabase
+  try {
+    await fetch(SUPA_URL + '/rest/v1/quiz_leads', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + SUPA_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch(err) { console.warn('Supabase:', err); }
+
+  // Send personalized guide email
+  try {
+    const resultType = (window._quizResult || 'F').charAt(0).toLowerCase();
+    await fetch('/api/send-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: payload.email,
+        name: payload.name,
+        result: resultType,
+      }),
+    });
+  } catch(err) { console.warn('Send result email:', err); }
+
+  btn.style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
+</body>
+</html>
