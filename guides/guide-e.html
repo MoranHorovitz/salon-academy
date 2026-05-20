@@ -10,62 +10,50 @@
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
 .wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
 @media(max-width:600px){.wrap{padding:32px 16px 80px;}}
-
-/* HERO */
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
 .hero-icon{font-size:52px;margin-bottom:14px;}
-.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+h1 em{font-style:normal;color:var(--lime);}
 .hero-sub{font-size:clamp(15px,2.5vw,18px);color:#999;margin-bottom:12px;line-height:1.6;}
 .hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
 .meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
 .meta-item strong{color:#ccc;}
-
-/* WEEK NAV */
 .week-nav{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;padding-bottom:4px;}
 .week-nav a{flex-shrink:0;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;transition:all 0.15s;white-space:nowrap;}
 .week-nav a:hover{border-color:rgba(198,255,0,0.4);color:var(--lime);}
-
-/* WEEK BLOCK */
-.week{margin-bottom:56px;scroll-margin-top:24px;}
+.week{margin-bottom:60px;scroll-margin-top:24px;}
 .week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);}
 .week-num{width:40px;height:40px;border-radius:50%;background:rgba(198,255,0,0.1);border:2px solid rgba(198,255,0,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime);flex-shrink:0;}
-.week-title-wrap{}
 .week-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
 .week-title{font-size:clamp(18px,3vw,22px);font-weight:900;color:#fff;line-height:1.2;}
-
-/* CONTENT */
-h2{font-size:17px;font-weight:800;color:#fff;margin:24px 0 10px;}
+h2{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
+h3{font-size:15px;font-weight:800;color:#ddd;margin:20px 0 8px;}
 p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
 p strong{color:#e0e0f0;}
 ul,ol{padding-right:22px;margin-bottom:16px;}
-ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:7px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
 li strong{color:#e0e0f0;}
-
-/* LESSON CARD */
+.block-psych{background:rgba(180,79,255,0.06);border:1px solid rgba(180,79,255,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-psych .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b44fff;margin-bottom:10px;}
+.block-psych p{font-size:14px;color:#ccc;margin-bottom:8px;}
+.block-trick{background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.2);border-radius:14px;padding:22px 24px;margin:20px 0;}
+.block-trick .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;margin-bottom:10px;}
+.block-trick p,.block-trick li{font-size:14px;color:#ccc;}
+.block-trick ul{margin-bottom:0;}
+.block-reframe{background:rgba(198,255,0,0.04);border-right:3px solid var(--lime);border-radius:0 12px 12px 0;padding:18px 20px;margin:20px 0;font-size:14px;color:#bbb;line-height:1.7;}
+.block-reframe strong{color:#e0e0f0;}
 .lesson{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
 .lesson-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.lesson h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:12px;}
-.lesson p{font-size:14px;color:#bbb;margin-bottom:10px;}
-
-/* EXERCISE */
+.lesson h3{font-size:17px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise{background:rgba(198,255,0,0.05);border:1.5px solid rgba(198,255,0,0.25);border-radius:16px;padding:24px 26px;margin-top:20px;}
 .exercise-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
-.exercise h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;}
+.exercise h3{font-size:16px;font-weight:800;color:#fff;margin:0 0 12px;}
 .exercise-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
 .exercise-step .n{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.15);color:var(--lime);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .exercise-step .t{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
 .exercise-step .t strong{color:#fff;}
 .time-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--lime);background:rgba(198,255,0,0.1);border-radius:10px;padding:3px 10px;margin-bottom:14px;}
-
-/* CALLOUT */
-.callout{background:rgba(255,255,255,0.03);border-right:3px solid var(--lime);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;font-size:14px;color:#bbb;line-height:1.7;}
-.callout strong{color:#e0e0f0;}
-
-/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:40px 0;}
-
-/* OUTRO */
 .outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:32px;text-align:center;margin-top:48px;}
 .outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
 .outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
@@ -78,36 +66,52 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   <div class="hero-icon">🔬</div>
   <div class="hero">
     <h1>שעה אחת בשבוע -<br><em>החוקרת</em></h1>
-    <p class="hero-sub">להפוך ידע עמוק להכנסה - צעד אחר צעד, 4 שבועות.</p>
+    <p class="hero-sub">את יודעת יותר ממה שאת חושבת. עכשיו - למה זה לא מגיע לאוויר.</p>
     <div class="hero-meta">
-      <div class="meta-item">📅 <strong>4 שבועות</strong></div>
-      <div class="meta-item">📖 <strong>4 שיעורים</strong></div>
-      <div class="meta-item">⏱ <strong>45 דקות לשבוע</strong></div>
+      <div class="meta-item">4 שבועות</div>
+      <div class="meta-item">4 שיעורים</div>
+      <div class="meta-item">45 דקות לשבוע</div>
     </div>
   </div>
-
-  <div class="week-nav"><a href="#week1">שבוע 1: לזהות מה שווה כסף</a><a href="#week2">שבוע 2: לבחור פורמט ומחיר</a><a href="#week3">שבוע 3: לגייס לקוח/מנוי ראשון</a><a href="#week4">שבוע 4: לבנות consistency</a></div>
+  <div class="week-nav"><a href="#week1">שבוע 1: למה את מחכה "להיות מוכנה"</a><a href="#week2">שבוע 2: למה את לא יוצאת עם מה שיודעת</a><a href="#week3">שבוע 3: למה את לא גובה כסף על הידע שלך</a><a href="#week4">שבוע 4: למה את לא בונה קהל</a></div>
   <div class="divider"></div>
   <div class="week" id="week1">
   <div class="week-header">
     <div class="week-num">1</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 1</div>
-      <div class="week-title">לזהות מה שווה כסף</div>
+      <div class="week-title">למה את מחכה "להיות מוכנה"</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>הידע שנראה לך "בסיסי" - אינו בסיסי לאף אחד אחר</h3>
-    <p>החוקרות הן הסוג שהכי מחכות לאישור חיצוני. "אני לא בטוחה שאני מספיק מומחית". "אולי אחרות יודעות יותר ממני".</p>
-<p>בואי נשים את זה בצד: <strong>אם את יודעת על נושא X יותר מ-80% מהאנשים שצריכים עזרה בנושא X - את מומחית מספיק לגבות.</strong></p>
-<p>הגדרה מעשית: כמה שעות ייקח לאדם ממוצע ללמוד מה שאת יודעת? אם יותר מ-20 שעות - יש פה ערך שאפשר לתמחר.</p>
+    <h3>החסם: "עוד לא מספיק מומחית. עוד צריך ללמוד X לפני שאצא."</h3>
+    <p>ה"עוד לא מוכנה" של החוקרת שונה מאחרות - היא אמיתית ומפוכחת. <strong>היא יודעת בדיוק מה היא לא יודעת.</strong> וזה בדיוק מה שמקפיא אותה.</p>
+<p>הבעיה: כשיודעות יותר - רואות יותר פערים. <strong>The more you know, the more you see what you don't know.</strong> הפתרון אינו לדעת יותר - הוא לשנות הגדרה.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "The Dunning-Kruger Trap" - למה המומחות הכי גדולות הכי מפקפקות בעצמן</div>
+<p>Dunning-Kruger Effect: אנשים עם ידע מועט מאמינים יתר על המידה בעצמם. <strong>מומחות אמיתיות רואות את המורכבות ומפקפקות בעצמן.</strong> הפרדוקס: הספק שאת חשה הוא סימן לכך שאת מספיק מומחית - לא הוכחה לכך שאינך.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "One Person Test" - המבחן שמשנה הכל</div>
+<p><strong>שאלה אחת:</strong> "האם יש אדם אחד בעולם שידע ממני פחות על הנושא הזה, ויפיק ערך מלהקשיב לי 30 דקות?"</p>
+<ul>
+<li>אם כן - את מוסמכת ללמד</li>
+<li>לא צריך להיות הכי טובה בעולם. צריך להיות טובה יותר ממי שצריכה עזרה.</li>
+</ul>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא "אני מוסמכת." - <strong>"יש מישהי שהנסיון שלי יחסוך לה 3 שנות ניסוי וטעייה."</strong> לא ללמד אותה - זה אגואיסטי ממני.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>מיפוי הידע שלך - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — רשמי 5 תחומים שאת שולטת בהם. עבודה, לימודים, תחביבים, ניסיון חיים - הכל נחשב.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לכל תחום: כתבי "מה שאלות אנשים שואלים אותי בתחום הזה?". לפחות 3 שאלות לכל תחום.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — בחרי את התחום עם הכי הרבה שאלות חוזרות. זה "שוק" - יש ביקוש.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי 3 משפטים: "אני יודעת הרבה על X. אנשים שואלים אותי לגבי Y. ואני יכולה לעזור למי שצריכה Z."</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לצאת לאוויר עם מה שיש</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - רשמי נושא אחד שידעת עליו הרבה לפני 3 שנים שלא ידעת היום. כמה זמן לקח לך ללמוד אותו? יש מישהי שצריכה לעשות את אותו הדרך עכשיו?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי פוסט/הודעה אחת שמלמד את הדבר הכי חשוב שהיית רוצה שמישהי תדע על הנושא הזה לפני שהתחילה.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שלחי לאחת בלבד. לא לפרסם - לשלוח. "חשבתי עלייך כשכתבתי את זה."</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שימי לב לתגובה. כמעט תמיד: "וואו, לא ידעתי." זה ה-data שמוכיח שאת מוסמכת.</div></div>
   </div>
 </div>
 <div class="week" id="week2">
@@ -115,23 +119,40 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">2</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 2</div>
-      <div class="week-title">לבחור פורמט ומחיר</div>
+      <div class="week-title">למה את לא יוצאת עם מה שיודעת</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>4 דרכים למכור ידע - ואיך לבחור נכון</h3>
-    <p>ידע אפשר למכור ב-4 פורמטים עיקריים. לכל אחד - יתרונות שונים:</p>
-<p><strong>1. ייעוץ שעתי</strong> - הכי מהיר לכסף. שיחת 60 דקות. ₪300-700. מתאים למי שרוצה להתחיל מחר.</p>
-<p><strong>2. ניוזלטר בתשלום</strong> - הכי passive. כתיבה שבועית. ₪29-99 לחודש. מתאים למי שאוהבת לכתוב.</p>
-<p><strong>3. מדריך/קורס</strong> - One time effort, מכירות חוזרות. ₪97-497. מתאים למי שיש לה מערכת ידע מובנית.</p>
-<p><strong>4. White Paper לחברות</strong> - הכי משתלם לשעה. ₪2,000-8,000 לפרויקט. מתאים למי שעבדה בתחום מקצועי.</p>
+    <h3>החסם: "אני מסבירה ואנשים לא מבינים. אז אני מרחיבה ומוסיפה ויוצא ארוך מדי."</h3>
+    <p>החוקרת מדברת ל"אנשים שמבינים". אבל לקוחות לא צריכות להבין הכל - הן צריכות <strong>לדעת מה לעשות הבא.</strong></p>
+<p>The curse of knowledge: כשאת יודעת משהו עמוק, קשה לך לדמיין שאחרות לא יודעות את הבסיס. <strong>אז את מסבירה מהאמצע ולא מהתחלה.</strong> זה שובר את ה-communication.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "Feynman Technique" - הסבר כמו לילד</div>
+<p>ריצ'רד פיינמן, פיזיקאי נובל: <strong>"אם אינך יכולה להסביר משהו בצורה פשוטה - עדיין אינך מבינה אותו מספיק."</strong> האם זה היה נכון בכל פעם - שאלה. האם זה כלי חינוכי מעולה - כן.</p>
+<p>הטכניקה: הסברי כל concept ל"ילד בן 12". איפה נתקעת? שם הפער בהבנה שלך או בתקשורת.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "BLUF" - Bottom Line Up Front</div>
+<p>צבא ארה"ב מלמד תקשורת לפי BLUF: <strong>תמיד תתחילי עם המסקנה - ואז ההסבר.</strong></p>
+<ul>
+<li>לא: "כדי להבין את X צריך קודם להבין Y, שמגיע מ-Z, ואז..."</li>
+<li>כן: <strong>"הפתרון הוא [מסקנה]. הנה למה: [הסבר קצר]."</strong></li>
+</ul>
+<p>אנשים שמוצאים ערך יבקשו את העומק. אנשים שלא - לפחות קיבלו את המסקנה.</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא מסבירה "הכל". מסבירה <strong>מה שצריכה לדעת כדי לעשות את הצעד הבא.</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לבחור פורמט ולתכנן - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — קראי את 4 הפורמטים. בלי לחשוב יותר מ-3 דקות - איזה מרגיש הכי "זה אני"?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לפורמט שבחרת: גוגלי מה אנשים דומים גובים. "Consultant [תחום] Israel" או "ניוזלטר [תחום]". כתבי 3 מחירים שמצאת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — קבעי את המחיר שלך. לא הנמוך - לא הגבוה. האמצעי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי תיאור קצר של מה שאת מציעה: "אני [שם] ומציעה [שירות] ל[מי] שצריכה [מה]. מחיר: [X]"</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>BLUF - לכתוב קצר וחזק</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - בחרי תוכן שכתבת לאחרונה (פוסט, הסבר, תשובה למייל). האם המסקנה/מסר ראשי - בשורה הראשונה? כמעט בוודאות לא.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> - כתבי מחדש עם BLUF: שורה 1 = המסקנה. שורות 2-4 = למה. שורה 5 = מה עושים.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - שלחי את שתי הגרסאות לחברה: "איזו ברורה יותר?" שמי לב להבדל.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - הכניסי BLUF לכל תקשורת השבוע הקרוב. שימי לב לתגובות.</div></div>
   </div>
 </div>
 <div class="week" id="week3">
@@ -139,26 +160,40 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">3</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 3</div>
-      <div class="week-title">לגייס לקוח/מנוי ראשון</div>
+      <div class="week-title">למה את לא גובה כסף על הידע שלך</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>הפוסט שמביא לקוחות - בלי להרגיש "מוכרת"</h3>
-    <p>החוקרות הכי טובות בעולם לא מוכרות - הן <strong>מלמדות</strong>. ומי שלומד מהן - הופך ללקוח.</p>
-<p>הנוסחה לפוסט שמביא לקוחות:</p>
-<ol>
-<li><strong>פתחי בבעיה:</strong> "אחד הדברים שאני רואה שוב ושוב ב[תחום] הוא [בעיה]"</li>
-<li><strong>הצגי תובנה מפתיעה:</strong> "מה שרוב האנשים לא יודעים זה ש[תובנה מעניינת]"</li>
-<li><strong>CTA פשוט:</strong> "אם זה רלוונטי אלייך - יש לי [שירות] ב-₪X. שלחי לי הודעה"</li>
-</ol>
-<div class="callout">לא צריך להתחיל בפוסט מכירה. כתבי פוסט שמלמד - ובסוף שורה אחת על השירות. 80% תוכן, 20% מכירה.</div>
+    <h3>החסם: "ידע שמצאתי בגוגל / למדתי בקורס - איך אגבה עליו?"</h3>
+    <p>אין ידע "מקורי". כל ידע בנוי על ידע שלפניו. <strong>מה שמוכרת הוא לא הידע - הוא ה-curation, ה-synthesis, וה-application שלו.</strong></p>
+<p>תסתכלי על כל ספר עסקי שנמכר. 90% מהידע נמצא בחינם אי שם. האנשים משלמים על <strong>ארגון, ניסיון, וזמן.</strong> שלושתם יש לך.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "Information Processing" vs. "Knowledge Application"</div>
+<p>יש הבדל בין information (עובדות) לbetween knowledge (יכולת ליישם). <strong>ידע הוא מה שיוצא כשלוקחים information ומעבירים אותו דרך ניסיון.</strong> את לא מוכרת information - מוכרת knowledge. זה שונה לחלוטין.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "Expertise Ladder" - 4 רמות של ידע</div>
+<ul>
+<li><strong>Information:</strong> "ידעתי ש-X קיים" - בחינם בגוגל</li>
+<li><strong>Knowledge:</strong> "ידעתי למה X חשוב" - ספר, קורס</li>
+<li><strong>Skill:</strong> "ידעתי לעשות X" - ניסיון אישי</li>
+<li><strong>Wisdom:</strong> "ידעתי מתי לעשות X ומתי לא" - <strong>זה מה שאת מוכרת</strong></li>
+</ul>
+<p>Wisdom לא מלמדים - נצבר. <strong>רק ממי שעברה את זה.</strong></p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא מוכרת "ידע שלמדתי". מוכרת <strong>"מה למדתי בדרך הקשה כדי שהיא לא תצטרך."</strong>
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>פוסט ראשון + לקוח ראשון - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>20 דקות</strong> — כתבי פוסט LinkedIn לפי הנוסחה. לא ארוך - 5-8 שורות. שמרי כטיוטה.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> — שלחי לחברה אחת: "כתבתי פוסט. מה לא ברור? מה הכי מעניין?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — תקני לפי הפידבק. פרסמי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — במקביל: שלחי הודעה אישית ל-3 אנשים שהתחום רלוונטי להם: "פרסמתי משהו שאולי יעניין אותך - [לינק]. ואם יש לך שאלה בתחום - אשמח לשיחה קצרה."</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לזהות ולתמחר את ה-Wisdom שלך</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - רשמי 3 טעויות יקרות שעשית בתחום שלך. מה למדת מכל אחת? כמה שוות הן ללקוחה שתמנע אותן?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> - כתבי: "אני עוזרת ל___ לא לעשות ___ ובכך חוסכת להן ___." זה ה-pitch.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> - קבעי מחיר: כמה שווה חיסכון הטעות הזאת? 5% מזה = המחיר שלך.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> - שלחי הצעה אחת. עם המחיר.</div></div>
   </div>
 </div>
 <div class="week" id="week4">
@@ -166,33 +201,45 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="week-num">4</div>
     <div class="week-title-wrap">
       <div class="week-label">שבוע 4</div>
-      <div class="week-title">לבנות consistency</div>
+      <div class="week-title">למה את לא בונה קהל</div>
     </div>
   </div>
   <div class="lesson">
     <div class="lesson-label">השיעור</div>
-    <h3>ממכירה ראשונה לזרם הכנסה</h3>
-    <p>הבעיה של החוקרת: היא מוכרת פעם אחת, ואז שוב צריכה לגייס. אין מערכת שמביאה לקוחות ברציפות.</p>
-<p>המערכת שעובדת לחוקרת:</p>
-<ol>
-<li><strong>פוסט שבועי</strong> על הנושא שלך (לא מכירה - תוכן). זה בונה קהל לאורך זמן.</li>
-<li><strong>CTA קבוע</strong> בסוף כל פוסט: "שאלות? שלחי הודעה."</li>
-<li><strong>Email list</strong> - כל מי שמגיב או שולח הודעה - שאלי אם לשמור אותה לעדכונים. בנה רשימה.</li>
-<li><strong>ניוזלטר חד חודשי</strong> לרשימה - לא מכירה. רק ערך. אחת לחודש.</li>
-</ol>
+    <h3>החסם: "אני לא אוהבת "לשווק עצמי". זה נראה כהצגה."</h3>
+    <p>החוקרת מזוהה עם "עושה עבודה טובה מדברת בעד עצמה". <strong>לא עובד.</strong> בשוק מוצף תוכן, אחרות עם פחות ידע ויותר נוכחות - ינצחו.</p>
+<p>הפרדוקס: <strong>אי-שיווק הוא גם בחירה.</strong> בחירה לאפשר לאנשים פחות מוסמכים ממך לתת להן עצות רעות.</p>
+
+<div class="block-psych">
+<div class="label">🧠 "Visibility as Responsibility" - הגדרה חדשה לשיווק</div>
+<p>שיווק כהצגה = בושה. שיווק כאחריות = חובה. <strong>כשיודעת משהו שאחרות צריכות - לא לשתף זה אנוכי.</strong> הן עושות החלטות בלי המידע שיש לך.</p>
+</div>
+
+<div class="block-trick">
+<div class="label">🛠 "Teach to Sell" - ללמד במקום לשווק</div>
+<ul>
+<li>לא כותבת "שכרי אותי" - כותבת "הנה מה שלמדתי"</li>
+<li>לא "הנה המוצר שלי" - "הנה הבעיה שאנשים פחות מדי מדברים עליה + פתרון"</li>
+<li>בסוף כל פוסט שמלמד: משפט אחד על איך עזרת לאחרים עם זה</li>
+</ul>
+<p>תוצאה: הקהל בא מהתוכן, לא מהפרסומת.</p>
+</div>
+
+<div class="block-reframe">
+<strong>ריפריים:</strong> לא "משווקת את עצמי". <strong>"מנגישה ידע שאנשים צריכים."</strong> השיווק הוא byproduct - לא המטרה.
+</div>
   </div>
   <div class="exercise">
     <div class="exercise-label">התרגיל השבועי</div>
-    <div class="time-badge">⏱ 45 דקות</div>
-    <h3>לבנות מערכת תוכן קבועה - 45 דקות</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — הגדירי לעצמך: כמה פוסטים בחודש? (1? 2? 4?) - כמה שאת יכולה לשמור לאורך זמן, לא כמה שאת רוצה בחודש הראשון.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — הגדירי "נושא הניוזלטר" - נושא אחד שתכתבי עליו כל חודש. לא "כל מה שמעניין" - נושא ספציפי שמייצג אותך.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> — פתחי Notion. צרי קובץ "רעיונות לפוסטים" ו"קוראי ניוזלטר". הכניסי 5 רעיונות לפוסטים הבאים.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי ל-5 אנשים שמתאימים לתחום שלך: "מתחילה לכתוב [ניוזלטר/פוסטים] על [נושא]. מעוניינת לקבל? אם כן - שלחי לי את האימייל שלך."</div></div>
+    <div class="time-badge">45 דקות</div>
+    <h3>לפרסם תוכן שמלמד</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>15 דקות</strong> - כתבי פוסט LinkedIn: "דבר אחד שלמדתי לאחרונה שרוב האנשים ב[תחום] לא יודעים." 5-8 שורות. BLUF.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> - משפט אחרון: "עובדת עם [מי] ב[מה]. שאלות? בהודעה." - לא מכירה. רק נוכחות.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>5 דקות</strong> - פרסמי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>20 דקות</strong> - כל תגובה - "תודה! שאלה: [שאלה ספציפית]?" - זה לקוחות פוטנציאליים שמתחממים.</div></div>
   </div>
 </div>
-
   <div class="outro">
-    <h3>עכשיו - לעשות את התרגיל של שבוע 1</h3>
-    <p>לא לקרוא הכל ולהמתין. לעשות את התרגיל של שבוע 1 עוד הערב.</p>
-    <p style="margin-bottom:24px">רוצה ליווי אישי? סלון היזמיות הוא המקום שנשים כמוך הופכות שעה אחת בשבוע לדבר אמיתי.</p>
+    <h3>את יודעת מה לעשות. עכשיו - ללכת לעשות.</h3>
+    <p>לא לקרוא הכל ולהמתין. שבוע 1, תרגיל 1. עכשיו.</p>
+    <p style="margin-bottom:24px">רוצה ליווי ותמיכה? סלון היזמיות הוא המקום שנשים כמוך הופכות את "אני יודעת" ל"עשיתי".</p>
     <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון</a>
   </div>
 </div>
