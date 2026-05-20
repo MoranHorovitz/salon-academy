@@ -84,13 +84,22 @@ async function init() {
     if (data?.result) type = data.result.charAt(0).toLowerCase();
   }
 
-  // 4. Still no type? Show quiz
+  // 4. Still no type? Show manual type selection
   if (!type || !TYPES[type]) {
     spinner.style.display = 'none';
     cta.style.display = 'block';
     cta.innerHTML = `
-      <p style="color:#aaa;font-size:14px;margin-bottom:16px">נראה שלא מילאת עדיין את השאלון - עשי אותו עכשיו ותגלי את המדריך שמתאים לך</p>
-      <a href="/salon-quiz.html" class="btn">לשאלון האפיון ←</a>`;
+      <p style="color:#aaa;font-size:14px;margin-bottom:20px">מילאת את השאלון? בחרי את הסוג שלך:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+        ${Object.entries(TYPES).map(([k,t]) => `
+          <button onclick="selectType('${k}')"
+            style="background:#181818;border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;color:#f0f0f0;font-size:14px;font-weight:700;transition:all 0.15s;text-align:center"
+            onmouseover="this.style.borderColor='#c6ff00';this.style.color='#c6ff00'"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#f0f0f0'">
+            ${t.icon}<br>${t.name}
+          </button>`).join('')}
+      </div>
+      <a href="/salon-quiz.html" style="font-size:12px;color:#666;text-decoration:none;display:block;text-align:center">עדיין לא עשית את השאלון? לחצי כאן</a>`;
     return;
   }
 
@@ -113,6 +122,17 @@ async function init() {
 
   // Auto-redirect after 3 seconds
   setTimeout(() => window.location.href = `/guides/guide-${type}.html`, 3000);
+}
+
+async function selectType(t) {
+  // Save to user metadata
+  try {
+    await sb.auth.updateUser({
+      data: { personality_type: t, personality_name: TYPES[t].name }
+    });
+  } catch(e) {}
+  // Redirect to guide
+  window.location.href = '/guides/guide-' + t + '.html';
 }
 
 init();
