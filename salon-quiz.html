@@ -337,7 +337,6 @@ footer {
     <div class="result-title" id="r-title"></div>
     <p class="result-desc" id="r-desc"></p>
     <div class="result-cta-text" id="r-cta"></div>
-    <p style="font-size:13px;color:#888;margin-bottom:12px;line-height:1.6">בעוד כמה שניות יפתח חלון לקבלת המדריך<br>או לחצי עכשיו:</p>
     <button class="btn-primary" onclick="openEmailPopup(window._quizResult, null)">קראי את המדריך שלי ←</button>
   </div>
 </div>
@@ -670,8 +669,7 @@ function showResult() {
   // Store result in localStorage for later use
   localStorage.setItem('quiz_result_type', resultKey);
   localStorage.setItem('quiz_result_name', r.title);
-  // Show popup after 5 seconds (let user read result)
-  setTimeout(() => openEmailPopup(resultKey, r), 5000);
+  setTimeout(() => openEmailPopup(resultKey, r), 2000);
 }
 
 function showForm() { show('sf'); }
