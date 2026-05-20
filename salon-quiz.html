@@ -375,12 +375,13 @@ footer {
     <p id="popup-sub" style="font-size:14px;color:#888;margin-bottom:22px;line-height:1.6;">הכניסי מייל כדי לראות את המדריך האישי שלך</p>
     <input id="popup-email" type="email" placeholder="האימייל שלך" autocomplete="email"
       style="display:block;width:100%;background:#0f0f0f;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 16px;font-family:Heebo,sans-serif;font-size:15px;color:#f0f0f0;outline:none;margin-bottom:12px;text-align:center;box-sizing:border-box;">
-    <button onclick="goToSales()"
-      style="display:block;width:100%;background:#c6ff00;color:#000;font-family:Heebo,sans-serif;font-size:16px;font-weight:800;padding:14px;border:none;border-radius:12px;cursor:pointer;">
+    <button class="popup-go-btn" onclick="goToSales()" disabled
+      style="display:block;width:100%;background:#c6ff00;color:#000;font-family:Heebo,sans-serif;font-size:16px;font-weight:800;padding:14px;border:none;border-radius:12px;cursor:not-allowed;opacity:0.4;transition:opacity 0.2s,cursor 0.2s;">
       קראי את המדריך שלי ←
     </button>
     <label style="display:flex;align-items:flex-start;gap:10px;margin-top:12px;cursor:pointer;text-align:right;">
       <input type="checkbox" id="popup-consent" required
+        onchange="document.querySelector('.popup-go-btn').disabled=!this.checked;document.querySelector('.popup-go-btn').style.opacity=this.checked?'1':'0.4';document.querySelector('.popup-go-btn').style.cursor=this.checked?'pointer':'not-allowed';"
         style="width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:#c6ff00;">
       <span style="font-size:12px;color:#888;line-height:1.5;">
         קראתי ואני מסכימה ל<a href="/privacy-policy.html" target="_blank" style="color:#c6ff00;text-decoration:underline;">מדיניות הפרטיות</a> ולקבלת חומרים שיווקיים מסלון היזמיות
