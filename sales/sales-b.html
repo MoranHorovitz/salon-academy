@@ -56,17 +56,13 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
 </div>
 
 <script>
-// Show result context from URL param
+// Show result banner at top
 const params = new URLSearchParams(window.location.search);
-const resultName = params.get('name');
-if (resultName) {
-  const badge = document.querySelector('.hero h1');
-  if (badge) {
-    const ctx = document.createElement('p');
-    ctx.style.cssText = 'font-size:14px;color:#888;margin-top:8px;';
-    ctx.textContent = 'תוצאת השאלון שלך: ' + decodeURIComponent(resultName);
-    badge.insertAdjacentElement('afterend', ctx);
-  }
+const resultName = params.get('name') || localStorage.getItem('quiz_result_name') || 'הבונה';
+const banner = document.getElementById('result-banner');
+if (banner) {
+  banner.innerHTML = '🏗️ את <strong>' + decodeURIComponent(resultName) + '</strong> — והמדריך הזה נכתב בדיוק בשבילך';
+  banner.style.display = 'block';
 }
 </script>
 </body>
