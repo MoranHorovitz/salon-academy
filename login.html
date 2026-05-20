@@ -71,7 +71,7 @@
 <script>
   // Check for redirect param (if came from a protected page)
   const urlParams = new URLSearchParams(window.location.search);
-  const redirectTo = urlParams.get('redirect') || 'course.html';
+  const redirectTo = urlParams.get('redirect') || '/courses/reels/';
 
   // If user is already logged in → redirect
   (async () => {
