@@ -668,6 +668,21 @@ async function submitLead(e) {
     created_at: new Date().toISOString(),
   };
 
+  // Save personality type to user metadata if logged in
+  try {
+    const resultType = (window._quizResult || 'F').charAt(0).toLowerCase();
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      await sb.auth.updateUser({
+        data: {
+          personality_type: resultType,
+          personality_name: window._quizResultName || '',
+          quiz_completed_at: new Date().toISOString(),
+        }
+      });
+    }
+  } catch(e) { console.warn('save personality:', e); }
+
   // Save to Supabase
   try {
     await fetch(SUPA_URL + '/rest/v1/quiz_leads', {
