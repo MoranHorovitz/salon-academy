@@ -379,7 +379,13 @@ footer {
       style="display:block;width:100%;background:#c6ff00;color:#000;font-family:Heebo,sans-serif;font-size:16px;font-weight:800;padding:14px;border:none;border-radius:12px;cursor:pointer;">
       קראי את המדריך שלי ←
     </button>
-    <p style="font-size:12px;color:#444;margin-top:10px;">לא ספאם. ללא התחייבות.</p>
+    <label style="display:flex;align-items:flex-start;gap:10px;margin-top:12px;cursor:pointer;text-align:right;">
+      <input type="checkbox" id="popup-consent" required
+        style="width:18px;height:18px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:#c6ff00;">
+      <span style="font-size:12px;color:#888;line-height:1.5;">
+        קראתי ואני מסכימה ל<a href="/privacy-policy.html" target="_blank" style="color:#c6ff00;text-decoration:underline;">מדיניות הפרטיות</a> ולקבלת חומרים שיווקיים מסלון היזמיות
+      </span>
+    </label>
   </div>
 </div>
 
@@ -402,6 +408,12 @@ function openEmailPopup(type, r) {
 
 function goToSales() {
   const email = document.getElementById('popup-email').value.trim();
+  const consent = document.getElementById('popup-consent');
+  if (consent && !consent.checked) {
+    consent.closest('label').style.color = '#ff6060';
+    setTimeout(() => consent.closest('label').style.color = '', 1500);
+    return;
+  }
   if (!email || !email.includes('@')) {
     document.getElementById('popup-email').focus();
     document.getElementById('popup-email').style.borderColor = '#ff4444';
