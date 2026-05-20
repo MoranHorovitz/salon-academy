@@ -427,28 +427,65 @@ async function goToGuide(e) {
   e.preventDefault();
   // Check if user has session
   const { data: { session } } = await sb.auth.getSession();
+
+  const email = session?.user?.email;
+
+  // 1. Check localStorage by email (fastest)
+  if (email) {
+    const stored = localStorage.getItem('quiz_result_' + email);
+    if (stored) {
+      try {
+        const r = JSON.parse(stored);
+        if (r.type) {
+          window.location.href = '/sales/sales-' + r.type + '.html';
+          return;
+        }
+      } catch(e2) {}
+    }
+  }
+
+  // 2. Check generic localStorage (filled during quiz before login)
+  const genericType = localStorage.getItem('quiz_result_type');
+  if (genericType) {
+    if (email) {
+      // Save it keyed to email for next time
+      localStorage.setItem('quiz_result_' + email, JSON.stringify({ type: genericType }));
+    }
+    window.location.href = '/sales/sales-' + genericType.toLowerCase() + '.html';
+    return;
+  }
+
   if (!session) {
-    // Not logged in -> go to quiz
+    // Not logged in, no stored result -> go to quiz
     window.location.href = '/salon-quiz.html';
     return;
   }
-  // Check if user has guide purchase in quiz_leads with a result
-  const { data } = await sb
+
+  // 3. Check Supabase user metadata
+  const { data: { user } } = await sb.auth.getUser();
+  const metaType = user?.user_metadata?.personality_type;
+  if (metaType) {
+    window.location.href = '/sales/sales-' + metaType + '.html';
+    return;
+  }
+
+  // 4. Check quiz_leads table
+  const { data: lead } = await sb
     .from('quiz_leads')
     .select('result')
-    .eq('email', session.user.email)
+    .eq('email', email)
     .not('result', 'is', null)
     .order('created_at', { ascending: false })
     .limit(1)
     .maybeSingle();
 
-  if (data && data.result) {
-    // Has result - go to personal guide
-    window.location.href = '/guides/guide-' + data.result.toLowerCase().charAt(0) + '.html';
-  } else {
-    // No result yet - go to quiz
-    window.location.href = '/salon-quiz.html';
+  if (lead?.result) {
+    window.location.href = '/sales/sales-' + lead.result.toLowerCase().charAt(0) + '.html';
+    return;
   }
+
+  // 5. No result anywhere -> go to quiz
+  window.location.href = '/salon-quiz.html';
 }
 </script>
 </body>

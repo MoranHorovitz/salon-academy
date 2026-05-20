@@ -337,6 +337,7 @@ footer {
     <div class="result-title" id="r-title"></div>
     <p class="result-desc" id="r-desc"></p>
     <div class="result-cta-text" id="r-cta"></div>
+    <p style="font-size:13px;color:#888;margin-bottom:12px;line-height:1.6">בעוד כמה שניות יפתח חלון לקבלת המדריך<br>או לחצי עכשיו:</p>
     <button class="btn-primary" onclick="openEmailPopup(window._quizResult, null)">קראי את המדריך שלי ←</button>
   </div>
 </div>
@@ -428,8 +429,9 @@ function goToSales() {
     headers: {'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
     body: JSON.stringify({email, result: type, source: 'quiz-popup', created_at: new Date().toISOString()})
   }).catch(()=>{});
-  // Redirect to sales page
-  window.location.href = '/sales/sales-' + type + '.html?email=' + encodeURIComponent(email);
+  // Redirect to sales page with result info
+  const rName = localStorage.getItem('quiz_result_name') || '';
+  window.location.href = '/sales/sales-' + type + '.html?email=' + encodeURIComponent(email) + '&name=' + encodeURIComponent(rName);
 }
 
 // Close popup on overlay click
@@ -665,7 +667,11 @@ function showResult() {
 
   show('sr');
   // Show popup after short delay for emotional connection
-  setTimeout(() => openEmailPopup(resultKey, r), 2000);
+  // Store result in localStorage for later use
+  localStorage.setItem('quiz_result_type', resultKey);
+  localStorage.setItem('quiz_result_name', r.title);
+  // Show popup after 5 seconds (let user read result)
+  setTimeout(() => openEmailPopup(resultKey, r), 5000);
 }
 
 function showForm() { show('sf'); }
@@ -697,6 +703,15 @@ async function submitLead(e) {
           quiz_completed_at: new Date().toISOString(),
         }
       });
+    }
+    // Also save to localStorage keyed by email for cross-session use
+    const email = document.getElementById('f-email')?.value?.trim() || payload.email;
+    if (email) {
+      localStorage.setItem('quiz_result_' + email, JSON.stringify({
+        type: resultType,
+        name: window._quizResultName || '',
+        date: new Date().toISOString()
+      }));
     }
   } catch(e) { console.warn('save personality:', e); }
 

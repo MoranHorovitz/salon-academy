@@ -54,5 +54,20 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
   <p class="guarantee">✓ מדריך דיגיטלי מיידי לאחר התשלום • שאלות? info@salon-hayazamiot.co.il</p>
   <footer>סלון היזמיות • רמת גן</footer>
 </div>
+
+<script>
+// Show result context from URL param
+const params = new URLSearchParams(window.location.search);
+const resultName = params.get('name');
+if (resultName) {
+  const badge = document.querySelector('.hero h1');
+  if (badge) {
+    const ctx = document.createElement('p');
+    ctx.style.cssText = 'font-size:14px;color:#888;margin-top:8px;';
+    ctx.textContent = 'תוצאת השאלון שלך: ' + decodeURIComponent(resultName);
+    badge.insertAdjacentElement('afterend', ctx);
+  }
+}
+</script>
 </body>
 </html>
