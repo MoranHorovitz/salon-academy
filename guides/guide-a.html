@@ -3,80 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שעה אחת בשבוע  -  המחברת | סלון היזמיות</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
-:root {
-  --bg:#0a0a0a;--bg2:#111;--bg3:#181818;
-  --lime:#c6ff00;--border:rgba(255,255,255,0.08);
-  --text:#f0f0f0;--muted:#777;
-}
+<title>שעה אחת בשבוע - המחברת | Salon Academy</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
-.wrap{max-width:680px;margin:0 auto;padding:60px 32px 80px;}
-@media(max-width:600px){.wrap{padding:36px 20px 60px;}}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
+@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
 .top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero{margin-bottom:52px;}
-.hero-icon{font-size:52px;margin-bottom:16px;}
-.hero h1{font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:10px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,3vw,18px);color:#aaa;margin-bottom:6px;font-style:italic;}
-.hero-tagline{font-size:clamp(18px,3.5vw,24px);color:#ccc;font-weight:600;margin-top:8px;}
-.divider{height:1px;background:var(--border);margin:44px 0;}
-.body-text{font-size:15px;color:#ccc;line-height:1.85;}
-.body-text p{margin-bottom:18px;}
-.body-text h3{font-size:17px;font-weight:800;color:#fff;margin:28px 0 10px;}
-.body-text ul{padding-right:22px;margin-bottom:18px;}
-.body-text ul li{margin-bottom:9px;}
-.body-text strong{color:var(--text);font-weight:700;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:28px;margin:32px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;}
-.action-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:13px;font-size:14px;color:#bbb;}
-.action-item .num{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:28px 0;font-size:15px;color:#ccc;line-height:1.75;}
-.outro{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;margin-top:52px;}
+.hero-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
+h1 em{font-style:normal;color:var(--lime);}
+.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
+h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
+p strong{color:#e8e8f0;}
+ul,ol{padding-right:22px;margin-bottom:20px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
+ul li strong,ol li strong{color:#e8e8f0;}
+.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
+.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
+.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
+.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.step-text strong{color:#e8e8f0;}
+.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
+.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
+.price-ex .price-note{font-size:13px;color:var(--muted);}
+table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
+table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
+table.compare td:first-child{color:#e8e8f0;font-weight:600;}
+.highlight{color:var(--lime);font-weight:700;}
+.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
 .outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
 .outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
 .btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
 .btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 20px 16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}
-</style>
+footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">סלון היזמיות • מדריך אישי</div>
-  <div class="hero">
-    <div class="hero-icon">🤝</div>
-    <h1>שעה אחת<br>בשבוע  - <br><em>המחברת</em></h1>
-    <div class="hero-sub">"אני לא יודעת מה למכור  -  אבל כולם פונים אליי"</div>
-    <div class="hero-tagline">הכסף נמצא ברשת שלך</div>
-  </div>
+  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-icon">🤝</div>
+  <h1>שעה אחת בשבוע -<br><em>המחברת</em></h1>
+  <p class="tagline">איך להפוך את הכוח הכי טבעי שלך להכנסה חודשית קבועה</p>
+
+  
+<div class="section-num">חלק א' - הבנת הכוח שלך</div>
+<h2>את לא "פשוט אוהבת לחבר אנשים" — את מחזיקה ערך כלכלי אמיתי</h2>
+<p>כל פעם שהפגשת בין שני אנשים שסגרו עסקה, כשהמלצת על ספק ונוכחת שהוא נהיה לקוח, כשאנשים פונים אליך <strong>"מי את מכירה שיכול לעזור לי עם..."</strong> — את מחזיקה נכס.</p>
+<p>הנכס הזה שווה כסף. הרבה כסף. ורוב הנשים עם הכישרון הזה מפסידות אותו כי הן מחלקות אותו בחינם.</p>
+<div class="callout">
+<div class="callout-label">הסטטיסטיקה</div>
+מתווכי עסקים מרוויחים בין 5%-15% מעסקאות שהם מחברים. שדכנות מקצועיות גובות ₪500-5,000 לזוג. מנהלות קהילות בתשלום מרוויחות ₪3,000-30,000 בחודש. <strong>כל אלה עושות בדיוק מה שאת עושה — רק שהן מחליטות לגבות על זה.</strong>
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ב' - 3 מסלולים מוכחים</div>
+<h2>מסלול 1: קהילה בתשלום</h2>
+<p>הדגם הכי נפוץ ורווחי למחברת. את בונה מרחב שבו אנשים (בדרך כלל נשים) משלמים כדי <strong>להיות קרובות אלייך ולאנשים שאת מביאה</strong>.</p>
+
+<h3>איך זה נראה בפועל</h3>
+<ul>
+<li><strong>קבוצת וואטסאפ / טלגרם פרימיום:</strong> ₪99-299/חודש. תוכן שבועי, חיבורים, הזדמנויות. 30 חברות = ₪3,000-9,000/חודש</li>
+<li><strong>Circle / Slack קהילה:</strong> ₪149-499/חודש. פורומים, AMA ימי, ארועים וירטואליים. ניתן לנהל עם 2-3 שעות בשבוע</li>
+<li><strong>Mastermind קבוצתי:</strong> ₪500-2,000/חודש. 6-12 נשים. פגישה שבועית 60-90 דקות. הכי אינטימי והכי יקר</li>
+</ul>
+
+<div class="action-box">
+<h4>⚡ איך מתחילים קהילה בתשלום בשבוע</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>הגדירי את הנישה:</strong> לא "קהילה לנשים" — "קהילה לאמהות שעובדות בהייטק וסוחבות גם ילדים וגם קריירה". ככל שצר יותר — כוח קנייה גבוה יותר.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>שלחי הודעה ל-20 אנשים:</strong> "אני שוקלת לפתוח קבוצה של [תיאור]. עלות ₪[X] לחודש. מי רלוונטית?" — אם 5+ עונות, יש ביקוש.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>מכרי מינוי שנתי ראשון בהנחה:</strong> 12 חודשים ב-₪800 (במקום 1,200) — את מקבלת הכנסה מיידית, הן מקבלות ערך. Win-win.</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-text"><strong>התחילי עם 10 חברות:</strong> ₪200/חודש × 10 = ₪2,000/חודש עבור 4 שעות בחודש. הוכחת קונספט. אז תגדילי.</div></div>
+</div>
+
+<h2>מסלול 2: ערבי חיבורים — הדגם הכי פשוט שיש</h2>
+<p>אירוע פיזי או וירטואלי שבו את מביאה אנשים שרוצים להכיר אחד את השני. <strong>הדגם הזה עובד כי כולם יוצאים מרוצים — האנשים נפגשו, ואת קיבלת כסף.</strong></p>
+
+<h3>הסדרה שעובדת</h3>
+<ol>
+<li>נושא ספציפי לכל ערב ("נשים בהייטק שמקימות עסק צדדי" / "יזמים שמחפשים שותפים טכנולוגיים")</li>
+<li>10-20 משתתפות. לא יותר — אחרת זה כנס ולא חיבור</li>
+<li>מחיר: ₪150-350 לאישה. ₪200 × 15 = ₪3,000 לערב</li>
+<li>עלויות: מקום (לפעמים בחינם) + אוכל/שתייה (₪500-800) = רווח נקי ₪2,000-2,500</li>
+</ol>
+
+<div class="callout">
+<div class="callout-label">הסוד שרוב האנשים מפספסים</div>
+<strong>את לא צריכה 100 אנשים.</strong> את צריכה 15 אנשים שמשלמים ₪200 = ₪3,000 לערב. 2 ערבים בחודש = ₪6,000. ועם 4-5 שעות עבודה לכל ערב (שיווק + ארגון).
+</div>
+
+<h2>מסלול 3: שדכנות עסקית ומקצועית</h2>
+<p>זה המסלול הכי מתחת לרדאר — ואחד הכי רווחיים. <strong>חברות ועסקים משלמים עבור חיבורים איכותיים.</strong></p>
+
+<h3>איך זה עובד</h3>
+<ul>
+<li><strong>Referral fee:</strong> ₪500-3,000 לכל לקוח שמביאה לעסק. מסכמים מראש בכתב.</li>
+<li><strong>שדכנות מקצועית:</strong> ₪3,000-15,000 לזוג (לא רומנטי — עסקי). חיבור בין מנהלים לתפקידים, יזמים לשותפים, ועוד.</li>
+<li><strong>Connector fee בפרויקטים:</strong> 5%-10% מהעסקה שנסגרת בזכותך.</li>
+</ul>
+
+<div class="action-box">
+<h4>✍️ המשפט שפותח את הדלת</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text">פני ל-3 עסקים שאת מכירה: <strong>"אני מחברת אנשים ועסקים. אם אביא לך לקוח חדש שסוגר עסקה, תהיי מוכנה לשלם X% כעמלה?"</strong></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text">רשמי הסכם פשוט (אפשר ב-וואטסאפ). תאריך, עמלה, תנאי תשלום.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text">הביאי לקוח אחד. קבלי כסף. עכשיו יש לך מודל עובד.</div></div>
+</div>
+
+<div class="divider"></div>
+<div class="section-num">חלק ג' - תכנית הפעולה שלך</div>
+<h2>שבוע ראשון - רק שעה אחת</h2>
+
+<div class="action-box">
+<h4>📋 המשימה שלך לשבוע הבא</h4>
+<div class="step"><div class="step-num">1</div><div class="step-text"><strong>רשמי את "מפת החיבורים" שלך:</strong> 3 עמודות — (1) אנשים שפנו אלייך לעזרה, (2) עסקים שממליצה עליהם, (3) מי רצתה שתחבר בינה לבין מישהו. רק 20 דקות.</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-text"><strong>בחרי מסלול אחד:</strong> קהילה / ערבי חיבורים / שדכנות. לא שלושתם — אחד.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-text"><strong>שלחי הודעה לאדם אחד:</strong> "אני שוקלת [מסלול שבחרת]. יש לך 10 דקות לשיחה?"</div></div>
+</div>
+
+<h2>לוח הכנסות ריאלי</h2>
+<table class="compare">
+<tr><th>מסלול</th><th>שעות/חודש</th><th>הכנסה/חודש (שמרני)</th></tr>
+<tr><td>קהילה 20 חברות ₪200</td><td>4-6 שעות</td><td class="highlight">₪4,000</td></tr>
+<tr><td>2 ערבי חיבורים × 15 אנשים</td><td>8-10 שעות</td><td class="highlight">₪4,000-5,000</td></tr>
+<tr><td>שדכנות עסקית (2-3 עסקאות)</td><td>5-8 שעות</td><td class="highlight">₪3,000-8,000</td></tr>
+<tr><td><strong>שילוב (קהילה + 1 ערב)</strong></td><td><strong>10-12 שעות</strong></td><td class="highlight"><strong>₪6,000-8,000</strong></td></tr>
+</table>
+
+
   <div class="divider"></div>
-  <div class="body-text">
-    
-    <p>את הגשר. לא תמיד את רואה את זה בעצמך, אבל אנשים סביבך רואים. הם פונים אליך כשהם צריכים חיבור, המלצה, או מישהו שיחבר בין שני עולמות.</p>
-    <p>הבשורה: <strong>זה בדיוק שווה כסף.</strong></p>
-    <h3>איפה הכסף בדרך שלך</h3>
-    <ul>
-      <li><strong>קהילה בתשלום:</strong> קבוצת וואטסאפ / טלגרם / Circle עם תוכן חודשי + חיבורים בין חברות. ₪50–200/חודש × 50 נשים = ₪2,500–10,000/חודש.</li>
-      <li><strong>אירועי נטוורקינג פרטיים:</strong> ערב חיבורים קטן (8–15 נשים), ₪200–400 כרטיס. מינימום מאמץ, מקסימום ערך.</li>
-      <li><strong>שירות שדכנות עסקית:</strong> לחבר בין עסקים ולקוחות שמתאימים  -  ₪500–2,000 לחיבור מוצלח.</li>
-    </ul>
-    <div class="action-box">
-      <h4>המשימה של השעה הראשונה שלך</h4>
-      <div class="action-item"><div class="num">1</div><span>רשמי 10 אנשים שפנו אליך בחצי שנה האחרונה לבקש חיבור, המלצה, או עצה</span></div>
-      <div class="action-item"><div class="num">2</div><span>זהי: מה הנושא המשותף? (הייטק? יזמות? קריירה? חינוך?)</span></div>
-      <div class="action-item"><div class="num">3</div><span>שאלי את עצמך: אם הייתי גובה ₪200 על שיחת ייעוץ לנושא הזה  -  מי מהרשימה הזו היה משלם?</span></div>
-    </div>
-    <div class="callout">לא צריך מוצר. לא צריך אתר. לא צריך לוגו. <strong>הרשת שלך היא המוצר.</strong> את צריכה רק לדעת איך לעטוף אותה.</div>
-  </div>
   <div class="outro">
-    <h3>שעה אחת. שבוע אחד.</h3>
-    <p>לא צריך להחליט הכל היום. צריך רק לקחת את השעה הקרובה ולעשות את המשימה הראשונה שכתובה כאן.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה יותר רחוק? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על המחזור הבא ←</a>
+    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
+    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
+    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
   </div>
 </div>
-<footer>סלון היזמיות • רמת גן | המדריך הזה נשלח אישית אלייך ולא מיועד להפצה.</footer>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
 </body>
 </html>
