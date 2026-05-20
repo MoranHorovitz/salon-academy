@@ -106,7 +106,7 @@ function showRegisterForm() {
   document.getElementById('cta-area').innerHTML = `
     <div class="register-form">
       <h3>צרי חשבון לגישה לקורס</h3>
-      <p>כדי לגשת לקורס צריך חשבון — ייקח שנייה</p>
+      <p>כדי לגשת לקורס צריך חשבון  -  ייקח שנייה</p>
       <input class="inp" type="text" id="reg-name" placeholder="שם מלא" required>
       <input class="inp" type="email" id="reg-email" placeholder="אימייל" required>
       <input class="inp" type="password" id="reg-pass" placeholder="סיסמה (לפחות 8 תווים)" required minlength="8">
@@ -140,7 +140,7 @@ async function doRegister() {
     showSuccess();
   } else {
     document.getElementById('cta-area').innerHTML = `
-      <div class="status-box success" style="margin-bottom:16px">✓ נשלח מייל אימות — בדקי את תיבת הדואר</div>
+      <div class="status-box success" style="margin-bottom:16px">✓ נשלח מייל אימות  -  בדקי את תיבת הדואר</div>
       <a href="/login.html?redirect=${encodeURIComponent(courseUrl)}" class="btn">כניסה לאחר אימות ←</a>`;
   }
 }
@@ -150,13 +150,13 @@ setTimeout(async () => {
   const { data: { session } } = await sb.auth.getSession();
 
   if (session) {
-    // Logged in — enroll + welcome email + go to course
+    // Logged in  -  enroll + welcome email + go to course
     document.getElementById('status-text').textContent = 'מפעילה גישה...';
     await enrollUser(session);
     await sendWelcomeEmail(session);
     showSuccess();
   } else {
-    // Not logged in — show register form
+    // Not logged in  -  show register form
     document.getElementById('status-text').textContent = 'צרי חשבון לגישה לקורס';
     showRegisterForm();
   }
