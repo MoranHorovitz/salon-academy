@@ -337,7 +337,7 @@
 
     <!-- Main -->
     <main class="course-main">
-      <div id="contentArea">
+      <div id="contentArea" style="max-width:680px;margin:0 auto;padding:24px 20px;">
         <div class="empty-state">
           <div class="icon">👆</div>
           <h2>בחרי שיעור להתחלה</h2>
@@ -559,7 +559,7 @@
       <div class="content-header">
         <div class="content-type-badge">
           <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}" style="padding:4px 12px;font-size:0.8rem;">
-            ${item.type === 'video' ? '🎬 שיעור וידאו' : item.type === 'image' ? '🖼️ עמוד' : '📄 חומר עזר PDF'}
+            ${item.type === 'video' ? '🎬 שיעור וידאו' : item.type === 'image' ? 'עמוד' : '📄 חומר עזר PDF'}
           </span>
         </div>
         <h1>${escHtml(item.title)}</h1>

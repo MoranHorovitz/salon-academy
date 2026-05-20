@@ -356,7 +356,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 2: שעה אחת בשבוע -->
-    <a href="/salon-quiz.html" class="product-card">
+    <a href="#" onclick="goToGuide(event)" class="product-card">
       <div class="card-thumb">
         <div class="card-thumb-placeholder grad-2">
           <div class="thumb-title">שעה אחת<br>בשבוע</div>
@@ -419,5 +419,37 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   <p style="margin-top:6px"><a href="/login.html">כניסה לקורסים</a> &nbsp;•&nbsp; <a href="https://salon-hayazamiot.co.il">האתר הראשי</a></p>
 </div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script>
+async function goToGuide(e) {
+  e.preventDefault();
+  // Check if user has session
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    // Not logged in -> go to quiz
+    window.location.href = '/salon-quiz.html';
+    return;
+  }
+  // Check if user has guide purchase in quiz_leads with a result
+  const { data } = await sb
+    .from('quiz_leads')
+    .select('result')
+    .eq('email', session.user.email)
+    .not('result', 'is', null)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (data && data.result) {
+    // Has result - go to personal guide
+    window.location.href = '/guides/guide-' + data.result.toLowerCase().charAt(0) + '.html';
+  } else {
+    // No result yet - go to quiz
+    window.location.href = '/salon-quiz.html';
+  }
+}
+</script>
 </body>
 </html>
