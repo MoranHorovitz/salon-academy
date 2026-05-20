@@ -302,7 +302,7 @@
       .from('course_content')
       .select('*')
       .eq('course_id', COURSE_ID)
-      .order('order_num', { ascending: true });
+      .order('sort_order', { ascending: true });
 
     allContent = items || [];
 
