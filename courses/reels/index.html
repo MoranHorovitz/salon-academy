@@ -191,7 +191,96 @@
     .empty-state h2 { color: var(--white); margin-bottom: 12px; }
 
     /* No content */
-    .no-content-admin {
+    
+/* ── MOBILE OVERRIDES ── */
+@media (max-width: 768px) {
+  .course-layout { flex-direction: column; }
+  
+  /* Sidebar as slide-in drawer */
+  .sidebar {
+    position: fixed !important;
+    top: 0; right: 0; bottom: 0;
+    width: 280px !important;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.5);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 199;
+  }
+  .sidebar-overlay.on { display: block; }
+  
+  /* Main content full width */
+  .main-content { width: 100% !important; }
+  
+  /* Image full width */
+  #contentArea img {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Content area padding */
+  #contentArea { padding: 12px !important; }
+  
+  /* Top bar compact */
+  .course-topbar { padding: 10px 12px !important; }
+}
+
+/* ── MOBILE NAV BAR (prev/next) ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(15,15,25,0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 16px;
+  z-index: 100;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+@media (max-width: 768px) { .mobile-nav { display: flex; } }
+
+.mobile-nav-btn {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 11px 20px;
+  color: #e8e8f0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.mobile-nav-btn:hover { background: rgba(255,255,255,0.12); }
+.mobile-nav-btn:disabled { opacity: 0.25; cursor: default; }
+@media (max-width:768px) { .sb-toggle { display:inline-flex !important; } }
+.mobile-nav-btn.primary { background: var(--primary); color: #000; border-color: var(--primary); }
+
+.mobile-nav-info {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  flex: 1;
+  line-height: 1.3;
+}
+.mobile-nav-info strong { display: block; font-size: 11px; color: rgba(255,255,255,0.6); }
+
+/* Padding bottom on mobile so content not hidden by nav bar */
+@media (max-width: 768px) {
+  .main-content { padding-bottom: 80px !important; }
+}
+
+.no-content-admin {
       background: var(--bg2);
       border: 1px dashed var(--border);
       border-radius: 12px;
@@ -258,7 +347,71 @@
 </div>
 
 <!-- Supabase CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  // ── MOBILE HELPERS ──
+  let currentContentIndex = 0;
+
+  function updateMobileNav() {
+    const total = allContent.length;
+    const idx = currentContentIndex;
+    const btn_prev = document.getElementById('mob-prev');
+    const btn_next = document.getElementById('mob-next');
+    const counter = document.getElementById('mob-counter');
+    const chapter = document.getElementById('mob-chapter');
+    if (btn_prev) btn_prev.disabled = idx <= 0;
+    if (btn_next) btn_next.disabled = idx >= total - 1;
+    if (counter) counter.textContent = (idx + 1) + ' / ' + total;
+    if (chapter && allContent[idx]) chapter.textContent = allContent[idx].title;
+  }
+
+  function mobilePrev() {
+    if (currentContentIndex > 0) {
+      currentContentIndex--;
+      renderContent(allContent[currentContentIndex]);
+      setSidebarActive(document.querySelectorAll('.sidebar-item')[currentContentIndex]);
+      updateMobileNav();
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function mobileNext() {
+    if (currentContentIndex < allContent.length - 1) {
+      currentContentIndex++;
+      renderContent(allContent[currentContentIndex]);
+      setSidebarActive(document.querySelectorAll('.sidebar-item')[currentContentIndex]);
+      updateMobileNav();
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function toggleSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    if (sb) sb.classList.toggle('open');
+    if (ov) ov.classList.toggle('on');
+  }
+
+  function closeSidebar() {
+    const sb = document.querySelector('.sidebar');
+    const ov = document.getElementById('sidebar-overlay');
+    if (sb) sb.classList.remove('open');
+    if (ov) ov.classList.remove('on');
+  }
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60 && !document.querySelector('.sidebar.open')) {
+      if (dx > 0) mobilePrev(); else mobileNext();
+    }
+  });
+
+  // Close sidebar when item clicked on mobile
+  const origSetActive = typeof setSidebarActive === 'function' ? setSidebarActive : null;
+
+</script>
 <script src="../../supabase-config.js"></script>
 <script>
   let currentContent = null;
@@ -361,6 +514,10 @@
 
   function renderContent(item) {
     currentContent = item;
+    currentContentIndex = allContent.indexOf(item);
+    updateMobileNav();
+    // Close sidebar on mobile after selection
+    if (window.innerWidth <= 768) closeSidebar();
     const area = document.getElementById('contentArea');
 
     let embedHtml = '';
@@ -446,5 +603,15 @@
   init();
 </script>
 
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-btn" id="mob-prev" onclick="mobilePrev()">→ הקודם</button>
+    <div class="mobile-nav-info">
+      <span id="mob-counter">1 / 68</span>
+      <strong id="mob-chapter"></strong>
+    </div>
+    <button class="mobile-nav-btn" id="mob-next" onclick="mobileNext()">הבא ←</button>
+  </div>
 </body>
 </html>
