@@ -8,143 +8,194 @@
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
-.wrap{max-width:700px;margin:0 auto;padding:60px 28px 100px;}
-@media(max-width:600px){.wrap{padding:36px 18px 80px;}}
-.top-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:32px;}
-.hero-icon{font-size:56px;margin-bottom:16px;}
-h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.1;color:#fff;margin-bottom:12px;}
-h1 em{font-style:normal;color:var(--lime);}
-.tagline{font-size:clamp(16px,3vw,21px);color:#999;font-weight:500;margin-bottom:48px;line-height:1.5;}
+.wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
+@media(max-width:600px){.wrap{padding:32px 16px 80px;}}
+
+/* HERO */
+.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
+.hero-icon{font-size:52px;margin-bottom:14px;}
+.hero h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
+.hero h1 em{font-style:normal;color:var(--lime);}
+.hero-sub{font-size:clamp(15px,2.5vw,18px);color:#999;margin-bottom:12px;line-height:1.6;}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:48px;}
+.meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
+.meta-item strong{color:#ccc;}
+
+/* WEEK NAV */
+.week-nav{display:flex;gap:8px;margin-bottom:40px;overflow-x:auto;padding-bottom:4px;}
+.week-nav a{flex-shrink:0;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);color:var(--muted);text-decoration:none;transition:all 0.15s;white-space:nowrap;}
+.week-nav a:hover{border-color:rgba(198,255,0,0.4);color:var(--lime);}
+
+/* WEEK BLOCK */
+.week{margin-bottom:56px;scroll-margin-top:24px;}
+.week-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);}
+.week-num{width:40px;height:40px;border-radius:50%;background:rgba(198,255,0,0.1);border:2px solid rgba(198,255,0,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime);flex-shrink:0;}
+.week-title-wrap{}
+.week-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.week-title{font-size:clamp(18px,3vw,22px);font-weight:900;color:#fff;line-height:1.2;}
+
+/* CONTENT */
+h2{font-size:17px;font-weight:800;color:#fff;margin:24px 0 10px;}
+p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
+p strong{color:#e0e0f0;}
+ul,ol{padding-right:22px;margin-bottom:16px;}
+ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:7px;}
+li strong{color:#e0e0f0;}
+
+/* LESSON CARD */
+.lesson{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:16px;}
+.lesson-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.lesson h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:12px;}
+.lesson p{font-size:14px;color:#bbb;margin-bottom:10px;}
+
+/* EXERCISE */
+.exercise{background:rgba(198,255,0,0.05);border:1.5px solid rgba(198,255,0,0.25);border-radius:16px;padding:24px 26px;margin-top:20px;}
+.exercise-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
+.exercise h3{font-size:16px;font-weight:800;color:#fff;margin-bottom:12px;}
+.exercise-step{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;}
+.exercise-step .n{width:22px;height:22px;border-radius:50%;background:rgba(198,255,0,0.15);color:var(--lime);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.exercise-step .t{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
+.exercise-step .t strong{color:#fff;}
+.time-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--lime);background:rgba(198,255,0,0.1);border-radius:10px;padding:3px 10px;margin-bottom:14px;}
+
+/* CALLOUT */
+.callout{background:rgba(255,255,255,0.03);border-right:3px solid var(--lime);border-radius:0 10px 10px 0;padding:16px 18px;margin:16px 0;font-size:14px;color:#bbb;line-height:1.7;}
+.callout strong{color:#e0e0f0;}
+
+/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:40px 0;}
-h2{font-size:clamp(18px,3vw,24px);font-weight:800;color:#fff;margin:36px 0 14px;line-height:1.3;}
-h3{font-size:16px;font-weight:800;color:#e0e0f0;margin:24px 0 10px;}
-p{font-size:15px;color:#bbb;line-height:1.9;margin-bottom:16px;}
-p strong{color:#e8e8f0;}
-ul,ol{padding-right:22px;margin-bottom:20px;}
-ul li,ol li{font-size:15px;color:#bbb;line-height:1.8;margin-bottom:8px;}
-ul li strong,ol li strong{color:#e8e8f0;}
-.callout{background:rgba(198,255,0,0.05);border:1px solid rgba(198,255,0,0.2);border-radius:14px;padding:22px 24px;margin:24px 0;font-size:15px;color:#ccc;line-height:1.8;}
-.callout .callout-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px;}
-.action-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin:28px 0;}
-.action-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
-.step-num{width:24px;height:24px;border-radius:50%;background:rgba(198,255,0,0.12);color:var(--lime);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-text{font-size:14px;color:#ccc;line-height:1.6;flex:1;}
-.step-text strong{color:#e8e8f0;}
-.price-ex{display:flex;align-items:baseline;gap:8px;margin:6px 0;}
-.price-ex .price{font-size:20px;font-weight:900;color:var(--lime);}
-.price-ex .price-note{font-size:13px;color:var(--muted);}
-table.compare{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
-table.compare th{text-align:right;padding:10px 12px;background:rgba(255,255,255,0.04);color:#fff;font-weight:700;border-bottom:2px solid var(--border);}
-table.compare td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);color:#bbb;}
-table.compare td:first-child{color:#e8e8f0;font-weight:600;}
-.highlight{color:var(--lime);font-weight:700;}
-.section-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:36px;text-align:center;margin-top:56px;}
-.outro h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px;}
-.outro p{font-size:15px;color:#aaa;margin-bottom:24px;line-height:1.7;}
-.btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:16px;font-weight:800;padding:15px 36px;border-radius:12px;text-decoration:none;transition:all 0.2s;}
-.btn:hover{background:#d4ff33;transform:translateY(-2px);}
-footer{text-align:center;padding:32px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:52px;}</style>
+
+/* OUTRO */
+.outro{background:var(--bg2);border:1px solid rgba(198,255,0,0.15);border-radius:20px;padding:32px;text-align:center;margin-top:48px;}
+.outro h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:10px;}
+.outro p{font-size:14px;color:#aaa;margin-bottom:22px;line-height:1.7;}
+.btn{display:inline-block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:15px;font-weight:800;padding:13px 32px;border-radius:12px;text-decoration:none;}
+footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:48px;}</style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top-badge">Salon Academy - מדריך אישי</div>
+  <div class="hero-badge">Salon Academy - מדריך אישי</div>
   <div class="hero-icon">🔬</div>
-  <h1>שעה אחת בשבוע -<br><em>החוקרת</em></h1>
-  <p class="tagline">איך להפוך ידע עמוק להכנסה ריאלית — צעד צעד</p>
+  <div class="hero">
+    <h1>שעה אחת בשבוע -<br><em>החוקרת</em></h1>
+    <p class="hero-sub">להפוך ידע עמוק להכנסה - צעד אחר צעד, 4 שבועות.</p>
+    <div class="hero-meta">
+      <div class="meta-item">📅 <strong>4 שבועות</strong></div>
+      <div class="meta-item">📖 <strong>4 שיעורים</strong></div>
+      <div class="meta-item">⏱ <strong>45 דקות לשבוע</strong></div>
+    </div>
+  </div>
 
-  
-<div class="section-num">חלק א' - האמת שאת צריכה לשמוע</div>
-<h2>את לא צריכה לחכות להיות "מומחית מוסמכת"</h2>
-<p>החוקרות הן הסוג שהכי מחכה. מחכות לתואר שני. לניסיון של 10 שנים. לאישור מבחוץ. <strong>בינתיים, מישהו עם חצי הידע שלהן כבר מרוויח.</strong></p>
-<p>הגדרה מעשית של מומחית: <strong>אם את יודעת יותר על נושא X מ-90% מהאנשים שצריכים עזרה בנושא X — את מומחית מספיק לגבות עליו.</strong></p>
-
-<div class="callout">
-<div class="callout-label">הבדיקה המהירה</div>
-חשבי על נושא שאת שולטת בו. עכשיו חשבי: כמה שעות לאדם ממוצע ייקח ללמוד את מה שאת יודעת על הנושא הזה? אם התשובה היא "יותר מ-20 שעות" — יש פה ערך שאפשר לתמחר.
-</div>
-
-<div class="divider"></div>
-<div class="section-num">חלק ב' - 4 מסלולים לחוקרת</div>
-
-<h2>מסלול 1: ייעוץ שעתי — הכי מהיר לכסף</h2>
-<p>שיחה של 60 דקות. הלקוח מגיע עם בעיה. את עוזרת לפתור אותה. <strong>זה הכל.</strong></p>
-
-<h3>איך מתחילים</h3>
-<ul>
-<li>פוסט לינקדאין אחד: "אני פותחת 5 slots לשיחות ייעוץ חד-פעמיות של 60 דקות בנושא X. ₪[מחיר]. לינק לקביעה בתגובות."</li>
-<li>כלים חינמיים: Calendly לקביעה, Zoom לשיחה, ביט/Paybox לתשלום</li>
-<li>מחיר התחלתי: ₪300-400 לשעה. אחרי 5 שיחות — העלי ל-₪500-600</li>
-</ul>
-<div class="price-ex"><span class="price">₪350-800</span><span class="price-note">לשעת ייעוץ</span></div>
-
-<div class="action-box">
-<h4>📝 הפוסט הראשון שגורם ללקוחות לבוא</h4>
-<div class="step"><div class="step-num">1</div><div class="step-text"><strong>פתח בבעיה:</strong> "אחד הדברים שאני שומעת הכי הרבה ב[תחום] הוא [בעיה נפוצה]."</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-text"><strong>הצג תובנה:</strong> "מה שרוב האנשים לא יודעים זה ש[תובנה מפתיעה שלמדת]."</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-text"><strong>CTA פשוט:</strong> "אם זה רלוונטי אלייך — אני פותחת 3 שיחות ייעוץ ב-₪[X]. שלחי לי הודעה."</div></div>
-</div>
-
-<h2>מסלול 2: ניוזלטר מקצועי בתשלום</h2>
-<p>כתיבה שבועית על נושא שאת שולטת בו. <strong>הדגש: ניתוח, לא פרסום. עומק, לא שטחיות.</strong></p>
-
-<h3>הדגם שעובד</h3>
-<ul>
-<li>מהדורה חינמית: פעם בשבועיים. בונה קהל ואמון.</li>
-<li>מהדורה בתשלום (₪29-89/חודש): ניתוחים מעמיקים, כלים, ראיונות עם מומחים</li>
-<li>50 מנויים × ₪49 = <strong>₪2,450/חודש</strong> עבור ~4-6 שעות כתיבה בחודש</li>
-</ul>
-
-<h3>נושאים שניוזלטרים בתשלום עובדים עליהם</h3>
-<ul>
-<li>ניתוח שוק/טכנולוגיה ספציפי</li>
-<li>סקירת מחקרים ותרגומם לפרקטיקה</li>
-<li>עדכונים רגולטוריים בתחום</li>
-<li>ניתוח case studies מהתחום</li>
-</ul>
-
-<h2>מסלול 3: מחקר ו-White Papers לחברות</h2>
-<p>חברות קטנות ובינוניות צריכות תוכן מומחה. הן לא תמיד יכולות לשכור עובד פנימי. <strong>הן יכולות לשכור אותך לפרויקט.</strong></p>
-
-<table class="compare">
-<tr><th>סוג פרויקט</th><th>זמן</th><th>מחיר</th></tr>
-<tr><td>White Paper (10-20 עמ')</td><td>10-15 שעות</td><td class="highlight">₪3,000-8,000</td></tr>
-<tr><td>מחקר שוק ממוקד</td><td>8-12 שעות</td><td class="highlight">₪2,500-6,000</td></tr>
-<tr><td>ניתוח מתחרים</td><td>5-8 שעות</td><td class="highlight">₪1,500-4,000</td></tr>
-<tr><td>תוכן מקצועי (בלוג/LinkedIn)</td><td>2-4 שעות לפיסה</td><td class="highlight">₪800-2,500</td></tr>
-</table>
-
-<div class="divider"></div>
-<div class="section-num">חלק ג' - תכנית הפעולה</div>
-
-<h2>השלב שרוב החוקרות מדלגות עליו: הגדרת הנישה</h2>
-<p>לא "ייעוץ בתחום X". <strong>ייעוץ ל-[מי ספציפי] ב-[תת-תחום ספציפי].</strong></p>
-
-<div class="callout">
-<div class="callout-label">דוגמה</div>
-לא: "ייעוץ בניהול מוצר"<br>
-כן: <strong>"ייעוץ למנהלות מוצר שעוברות ל-startup הראשון שלהן"</strong><br><br>
-לא: "כתיבה על AI"<br>
-כן: <strong>"ניוזלטר שבועי לצוותי פיתוח שרוצים להבין LLMs בלי לטבוע בז'רגון"</strong>
-</div>
-
-<div class="action-box">
-<h4>🔬 המשימה השבוע</h4>
-<div class="step"><div class="step-num">1</div><div class="step-text"><strong>כתבי פוסט לינקדאין אחד</strong> — תובנה מפתיעה שלמדת בחצי שנה האחרונה. לא מכירה. רק ידע. ראי מי עונה.</div></div>
-<div class="step"><div class="step-num">2</div><div class="step-text"><strong>הציעי שיחה חינמית לאחד שעונה:</strong> "שמחה שזה עזר. אם יש נושא ספציפי שמעסיק אותך בהקשר הזה — 20 דקות שיחה? ללא עלות."</div></div>
-<div class="step"><div class="step-num">3</div><div class="step-text"><strong>בסוף השיחה שאלי:</strong> "האם זה שימושי? יש לי פורמט ייעוץ קצר ב-₪X. היית מעוניינת?" — לא "חייבת" לשאול. אבל אם לא שואלת — לא תדעי.</div></div>
-</div>
-
-
+  <div class="week-nav"><a href="#week1">שבוע 1: לזהות מה שווה כסף</a><a href="#week2">שבוע 2: לבחור פורמט ומחיר</a><a href="#week3">שבוע 3: לגייס לקוח/מנוי ראשון</a><a href="#week4">שבוע 4: לבנות consistency</a></div>
   <div class="divider"></div>
-  <div class="outro">
-    <h3>שעה אחת. שבוע אחד. עכשיו.</h3>
-    <p>לא צריך לפתור הכל היום. קחי את המשימה הראשונה שכתובה כאן ועשי אותה השבוע הקרוב.</p>
-    <p style="margin-bottom:28px">רוצה ללכת עם זה רחוק יותר? סלון היזמיות הוא המקום שנשים כמוך הופכות את "שעה אחת בשבוע" לדבר אמיתי - עם ליווי, קהילה ואחריות הדדית.</p>
-    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון -></a>
+  <div class="week" id="week1">
+  <div class="week-header">
+    <div class="week-num">1</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 1</div>
+      <div class="week-title">לזהות מה שווה כסף</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>הידע שנראה לך "בסיסי" - אינו בסיסי לאף אחד אחר</h3>
+    <p>החוקרות הן הסוג שהכי מחכות לאישור חיצוני. "אני לא בטוחה שאני מספיק מומחית". "אולי אחרות יודעות יותר ממני".</p>
+<p>בואי נשים את זה בצד: <strong>אם את יודעת על נושא X יותר מ-80% מהאנשים שצריכים עזרה בנושא X - את מומחית מספיק לגבות.</strong></p>
+<p>הגדרה מעשית: כמה שעות ייקח לאדם ממוצע ללמוד מה שאת יודעת? אם יותר מ-20 שעות - יש פה ערך שאפשר לתמחר.</p>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>מיפוי הידע שלך - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — רשמי 5 תחומים שאת שולטת בהם. עבודה, לימודים, תחביבים, ניסיון חיים - הכל נחשב.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לכל תחום: כתבי "מה שאלות אנשים שואלים אותי בתחום הזה?". לפחות 3 שאלות לכל תחום.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — בחרי את התחום עם הכי הרבה שאלות חוזרות. זה "שוק" - יש ביקוש.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי 3 משפטים: "אני יודעת הרבה על X. אנשים שואלים אותי לגבי Y. ואני יכולה לעזור למי שצריכה Z."</div></div>
   </div>
 </div>
-<footer>Salon Academy by Moran Horovitz and Ofek Panker | salon-hayazamiot.co.il</footer>
+<div class="week" id="week2">
+  <div class="week-header">
+    <div class="week-num">2</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 2</div>
+      <div class="week-title">לבחור פורמט ומחיר</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>4 דרכים למכור ידע - ואיך לבחור נכון</h3>
+    <p>ידע אפשר למכור ב-4 פורמטים עיקריים. לכל אחד - יתרונות שונים:</p>
+<p><strong>1. ייעוץ שעתי</strong> - הכי מהיר לכסף. שיחת 60 דקות. ₪300-700. מתאים למי שרוצה להתחיל מחר.</p>
+<p><strong>2. ניוזלטר בתשלום</strong> - הכי passive. כתיבה שבועית. ₪29-99 לחודש. מתאים למי שאוהבת לכתוב.</p>
+<p><strong>3. מדריך/קורס</strong> - One time effort, מכירות חוזרות. ₪97-497. מתאים למי שיש לה מערכת ידע מובנית.</p>
+<p><strong>4. White Paper לחברות</strong> - הכי משתלם לשעה. ₪2,000-8,000 לפרויקט. מתאים למי שעבדה בתחום מקצועי.</p>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>לבחור פורמט ולתכנן - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — קראי את 4 הפורמטים. בלי לחשוב יותר מ-3 דקות - איזה מרגיש הכי "זה אני"?</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>15 דקות</strong> — לפורמט שבחרת: גוגלי מה אנשים דומים גובים. "Consultant [תחום] Israel" או "ניוזלטר [תחום]". כתבי 3 מחירים שמצאת.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — קבעי את המחיר שלך. לא הנמוך - לא הגבוה. האמצעי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — כתבי תיאור קצר של מה שאת מציעה: "אני [שם] ומציעה [שירות] ל[מי] שצריכה [מה]. מחיר: [X]"</div></div>
+  </div>
+</div>
+<div class="week" id="week3">
+  <div class="week-header">
+    <div class="week-num">3</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 3</div>
+      <div class="week-title">לגייס לקוח/מנוי ראשון</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>הפוסט שמביא לקוחות - בלי להרגיש "מוכרת"</h3>
+    <p>החוקרות הכי טובות בעולם לא מוכרות - הן <strong>מלמדות</strong>. ומי שלומד מהן - הופך ללקוח.</p>
+<p>הנוסחה לפוסט שמביא לקוחות:</p>
+<ol>
+<li><strong>פתחי בבעיה:</strong> "אחד הדברים שאני רואה שוב ושוב ב[תחום] הוא [בעיה]"</li>
+<li><strong>הצגי תובנה מפתיעה:</strong> "מה שרוב האנשים לא יודעים זה ש[תובנה מעניינת]"</li>
+<li><strong>CTA פשוט:</strong> "אם זה רלוונטי אלייך - יש לי [שירות] ב-₪X. שלחי לי הודעה"</li>
+</ol>
+<div class="callout">לא צריך להתחיל בפוסט מכירה. כתבי פוסט שמלמד - ובסוף שורה אחת על השירות. 80% תוכן, 20% מכירה.</div>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>פוסט ראשון + לקוח ראשון - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>20 דקות</strong> — כתבי פוסט LinkedIn לפי הנוסחה. לא ארוך - 5-8 שורות. שמרי כטיוטה.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>5 דקות</strong> — שלחי לחברה אחת: "כתבתי פוסט. מה לא ברור? מה הכי מעניין?"</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>10 דקות</strong> — תקני לפי הפידבק. פרסמי.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — במקביל: שלחי הודעה אישית ל-3 אנשים שהתחום רלוונטי להם: "פרסמתי משהו שאולי יעניין אותך - [לינק]. ואם יש לך שאלה בתחום - אשמח לשיחה קצרה."</div></div>
+  </div>
+</div>
+<div class="week" id="week4">
+  <div class="week-header">
+    <div class="week-num">4</div>
+    <div class="week-title-wrap">
+      <div class="week-label">שבוע 4</div>
+      <div class="week-title">לבנות consistency</div>
+    </div>
+  </div>
+  <div class="lesson">
+    <div class="lesson-label">השיעור</div>
+    <h3>ממכירה ראשונה לזרם הכנסה</h3>
+    <p>הבעיה של החוקרת: היא מוכרת פעם אחת, ואז שוב צריכה לגייס. אין מערכת שמביאה לקוחות ברציפות.</p>
+<p>המערכת שעובדת לחוקרת:</p>
+<ol>
+<li><strong>פוסט שבועי</strong> על הנושא שלך (לא מכירה - תוכן). זה בונה קהל לאורך זמן.</li>
+<li><strong>CTA קבוע</strong> בסוף כל פוסט: "שאלות? שלחי הודעה."</li>
+<li><strong>Email list</strong> - כל מי שמגיב או שולח הודעה - שאלי אם לשמור אותה לעדכונים. בנה רשימה.</li>
+<li><strong>ניוזלטר חד חודשי</strong> לרשימה - לא מכירה. רק ערך. אחת לחודש.</li>
+</ol>
+  </div>
+  <div class="exercise">
+    <div class="exercise-label">התרגיל השבועי</div>
+    <div class="time-badge">⏱ 45 דקות</div>
+    <h3>לבנות מערכת תוכן קבועה - 45 דקות</h3>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> — הגדירי לעצמך: כמה פוסטים בחודש? (1? 2? 4?) - כמה שאת יכולה לשמור לאורך זמן, לא כמה שאת רוצה בחודש הראשון.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>10 דקות</strong> — הגדירי "נושא הניוזלטר" - נושא אחד שתכתבי עליו כל חודש. לא "כל מה שמעניין" - נושא ספציפי שמייצג אותך.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> — פתחי Notion. צרי קובץ "רעיונות לפוסטים" ו"קוראי ניוזלטר". הכניסי 5 רעיונות לפוסטים הבאים.</div></div><div class="exercise-step"><div class="n">4</div><div class="t"><strong>10 דקות</strong> — שלחי ל-5 אנשים שמתאימים לתחום שלך: "מתחילה לכתוב [ניוזלטר/פוסטים] על [נושא]. מעוניינת לקבל? אם כן - שלחי לי את האימייל שלך."</div></div>
+  </div>
+</div>
+
+  <div class="outro">
+    <h3>עכשיו - לעשות את התרגיל של שבוע 1</h3>
+    <p>לא לקרוא הכל ולהמתין. לעשות את התרגיל של שבוע 1 עוד הערב.</p>
+    <p style="margin-bottom:24px">רוצה ליווי אישי? סלון היזמיות הוא המקום שנשים כמוך הופכות שעה אחת בשבוע לדבר אמיתי.</p>
+    <a href="https://salon-hayazamiot.co.il" class="btn">לפרטים על הסלון</a>
+  </div>
+</div>
+<footer>Salon Academy by Moran Horovitz and Ofek Panker</footer>
 </body>
 </html>
