@@ -4,278 +4,212 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>לא משתעבדת לתוכן | Salon Academy</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../../styles.css" />
   <style>
-    /* ===== Hero ===== */
-    .hero {
-      min-height: 90vh;
+    /* ===== Course Layout ===== */
+    .course-loading {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 80px 20px 60px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 60, 190, 0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(130, 0, 255, 0.1) 0%, transparent 60%);
-      position: relative;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .hero-inner {
-      max-width: 800px;
+    .course-loading p { color: var(--text-muted); }
+
+    .course-wrapper {
+      display: none;
+      min-height: 100vh;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--pink-glow);
-      border: 1px solid var(--border);
-      color: var(--pink-light);
-      padding: 6px 18px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      letter-spacing: 0.3px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.15;
-      color: var(--white);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--pink), #b44fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-desc {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .price-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--pink);
-      margin-bottom: 12px;
-    }
-
-    .price-tag .original {
-      font-size: 1rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-      font-weight: 400;
-    }
-
-    /* ===== Features Grid ===== */
-    .features-grid {
+    .course-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
+      grid-template-columns: 320px 1fr;
+      min-height: calc(100vh - 70px);
     }
 
-    .feature-card {
+    /* Sidebar */
+    .course-sidebar {
       background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: border-color 0.3s, transform 0.3s;
+      border-left: 1px solid var(--border);
+      padding: 0;
+      overflow-y: auto;
+      position: sticky;
+      top: 70px;
+      height: calc(100vh - 70px);
     }
 
-    .feature-card:hover {
-      border-color: var(--pink);
-      transform: translateY(-4px);
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .feature-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ===== About ===== */
-    .about-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
+    .sidebar-header {
+      padding: 24px 20px 16px;
       border-bottom: 1px solid var(--border);
     }
 
-    .about-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-text h2 {
-      font-size: 2rem;
+    .sidebar-header h2 {
+      font-size: 1rem;
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 20px;
+      margin-bottom: 6px;
     }
 
-    .about-text p {
+    .sidebar-header p {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.8;
     }
 
-    .check-list {
-      list-style: none;
-      margin-top: 24px;
-    }
-
-    .check-list li {
-      padding: 8px 0;
+    .sidebar-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      color: var(--text);
-    }
-
-    .check-list li::before {
-      content: '✓';
-      color: var(--pink);
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    /* ===== Pricing ===== */
-    .pricing-card {
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: center;
-      background: var(--bg2);
-      border: 2px solid var(--pink);
-      border-radius: 24px;
-      padding: 48px 40px;
-      box-shadow: 0 0 60px rgba(255, 60, 190, 0.15);
-    }
-
-    .pricing-card .course-name {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
-    .pricing-card .course-desc {
-      color: var(--text-muted);
-      margin-bottom: 32px;
-    }
-
-    .pricing-card .price {
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--pink);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .pricing-card .price-note {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 32px;
-    }
-
-    .pricing-includes {
-      list-style: none;
-      text-align: right;
-      margin-bottom: 32px;
-    }
-
-    .pricing-includes li {
-      padding: 10px 0;
+      gap: 12px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
       color: var(--text);
+    }
+
+    .sidebar-item:hover,
+    .sidebar-item.active {
+      background: var(--pink-glow);
+      color: var(--text);
+    }
+
+    .sidebar-item.active .item-num {
+      background: var(--pink);
+      color: white;
+    }
+
+    .item-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .pricing-includes li:last-child { border-bottom: none; }
-
-    .pricing-includes li::before {
-      content: '✦';
-      color: var(--pink);
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-
-    /* ===== FAQ ===== */
-    .faq-list {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 24px 0;
-    }
-
-    .faq-item h3 {
-      font-size: 1.05rem;
+      justify-content: center;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--white);
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-info .item-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .item-info .item-type {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .type-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .type-video { background: rgba(255, 60, 190, 0.15); color: var(--pink-light); }
+    .type-pdf { background: rgba(130, 0, 255, 0.15); color: #b44fff; }
+
+    /* Main content area */
+    .course-main {
+      padding: 40px 48px;
+      overflow-y: auto;
+    }
+
+    .content-header {
+      margin-bottom: 32px;
+    }
+
+    .content-header .content-type-badge {
       margin-bottom: 12px;
     }
 
-    .faq-item p {
-      color: var(--text-muted);
-      line-height: 1.7;
+    .content-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
     }
 
-    /* ===== Footer ===== */
-    .footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 40px;
+    /* Video embed */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    /* PDF embed */
+    .pdf-container {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .pdf-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 4rem; margin-bottom: 20px; }
+    .empty-state h2 { color: var(--white); margin-bottom: 12px; }
+
+    /* No content */
+    .no-content-admin {
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 24px;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
     }
 
-    .footer a { color: var(--text-muted); }
-    .footer a:hover { color: var(--pink); }
-
-    @media (max-width: 768px) {
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-inner { padding: 60px 20px; }
+    @media (max-width: 900px) {
+      .course-layout { grid-template-columns: 1fr; }
+      .course-sidebar {
+        position: static;
+        height: auto;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .course-main { padding: 24px 20px; }
     }
   </style>
 </head>
@@ -283,153 +217,227 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <div class="navbar-logo"> Salon Academy</div>
-    <!-- <img src="logo-white.png" alt="Salon Academy" style="width:auto;height:50px;object-fit:cover;"> -->
-
+  <a href="../../" class="navbar-logo"> Salon Academy</a>
   <ul class="navbar-links">
-    <li><a href="#pricing" class="btn btn-primary" style="padding:10px 24px;font-size:0.95rem;">הצטרפי עכשיו</a></li>
-    <li><a href="login.html">כניסה</a></li>
+    <li id="userEmail" style="color:var(--text-muted);font-size:0.9rem;"></li>
+    <li><a href="#" id="logoutBtn" style="color:var(--text-muted);">יציאה</a></li>
   </ul>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge"> קורס מקוון | גישה מיידית</div>
-    <h1>
-      <span>לא משתעבדת</span><br />לתוכן
-    </h1>
-    <p class="hero-desc">
-      הקורס שישחרר אותך מהמרדף הבלתי נגמר אחרי תוכן ויעזור לך לבנות נוכחות דיגיטלית קלילה שעובדת בשבילך.
-    </p>
-    <div class="hero-cta-group">
-      <a href="#pricing" class="btn btn-primary btn-lg">רוצה להצטרף ← 197 ₪</a>
-      <a href="#about" class="btn btn-outline btn-lg">ספרי לי עוד</a>
-    </div>
-  </div>
-</section>
+<!-- Loading state -->
+<div class="course-loading" id="loadingState">
+  <span class="spinner" style="width:36px;height:36px;border-width:3px;"></span>
+  <p>בודקת הרשאות...</p>
+</div>
 
-<!-- Features -->
-<section class="section" id="about">
-  <h2 class="section-title">מה תקבלי בקורס?</h2>
-  <p class="section-subtitle">כל מה שצריך כדי לשחרר את עצמך מהתלות בתוכן ולבנות עסק שמתנהל מסדר</p>
-  <div class="features-grid">
-    <div class="feature-card">
-      <h3>הדגמות ברורות</h3>
-      <p>הדגמות מוקלטות שיוליכו אותך צעד צעד שתוכלי לצפות בהן בקצב שלך, בכל זמן ומכל מקום.</p>
-    </div>
-    <div class="feature-card">
-      <h3>פרומפט עזר</h3>
-      <p>פרומפט מדוייק לעבודה עם gpt/gemini שיעשה בשבילך את רוב העבודה.</p>
-    </div>
-    <div class="feature-card">
-      <h3>גישה מיידית ולצמיתות</h3>
-      <p>ברגע שנרשמת - הכל פתוח בפניך, לתמיד. בלי תפוגה ובלי מנוי.</p>
-    </div>
-    <div class="feature-card">
-      <h3>שיטה מעשית ומוכחת</h3>
-      <p>אסטרטגיה שעובדת לבעלות עסקים שאין להן זמן או רצון להשתעד ליצירת תוכן יומיומית.</p>
-    </div>
-    <div class="feature-card">
-      <h3>קהילה תומכת</h3>
-      <p>תהיי חלק מקהילת יזמיות שמבינות אותך ויכולות לתמוך בך.</p>
-    </div>
-    <div class="feature-card">
-      <h3>עדכונים שוטפים</h3>
-      <p>כחלק מהקהילה תקבלי עדכונים על תכנים חדשים ומפגשים מעניינים.</p>
-    </div>
-  </div>
-</section>
-
-<!-- About -->
-<div class="about-section">
-  <div class="about-inner">
-    <div class="about-text">
-      <h2>את יודעת שאת חייבת לפרסם,<br/>אבל זה מרגיש כמו עוד מטלה?</h2>
-      <p>
-        אם את מרגישה שאת כל הזמן על הגלגל - מייצרת תוכן, מעלה, מחפשת רעיונות, שוב ושוב ושוב - הגעת למקום הנכון.
-      </p>
-      <p>
-        הקורס "לא משתעבדת לתוכן" ייתן לך שיטה ברורה לשחרר את עצמך מהלחץ ולבנות נוכחות שעובדת - בלי שתרגישי שאת עובדת בשבילה 24/7.
-      </p>
-      <ul class="check-list">
-        <li>תפסיקי להרגיש שחיקה מתוכן</li>
-        <li>תלמדי לעבוד חכם, לא קשה</li>
-        <li>תבני אסטרטגיה שמתאימה לחיים שלך</li>
-        <li>תתחילי לראות תוצאות אמיתיות</li>
-        <li>תחזרי להנאה בניהול העסק</li>
-      </ul>
-    </div>
-    <!-- <div style="text-align:center;">
-      <div style="overflow:hidden;width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg, var(--pink-glow), rgba(130,0,255,0.15));border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:8rem;">
-        <img src="uss.png" alt="Salon Academy" style="border-radius:50%;width:200px;height:200px;object-fit:cover;background-position: top;">
+<!-- Course content (hidden until auth check passes) -->
+<div class="course-wrapper" id="courseWrapper">
+  <div class="course-layout">
+    <!-- Sidebar -->
+    <aside class="course-sidebar">
+      <div class="sidebar-header">
+        <h2>לא משתעבדת לתוכן</h2>
+        <p id="contentCount">טוענת תכנים...</p>
       </div>
-    </div> -->
-    <img src="us.png" alt="Salon Academy" style="width:80%;height:80%;object-fit:cover;">
+      <div id="sidebarItems">
+        <!-- Populated by JS -->
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="course-main">
+      <div id="contentArea">
+        <div class="empty-state">
+          <div class="icon">👆</div>
+          <h2>בחרי שיעור להתחלה</h2>
+          <p>בחרי שיעור מהרשימה משמאל כדי להתחיל ללמוד</p>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
 
-<!-- Pricing -->
-<section class="section" id="pricing">
-  <h2 class="section-title">הצטרפי עכשיו</h2>
-  <p class="section-subtitle">השקעה אחת שתשנה את הדרך שאת מנהלת את התוכן שלך</p>
-  <div class="pricing-card">
-    <div class="course-name">לא משתעבדת לתוכן</div>
-    <div class="course-desc">קורס דיגיטלי מלא עם גישה לצמיתות</div>
-    <div class="price">197 ₪</div>
-    <div class="price-note">תשלום חד-פעמי • ללא מנוי • גישה מיידית</div>
-    <ul class="pricing-includes">
-      <li> PDF הכולל פרומפטים והדגמות</li>
-      <li>גישה לצמיתות + עדכונים עתידיים</li>
-      <li>קהילת תמיכה</li>
-    </ul>
-    <a href="register.html?course=lo-mishtabedet-latochan" class="btn btn-primary btn-lg" style="width:100%;display:block;">
-      הצטרפי עכשיו ← 197 ₪
-    </a>
-    <p style="margin-top:16px;font-size:0.85rem;color:var(--text-muted);">
-       תשלום מאובטח • גישה מיידית לאחר הרישום
-    </p>
-  </div>
-</section>
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../supabase-config.js"></script>
+<script>
+  let currentContent = null;
+  let allContent = [];
 
-<!-- FAQ -->
-<section class="section" style="padding-top:0;">
-  <h2 class="section-title">שאלות נפוצות</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <h3>כמה זמן יש לי גישה לקורס?</h3>
-      <p>גישה לצמיתות! ברגע שנרשמת, הקורס שלך לתמיד - כולל כל העדכונים העתידיים.</p>
-    </div>
-    <div class="faq-item">
-      <h3>האם צריך ניסיון קודם?</h3>
-      <p>לא בכלל. הקורס מתאים לכל מי שמנהלת עסק ורוצה לשפר את הנוכחות הדיגיטלית שלה, בלי קשר לרמת הניסיון.</p>
-    </div>
-    <div class="faq-item">
-      <h3>מתי יתחיל הקורס?</h3>
-      <p>מיד! הגישה מיידית - ברגע שמשלמים ונרשמים תוכלי להתחיל ללמוד.</p>
-    </div>
-    <div class="faq-item">
-      <h3>האם יש מדיניות החזר כספי?</h3>
-      <p>כן. אם תוך 7 ימים מהרכישה הרגשת שהקורס לא מתאים לך - נחזיר לך את הכסף במלואו.</p>
-    </div>
-    <div class="faq-item">
-      <h3>באיזה פורמט הלמידה?</h3>
-      <p>הקורס כולל הדגמות וידאו שתוכלי לצפות בהם בכל זמן, בנוסף לחומרי PDF עם תרגילים </p>
-    </div>
-  </div>
-</section>
+  async function init() {
+    // 1. Check auth
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      window.location.href = '/login.html?redirect=/courses/reels/';
+      return;
+    }
 
-<!-- Footer -->
-<footer class="footer">
-      <img src="logo-white.png" alt="Salon Academy" style="width:auto;height:50px;object-fit:cover;">
+    const user = session.user;
 
-  <p style="margin-bottom:8px;font-weight:700;color:var(--text);"> Salon Academy</p>
-  <p>
-    <a href="login.html">כניסה</a> &nbsp;•&nbsp;
-    <a href="register.html">הרשמה</a>
-  </p>
-  <p style="margin-top:16px;">© 2025 Salon Academy </p>
-</footer>
+    // 2. Check enrollment
+    const { data: enrollment, error: enrollError } = await sb
+      .from('enrollments')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('course_id', COURSE_ID)
+      .maybeSingle();
+
+    if (!enrollment) {
+      // Not enrolled - redirect to purchase
+      window.location.href = '/';
+      return;
+    }
+
+    // 3. Show course
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('courseWrapper').style.display = 'block';
+    document.getElementById('userEmail').textContent = user.email;
+
+    // 4. Load content
+    await loadContent();
+  }
+
+  async function loadContent() {
+    const { data: items, error } = await sb
+      .from('course_content')
+      .select('*')
+      .eq('course_id', COURSE_ID)
+      .order('order_num', { ascending: true });
+
+    allContent = items || [];
+
+    if (error) {
+      console.error('Content load error:', error);
+    }
+
+    renderSidebar(allContent);
+
+    if (allContent.length > 0) {
+      renderContent(allContent[0]);
+    } else {
+      document.getElementById('contentCount').textContent = 'אין תכנים עדיין';
+      document.getElementById('contentArea').innerHTML = `
+        <div class="empty-state">
+          <h2>התכנים בדרך!</h2>
+          <p>תכני הקורס יתווספו בקרוב. בדקי שוב מאוחר יותר.</p>
+        </div>`;
+    }
+  }
+
+  function renderSidebar(items) {
+    const container = document.getElementById('sidebarItems');
+    const count = document.getElementById('contentCount');
+
+    count.textContent = `${items.length} שיעורים`;
+
+    if (items.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+
+    container.innerHTML = items.map((item, i) => `
+      <a class="sidebar-item" data-id="${item.id}" onclick="renderContent(allContent[${i}]); setSidebarActive(this); return false;" href="#">
+        <div class="item-num">${i + 1}</div>
+        <div class="item-info">
+          <div class="item-title">${escHtml(item.title)}</div>
+          <div class="item-type">
+            <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}">
+              ${item.type === 'video' ? ' וידאו' : ' PDF'}
+            </span>
+          </div>
+        </div>
+      </a>
+    `).join('');
+
+    // Mark first as active
+    const first = container.querySelector('.sidebar-item');
+    if (first) first.classList.add('active');
+  }
+
+  function setSidebarActive(el) {
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function renderContent(item) {
+    currentContent = item;
+    const area = document.getElementById('contentArea');
+
+    let embedHtml = '';
+
+    if (item.type === 'video') {
+      const embedUrl = getVideoEmbedUrl(item.url);
+      if (embedUrl) {
+        embedHtml = `
+          <div class="video-container">
+            <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="${escHtml(item.title)}"></iframe>
+          </div>`;
+      } else {
+        embedHtml = `<div class="no-content-admin">לא ניתן לטעון את הוידאו. <a href="${escHtml(item.url)}" target="_blank">פתח קישור</a></div>`;
+      }
+    } else if (item.type === 'pdf') {
+      embedHtml = `
+        <div class="pdf-container">
+          <iframe src="${escHtml(item.url)}" title="${escHtml(item.title)}"></iframe>
+        </div>
+        <a href="${escHtml(item.url)}" target="_blank" class="btn btn-outline" style="margin-bottom:16px;">
+           הורד PDF
+        </a>`;
+    } else {
+      embedHtml = `<div class="no-content-admin">סוג תוכן לא מוכר: ${escHtml(item.type)}</div>`;
+    }
+
+    area.innerHTML = `
+      <div class="content-header">
+        <div class="content-type-badge">
+          <span class="type-badge type-${item.type === 'video' ? 'video' : 'pdf'}" style="padding:4px 12px;font-size:0.8rem;">
+            ${item.type === 'video' ? '🎬 שיעור וידאו' : '📄 חומר עזר PDF'}
+          </span>
+        </div>
+        <h1>${escHtml(item.title)}</h1>
+      </div>
+      ${embedHtml}
+    `;
+  }
+
+  function getVideoEmbedUrl(url) {
+    if (!url) return null;
+
+    // YouTube
+    const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (ytMatch) {
+      return `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?rel=0&modestbranding=1`;
+    }
+
+    // Vimeo
+    const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vimeoMatch) {
+      return `https://player.vimeo.com/video/${vimeoMatch[1]}?dnt=1`;
+    }
+
+    // Direct embed URLs
+    if (url.includes('/embed/') || url.includes('player.vimeo')) {
+      return url;
+    }
+
+    return null;
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Logout
+  document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    await sb.auth.signOut();
+    window.location.href = '/';
+  });
+
+  // Init
+  init();
+</script>
 
 </body>
 </html>
