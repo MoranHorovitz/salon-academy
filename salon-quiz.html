@@ -778,16 +778,23 @@ async function registerAndProceed() {
   const type = window._popupType || 'f';
   const typeName = window._quizResultName || '';
 
-  const { data, error } = await sb.auth.signUp({
-    email, password: pass,
-    options: { data: { full_name: name, personality_type: type, personality_name: typeName, quiz_completed_at: new Date().toISOString() } }
+  // Supabase Auth REST signup
+  const signupRes = await fetch(SUPA_URL + '/auth/v1/signup', {
+    method: 'POST',
+    headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email, password: pass,
+      data: { full_name: name, personality_type: type, personality_name: typeName, quiz_completed_at: new Date().toISOString() }
+    })
   });
+  const signupData = await signupRes.json();
+  const error = signupData.error || (!signupData.id && !signupData.user ? { message: signupData.msg || 'שגיאה בהרשמה' } : null);
 
   if (error) {
-    if (error.message.includes('already registered') || error.message.includes('already been registered')) {
+    if (error.message && (error.message.includes('already registered') || error.message.includes('already been registered') || error.message.includes('User already registered'))) {
       errEl.innerHTML = 'מייל זה כבר רשום. <a href="#" onclick="switchToLogin()" style="color:#c6ff00">כניסה</a>';
     } else {
-      errEl.textContent = error.message;
+      errEl.textContent = error.message || 'שגיאה בהרשמה';
     }
     errEl.style.display = 'block';
     btn.textContent = 'צרי חשבון וקבלי את המדריך ←';
@@ -816,17 +823,23 @@ async function loginAndProceed() {
   const errEl = document.getElementById('login-error');
   errEl.style.display = 'none';
 
-  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+  // Supabase Auth REST login
+  const loginRes = await fetch(SUPA_URL + '/auth/v1/token?grant_type=password', {
+    method: 'POST',
+    headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password: pass })
+  });
+  const loginData = await loginRes.json();
 
-  if (error) {
+  if (loginData.error || !loginData.access_token) {
     errEl.textContent = 'אימייל או סיסמה שגויים';
     errEl.style.display = 'block';
     return;
   }
 
-  // Get personality type
-  const type = data.user?.user_metadata?.personality_type || window._popupType || 'f';
-  const typeName = data.user?.user_metadata?.personality_name || window._quizResultName || '';
+  const userMeta = loginData.user?.user_metadata || {};
+  const type = userMeta.personality_type || window._popupType || 'f';
+  const typeName = userMeta.personality_name || window._quizResultName || '';
   window.location.href = '/sales/sales-' + type + '.html?name=' + encodeURIComponent(typeName);
 }
 
