@@ -310,6 +310,10 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 .card-purple .card-price { color: #b44fff; }
 .card-purple .card-btn { background: rgba(123,47,255,0.12); border-color: rgba(123,47,255,0.35); color: #b44fff; }
 .card-purple .card-btn:hover { background: #7b2fff; color: #fff; }
+
+.card-orange-price { color: #ff8c00; }
+.card-orange .card-btn, .card-orange-btn { background: rgba(255,140,0,0.12); border-color: rgba(255,140,0,0.3); color: #ff8c00; }
+.card-orange .card-btn:hover, .card-orange-btn:hover { background: #ff8c00; color: #000; }
 </style>
 </head>
 <body>
@@ -406,22 +410,24 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
       </div>
     </a>
 
-    <!-- CARD 4: COMING SOON placeholder -->
-    <div class="product-card" style="opacity:0.45;cursor:default;pointer-events:none;">
+    <!-- CARD 4: מדריך רילז ₪10 -->
+    <a href="https://www.salon-hayazamiot.co.il/landing-pages/reels" target="_blank" class="product-card card-orange">
       <div class="card-thumb">
-        <div class="card-thumb-placeholder grad-4">
-          <div class="thumb-title" style="color:rgba(255,255,255,0.3)">בקרוב</div>
+        <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#1a0e00 0%,#3d2000 50%,#7a3800 100%);">
+          <div class="thumb-title">מדריך יצירת<br>תוכן לרילז</div>
+          <div class="thumb-by">BY MORAN HOROVITZ</div>
         </div>
-        <div class="card-badge" style="background:rgba(255,255,255,0.1);color:var(--muted)">בקרוב</div>
+        <div class="card-badge" style="background:#ff8c00;color:#000;">מדריך</div>
       </div>
       <div class="card-body">
-        <div class="card-name" style="color:var(--muted)">מדריך חדש  -  בקרוב</div>
-        <div class="card-author">מורן הורוביץ ואופק פנקר</div>
+        <div class="card-name">מדריך יצירת תוכן לרילז</div>
+        <div class="card-author">מורן הורוביץ</div>
         <div class="card-footer">
-          <div class="card-price" style="color:var(--muted)"> - </div>
+          <div class="card-price" style="color:#ff8c00;">₪10 <span>חד פעמי</span></div>
+          <button class="card-btn" style="background:rgba(255,140,0,0.12);border-color:rgba(255,140,0,0.3);color:#ff8c00;" onmouseover="this.style.background='#ff8c00';this.style.color='#000'" onmouseout="this.style.background='rgba(255,140,0,0.12)';this.style.color='#ff8c00'">לרכישה ←</button>
         </div>
       </div>
-    </div>
+    </a>
 
   </div>
 </div>
