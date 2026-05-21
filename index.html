@@ -297,6 +297,19 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   .products-section { padding: 40px 16px 60px; }
   .hero { aspect-ratio: 4/3; max-height: 60vh; }
 }
+
+/* Card color variants */
+.card-pink .card-price { color: #ff3cbe; }
+.card-pink .card-btn { background: rgba(255,60,190,0.12); border-color: rgba(255,60,190,0.3); color: #ff3cbe; }
+.card-pink .card-btn:hover { background: #ff3cbe; color: #000; }
+
+.card-green .card-price { color: #c6ff00; }
+.card-green .card-btn { background: rgba(198,255,0,0.1); border-color: rgba(198,255,0,0.3); color: #c6ff00; }
+.card-green .card-btn:hover { background: #c6ff00; color: #000; }
+
+.card-purple .card-price { color: #b44fff; }
+.card-purple .card-btn { background: rgba(123,47,255,0.12); border-color: rgba(123,47,255,0.35); color: #b44fff; }
+.card-purple .card-btn:hover { background: #7b2fff; color: #fff; }
 </style>
 </head>
 <body>
@@ -337,7 +350,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   <div class="products-grid">
 
     <!-- CARD 1: לא משתעבדת לתוכן -->
-    <a href="/courses/reels/about.html" class="product-card">
+    <a href="/courses/reels/about.html" class="product-card card-pink">
       <div class="card-thumb">
         <div class="card-thumb-placeholder grad-3">
           <div class="thumb-title">לא משתעבדת<br>לתוכן</div>
@@ -356,7 +369,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 2: שעה אחת בשבוע -->
-    <a href="#" onclick="goToGuide(event)" class="product-card">
+    <a href="#" onclick="goToGuide(event)" class="product-card card-green">
       <div class="card-thumb">
         <div class="card-thumb-placeholder grad-2">
           <div class="thumb-title">שעה אחת<br>בשבוע</div>
@@ -375,7 +388,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 3: סלון היזמיות (ה-flagship) -->
-    <a href="https://salon-hayazamiot.co.il" class="product-card">
+    <a href="https://salon-hayazamiot.co.il" class="product-card card-purple">
       <div class="card-thumb">
         <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#1a0d2e 0%,#3d1a4e 50%,#7b2fff 100%);">
           <div class="thumb-title">סלון<br>היזמיות</div>
