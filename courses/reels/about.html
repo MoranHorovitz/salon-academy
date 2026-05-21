@@ -1,198 +1,436 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>לא משתעבדת לתוכן | Salon Academy</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@700;900&display=swap');
-:root{--bg:#080808;--bg2:#111;--bg3:#1a1a1a;--lime:#c6ff00;--border:rgba(255,255,255,0.07);--text:#f0f0f0;--muted:#666;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לא משתעבדת לתוכן | Salon Academy</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 60px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 60, 190, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(130, 0, 255, 0.1) 0%, transparent 60%);
+      position: relative;
+    }
 
-/* NAV */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(8,8,8,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);}
-.nav-logo{font-family:'Inter',sans-serif;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;text-decoration:none;}
-.nav-logo small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted);font-weight:400;}
-.nav-actions{display:flex;gap:10px;}
-.nav-btn{font-family:'Heebo',sans-serif;font-size:13px;font-weight:700;padding:9px 18px;border-radius:10px;text-decoration:none;cursor:pointer;border:1.5px solid rgba(255,255,255,0.12);background:transparent;color:var(--muted);transition:all 0.2s;}
-.nav-btn:hover{border-color:rgba(255,255,255,0.3);color:#fff;}
-.nav-btn.primary{background:var(--lime);color:#000;border-color:var(--lime);font-weight:800;}
-.nav-btn.primary:hover{background:#d4ff33;}
+    .hero-inner {
+      max-width: 800px;
+    }
 
-/* HERO */
-.hero{margin-top:52px;padding:72px 24px 60px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(198,255,0,0.06) 0%,transparent 70%);pointer-events:none;}
-.hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
-.hero h1{font-size:clamp(32px,6vw,58px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;}
-.hero h1 em{font-style:normal;color:var(--lime);}
-.hero-sub{font-size:clamp(15px,2.5vw,19px);color:#aaa;max-width:520px;margin:0 auto 32px;line-height:1.7;}
-.hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--muted);}
-.hero-meta span strong{color:var(--text);}
+    .hero-badge {
+      display: inline-block;
+      background: var(--pink-glow);
+      border: 1px solid var(--border);
+      color: var(--pink-light);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
 
-/* LAYOUT */
-.layout{display:grid;grid-template-columns:1fr 340px;gap:48px;max-width:1100px;margin:0 auto;padding:56px 32px 80px;align-items:start;}
-@media(max-width:900px){.layout{grid-template-columns:1fr;} .sticky-card{position:static!important;}}
-@media(max-width:600px){.layout{padding:36px 16px 60px;}}
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
 
-/* CONTENT */
-.section{margin-bottom:48px;}
-.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:16px;}
-.section h2{font-size:22px;font-weight:800;color:#fff;margin-bottom:14px;}
-.section p{font-size:15px;color:#bbb;line-height:1.85;margin-bottom:14px;}
-.section p strong{color:var(--text);}
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--pink), #b44fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-/* WHAT YOU GET */
-.get-list{list-style:none;}
-.get-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.get-item:last-child{border-bottom:none;}
-.get-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center;}
-.get-text h4{font-size:14px;font-weight:800;color:#fff;margin-bottom:3px;}
-.get-text p{font-size:13px;color:var(--muted);margin:0;line-height:1.5;}
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-/* TESTIMONIAL */
-.testimonial{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;}
-.testimonial-text{font-size:15px;color:#ccc;line-height:1.75;margin-bottom:14px;font-style:italic;}
-.testimonial-author{font-size:12px;color:var(--muted);font-weight:600;}
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-/* STICKY CARD */
-.sticky-card{position:sticky;top:72px;}
-.purchase-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
-.card-preview{aspect-ratio:16/9;background:linear-gradient(135deg,#0d1117,#1a1a2e,#2d1b69);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
-.card-preview-title{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff;text-align:center;padding:0 16px;line-height:1.2;}
-.card-preview-by{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);}
-.card-content{padding:24px;}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
-.price-main{font-size:40px;font-weight:900;color:var(--lime);line-height:1;}
-.price-was{font-size:16px;color:var(--muted);text-decoration:line-through;}
-.price-note{font-size:12px;color:var(--muted);margin-bottom:20px;}
-.btn-buy{display:block;background:var(--lime);color:#000;font-family:'Heebo',sans-serif;font-size:17px;font-weight:800;padding:16px;border-radius:12px;text-decoration:none;text-align:center;transition:all 0.2s;margin-bottom:10px;border:none;cursor:pointer;width:100%;}
-.btn-buy:hover{background:#d4ff33;transform:translateY(-1px);}
-.btn-login{display:block;background:transparent;color:var(--text);font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;padding:12px;border-radius:12px;text-decoration:none;text-align:center;border:1.5px solid var(--border);transition:all 0.2s;width:100%;cursor:pointer;}
-.btn-login:hover{border-color:rgba(255,255,255,0.25);color:#fff;}
-.card-includes{margin-top:20px;border-top:1px solid var(--border);padding-top:18px;}
-.card-includes h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.include-item{display:flex;align-items:center;gap:10px;font-size:13px;color:#bbb;margin-bottom:8px;}
-.include-item::before{content:"✓";color:var(--lime);font-weight:900;font-size:12px;flex-shrink:0;}
-.guarantee{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5;}
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
 
-/* FOOTER */
-footer{text-align:center;padding:28px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
-</style>
+    .price-tag .original {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      font-weight: 400;
+    }
+
+    /* ===== Features Grid ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== About ===== */
+    .about-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .check-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .check-list li {
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text);
+    }
+
+    .check-list li::before {
+      content: '✓';
+      color: var(--pink);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===== Pricing ===== */
+    .pricing-card {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--bg2);
+      border: 2px solid var(--pink);
+      border-radius: 24px;
+      padding: 48px 40px;
+      box-shadow: 0 0 60px rgba(255, 60, 190, 0.15);
+    }
+
+    .pricing-card .course-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card .course-desc {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .pricing-card .price {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--pink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .pricing-card .price-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      text-align: right;
+      margin-bottom: 32px;
+    }
+
+    .pricing-includes li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-includes li:last-child { border-bottom: none; }
+
+    .pricing-includes li::before {
+      content: '✦';
+      color: var(--pink);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .faq-item h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .faq-item p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a { color: var(--text-muted); }
+    .footer a:hover { color: var(--pink); }
+
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-inner { padding: 60px 20px; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
-  <a href="/" class="nav-logo">Salon Academy <small>by Moran Horovitz</small></a>
-  <div class="nav-actions">
-    <a href="/login.html" class="nav-btn" id="nav-login-btn">כניסה</a>
-    <a href="/register.html" class="nav-btn primary" id="nav-register-btn">הרשמה</a>
-  </div>
+    <div class="navbar-logo"> Salon Academy</div>
+    <!-- <img src="logo-white.png" alt="Salon Academy" style="width:auto;height:50px;object-fit:cover;"> -->
+
+  <ul class="navbar-links">
+    <li><a href="#pricing" class="btn btn-primary" style="padding:10px 24px;font-size:0.95rem;">הצטרפי עכשיו</a></li>
+    <li><a href="/login.html">כניסה</a></li>
+  </ul>
 </nav>
 
-<div class="hero">
-  <div class="hero-badge">קורס דיגיטלי</div>
-  <h1>לא <em>משתעבדת</em><br>לתוכן</h1>
-  <p class="hero-sub">השיטה לייצר תוכן שעובד בלי לבזבז שעות כל יום  -  ובלי לאבד את עצמך בדרך.</p>
-  <div class="hero-meta">
-    <span><strong>68</strong> שיעורים</span>
-    <span><strong>∞</strong> גישה לצמיתות</span>
-    <span><strong>מורן הורוביץ ואופק פנקר</strong></span>
-  </div>
-</div>
-
-<div class="layout">
-  <!-- LEFT: CONTENT -->
-  <div>
-
-    <div class="section">
-      <div class="section-label">למי זה מיועד</div>
-      <h2>אם את מרגישה שהתוכן שולט בך  -  הגעת למקום הנכון</h2>
-      <p>יש נשים שמרגישות שצריך לייצר תוכן כל יום, להיות "נוכחות" כל הזמן, ולהמציא את עצמן מחדש בכל פוסט. זה מתיש.</p>
-      <p><strong>הקורס הזה מלמד שיטה אחרת לגמרי</strong>  -  ייצור תוכן שמחזיק לאורך זמן, מביא לידים אמיתיים, ולא מצריך ממך להיות שבויה בפיד.</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"> קורס מקוון | גישה מיידית</div>
+    <h1>
+      <span>לא משתעבדת</span><br />לתוכן
+    </h1>
+    <p class="hero-desc">
+      הקורס שישחרר אותך מהמרדף הבלתי נגמר אחרי תוכן ויעזור לך לבנות נוכחות דיגיטלית קלילה שעובדת בשבילך.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#pricing" class="btn btn-primary btn-lg">רוצה להצטרף ← 197 ₪</a>
+      <a href="#about" class="btn btn-outline btn-lg">ספרי לי עוד</a>
     </div>
+  </div>
+</section>
 
-    <div class="section">
-      <div class="section-label">מה תקבלי</div>
-      <h2>68 שיעורים  -  מהתחלה עד פרסום</h2>
-      <ul class="get-list">
-        <li class="get-item"><div class="get-icon">🎬</div><div class="get-text"><h4>שלב הצילום</h4><p>איך להכין, לצלם ולצאת טוב גם בלי ציוד יקר</p></div></li>
-        <li class="get-item"><div class="get-icon">✍️</div><div class="get-text"><h4>בניית תסריט</h4><p>מבנה שעובד  -  איך לכתוב תוכן שאנשים צופים עד הסוף</p></div></li>
-        <li class="get-item"><div class="get-icon">✂️</div><div class="get-text"><h4>עריכה ופרסום</h4><p>כלים, טיפים, ואיך לקצר את זמן הייצור בחצי</p></div></li>
-        <li class="get-item"><div class="get-icon">📦</div><div class="get-text"><h4>בנק תוכן</h4><p>איך לבנות מלאי של רעיונות שמחזיק חודשים קדימה</p></div></li>
-        <li class="get-item"><div class="get-icon">♾️</div><div class="get-text"><h4>גישה לצמיתות</h4><p>כולל כל העדכונים העתידיים ללא תוספת תשלום</p></div></li>
+<!-- Features -->
+<section class="section" id="about">
+  <h2 class="section-title">מה תקבלי בקורס?</h2>
+  <p class="section-subtitle">כל מה שצריך כדי לשחרר את עצמך מהתלות בתוכן ולבנות עסק שמתנהל מסדר</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>שיעורי וידאו מעמיקים</h3>
+      <p>שיעורים מוקלטים שתוכלי לצפות בהם בקצב שלך, בכל זמן ומכל מקום.</p>
+    </div>
+    <div class="feature-card">
+      <h3>חומרי עזר להורדה</h3>
+      <p>PDF עם סיכומים, תרגילים וכלים מעשיים שתוכלי ליישם מיידית.</p>
+    </div>
+    <div class="feature-card">
+      <h3>גישה מיידית ולצמיתות</h3>
+      <p>ברגע שנרשמת - הכל פתוח בפניך, לתמיד. בלי תפוגה ובלי מנוי.</p>
+    </div>
+    <div class="feature-card">
+      <h3>שיטה מעשית ומוכחת</h3>
+      <p>אסטרטגיה שעובדת לבעלות עסקים שאין להן זמן לרוץ אחרי טרנדים.</p>
+    </div>
+    <div class="feature-card">
+      <h3>קהילה תומכת</h3>
+      <p>תהיי חלק מקהילת בעלות עסקים שמבינות אותך ויכולות לתמוך בך.</p>
+    </div>
+    <div class="feature-card">
+      <h3>עדכונים שוטפים</h3>
+      <p>הקורס מתעדכן בתכנים חדשים - הגישה שלך כוללת את כל העדכונים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<div class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>את יודעת שאת חייבת לפרסם,<br/>אבל זה מרגיש כמו עוד מטלה?</h2>
+      <p>
+        אם את מרגישה שאת כל הזמן על הגלגל - מייצרת תוכן, מעלה, מחפשת רעיונות, שוב ושוב ושוב - הגעת למקום הנכון.
+      </p>
+      <p>
+        הקורס "לא משתעבדת לתוכן" ייתן לך שיטה ברורה לשחרר את עצמך מהלחץ ולבנות נוכחות שעובדת - בלי שתרגישי שאת עובדת בשבילה 24/7.
+      </p>
+      <ul class="check-list">
+        <li>תפסיקי להרגיש שחיקה מתוכן</li>
+        <li>תלמדי לעבוד חכם, לא קשה</li>
+        <li>תבני אסטרטגיה שמתאימה לחיים שלך</li>
+        <li>תתחילי לראות תוצאות אמיתיות</li>
+        <li>תחזרי להנאה בניהול העסק</li>
       </ul>
     </div>
-
-    <div class="section">
-      <div class="section-label">מה אומרות</div>
-      <h2>תוצאות אמיתיות</h2>
-      <div class="testimonial">
-        <div class="testimonial-text">"לפני הקורס הייתי מבזבזת 3 שעות על פוסט אחד ומתוסכלת שזה לא יוצא טוב. עכשיו אני מייצרת שבוע של תוכן בשעה וחצי."</div>
-        <div class="testimonial-author"> -  בוגרת סלון היזמיות, מחזור א׳</div>
+    <!-- <div style="text-align:center;">
+      <div style="overflow:hidden;width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg, var(--pink-glow), rgba(130,0,255,0.15));border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:8rem;">
+        <img src="uss.png" alt="Salon Academy" style="border-radius:50%;width:200px;height:200px;object-fit:cover;background-position: top;">
       </div>
-      <div class="testimonial">
-        <div class="testimonial-text">"הדבר הכי שימושי היה ה'בנק רעיונות'. לא חשבתי שזה אפשרי שלעולם לא אשב בלי רעיון מה לפרסם."</div>
-        <div class="testimonial-author"> -  אלמה, יזמית ומאמנת</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- RIGHT: PURCHASE CARD -->
-  <div class="sticky-card">
-    <div class="purchase-card">
-      <div class="card-preview">
-        <div class="card-preview-title">לא משתעבדת<br>לתוכן</div>
-        <div class="card-preview-by">SALON ACADEMY</div>
-      </div>
-      <div class="card-content">
-        <div class="price-row">
-          <div class="price-main">₪297</div>
-          <div class="price-was">₪497</div>
-        </div>
-        <div class="price-note">תשלום חד פעמי • גישה מיידית • לצמיתות</div>
-
-        <!-- Logged out: show buy + login -->
-        <div id="card-logged-out">
-          <a href="https://secure.cardcom.solutions/EA/EA5/fbVckAhX8UGsi46x0TO9Q/PaymentSP" class="btn-buy">רכישה עכשיו ←</a>
-          <a href="/login.html?redirect=/courses/reels/" class="btn-login">כבר רכשתי  -  כניסה</a>
-        </div>
-
-        <!-- Logged in: show access button -->
-        <div id="card-logged-in" style="display:none">
-          <a href="/courses/reels/" class="btn-buy">כניסה לקורס ←</a>
-          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">יש לך גישה פעילה ✓</p>
-        </div>
-
-        <div class="card-includes">
-          <h4>כלול בקורס</h4>
-          <div class="include-item">68 שיעורי וידאו</div>
-          <div class="include-item">חומרי עזר להורדה</div>
-          <div class="include-item">גישה לצמיתות + עדכונים</div>
-          <div class="include-item">צפייה מכל מכשיר</div>
-        </div>
-        <div class="guarantee">שאלות? <a href="mailto:info@salon-hayazamiot.co.il" style="color:var(--lime)">info@salon-hayazamiot.co.il</a></div>
-      </div>
-    </div>
+    </div> -->
+    <img src="us.png" alt="Salon Academy" style="width:80%;height:80%;object-fit:cover;">
   </div>
 </div>
 
-<footer>Salon Academy • <a href="/" style="color:var(--muted)">חזרה לקטלוג</a> • <a href="mailto:info@salon-hayazamiot.co.il" style="color:var(--muted)">צור קשר</a></footer>
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <h2 class="section-title">הצטרפי עכשיו</h2>
+  <p class="section-subtitle">השקעה אחת שתשנה את הדרך שאת מנהלת את התוכן שלך</p>
+  <div class="pricing-card">
+    <div class="course-name">לא משתעבדת לתוכן</div>
+    <div class="course-desc">קורס דיגיטלי מלא עם גישה לצמיתות</div>
+    <div class="price">197 ₪</div>
+    <div class="price-note">תשלום חד-פעמי • ללא מנוי • גישה מיידית</div>
+    <ul class="pricing-includes">
+      <li>שיעורי וידאו מלאים</li>
+      <li>חומרי PDF להורדה</li>
+      <li>גישה לצמיתות + עדכונים עתידיים</li>
+      <li>קהילת תמיכה</li>
+    </ul>
+    <a href="/register.html?course=lo-mishtabedet-latochan" class="btn btn-primary btn-lg" style="width:100%;display:block;">
+      הצטרפי עכשיו ← 197 ₪
+    </a>
+    <p style="margin-top:16px;font-size:0.85rem;color:var(--text-muted);">
+       תשלום מאובטח • גישה מיידית לאחר הרישום
+    </p>
+  </div>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/supabase-config.js"></script>
-<script>
-(async () => {
-  const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    document.getElementById('card-logged-out').style.display = 'none';
-    document.getElementById('card-logged-in').style.display = 'block';
-    document.getElementById('nav-login-btn').textContent = session.user.email.split('@')[0];
-    document.getElementById('nav-register-btn').textContent = 'לקורס ←';
-    document.getElementById('nav-register-btn').href = '/courses/reels/';
-  }
-})();
-</script>
+<!-- FAQ -->
+<section class="section" style="padding-top:0;">
+  <h2 class="section-title">שאלות נפוצות</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h3>כמה זמן יש לי גישה לקורס?</h3>
+      <p>גישה לצמיתות! ברגע שנרשמת, הקורס שלך לתמיד - כולל כל העדכונים העתידיים.</p>
+    </div>
+    <div class="faq-item">
+      <h3>האם צריך ניסיון קודם?</h3>
+      <p>לא בכלל. הקורס מתאים לכל מי שמנהלת עסק ורוצה לשפר את הנוכחות הדיגיטלית שלה, בלי קשר לרמת הניסיון.</p>
+    </div>
+    <div class="faq-item">
+      <h3>מתי יתחיל הקורס?</h3>
+      <p>מיד! הגישה מיידית - ברגע שמשלמים ונרשמים תוכלי להתחיל ללמוד.</p>
+    </div>
+    <div class="faq-item">
+      <h3>האם יש מדיניות החזר כספי?</h3>
+      <p>כן. אם תוך 7 ימים מהרכישה הרגשת שהקורס לא מתאים לך - נחזיר לך את הכסף במלואו.</p>
+    </div>
+    <div class="faq-item">
+      <h3>באיזה פורמט הלמידה?</h3>
+      <p>הקורס כולל שיעורי וידאו שתוכלי לצפות בהם בכל זמן, בנוסף לחומרי PDF עם תרגילים ואסטרטגיות.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+      <img src="logo-white.png" alt="Salon Academy" style="width:auto;height:50px;object-fit:cover;">
+
+  <p style="margin-bottom:8px;font-weight:700;color:var(--text);"> Salon Academy</p>
+  <p>
+    <a href="/login.html">כניסה</a> &nbsp;•&nbsp;
+    <a href="/register.html">הרשמה</a>
+  </p>
+  <p style="margin-top:16px;">© 2025 Salon Academy </p>
+</footer>
+
 </body>
 </html>
