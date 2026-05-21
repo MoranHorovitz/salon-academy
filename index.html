@@ -451,6 +451,23 @@ async function goToGuide(e) {
         const r = JSON.parse(stored);
         if (r.type) {
           window.location.href = '/sales/sales-' + r.type + '.html';
+
+/* FbAlfi Bold - Hebrew display font */
+@font-face {
+  font-family: 'FbAlfi';
+  src: url('/fonts/FbAlfi-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hebrew headings use FbAlfi */
+h1, h2, .hero-title, .result-title, .result-hero-name,
+.week-title, .card-preview-title, .hero h1,
+.hero-h1, .sidebar-name, .nav-logo {
+  font-family: 'FbAlfi', 'Heebo', sans-serif;
+}
+
           return;
         }
       } catch(e2) {}
