@@ -8,8 +8,8 @@
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
-.wrap{max-width:680px;margin:0 auto;padding:56px 24px 100px;}
-@media(max-width:600px){.wrap{padding:32px 16px 80px;}}
+.wrap{max-width:860px;margin:0 auto;padding:56px 32px 100px;}
+@media(max-width:600px){.wrap{padding:32px 16px 80px;}.week-header{gap:10px;}}
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
 .hero-icon{font-size:52px;margin-bottom:14px;}
 h1{font-size:clamp(28px,5vw,44px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
@@ -66,14 +66,16 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
 .week-header {
   cursor: pointer;
   user-select: none;
-  padding-bottom: 16px;
+  padding: 14px 0;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
-.week-title-wrap { flex: 1; min-width: 0; }
-.week-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-@media(max-width:500px){ .week-title { white-space: normal; font-size:16px; } }
+.week-title-wrap { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
+.week-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); white-space: nowrap; }
+.week-title { font-size: clamp(15px,2.5vw,18px); font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.week-chevron { font-size: 11px !important; width: 18px; height: 18px; }
+@media(max-width:500px){ .week-title { font-size:15px; } }
 .week-header:hover .week-title { color: var(--lime); }
 .week-chevron {
   margin-right: auto;
@@ -125,9 +127,10 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
 <div class="label">🛠 "Minimum Viable Product" כפילוסופיה חיים</div>
 <p>מה ה-MVP שלך? <strong>מה הגרסה הכי פשוטה שאפשר לבדוק אם הרעיון עובד?</strong></p>
 <ul>
-<li>לא "קורס מלא" - שיחה אחת בתשלום</li>
-<li>לא "אתר" - הודעת וואטסאפ עם תיאור</li>
-<li>לא "מדריך מושלם" - 3 עמודים ב-Google Docs</li>
+<li>לא "קורס מלא" - שיחה אחת בתשלום (30 דקות, נושא ספציפי)</li>
+<li>לא "אתר" - 5 שורות בוואטסאפ שמתארות מה את מציעה</li>
+<li>לא "מדריך מושלם" - קובץ Google Docs עם 3 עמודים מובנים</li>
+<li>לא "לבנות" - <strong>לנסח ולשלוח ל-3 אנשים ולשאול: "האם תשלמי X על זה?"</strong></li>
 </ul>
 <p>מכרת? קיבלת פידבק? <strong>עכשיו בני את הגרסה הבאה.</strong></p>
 </div>
@@ -140,7 +143,7 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
     <div class="exercise-label">התרגיל השבועי</div>
     <div class="time-badge">45 דקות</div>
     <h3>ה-MVP שלך בשעה אחת</h3>
-    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי את המוצר שרצית לבנות. עכשיו שאלי: "מה הגרסה הכי פשוטה שאפשר לבדוק אם מישהי תשלם?" - רשמי תשובה.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>20 דקות</strong> - בני את ה-MVP עכשיו. לא מחר. לא "כשיהיה זמן". כתבי 5 משפטים על מה שאת מציעה. זה המוצר לעכשיו.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - שלחי ל-3 אנשים. לא "מה דעתך?" - "האם תשלמי ₪X על זה? כן/לא ולמה?"</div></div>
+    <div class="exercise-step"><div class="n">1</div><div class="t"><strong>10 דקות</strong> - כתבי את המוצר שרצית לבנות. עכשיו שאלי: "מה הגרסה הכי פשוטה שאפשר לבדוק אם מישהי תשלם?" - רשמי תשובה.</div></div><div class="exercise-step"><div class="n">2</div><div class="t"><strong>20 דקות</strong> - כתבי 5 משפטים שמתארים את מה שאת מציעה: מה זה, למי זה, מה התוצאה, מה המחיר, ומה מקבלים. זה לא "לבנות" — זה לנסח. 5 משפטים = ה-MVP שלך לבדיקה.</div></div><div class="exercise-step"><div class="n">3</div><div class="t"><strong>15 דקות</strong> - שלחי ל-3 אנשים. לא "מה דעתך?" - "האם תשלמי ₪X על זה? כן/לא ולמה?"</div></div>
   </div>
 
   </div>
