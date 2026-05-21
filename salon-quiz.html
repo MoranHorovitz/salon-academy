@@ -382,7 +382,7 @@ footer {
         <span style="font-size:12px;color:#777;line-height:1.5;">קראתי ואני מסכימה ל<a href="https://www.salon-hayazamiot.co.il/privacy-policy" target="_blank" style="color:#c6ff00;text-decoration:underline;">מדיניות הפרטיות</a> ולקבלת חומרים שיווקיים</span>
       </label>
       <div id="popup-error" style="display:none;color:#ff6060;font-size:13px;margin-bottom:10px;"></div>
-      <button id="popup-submit-btn" onclick="registerAndProceed()" disabled style="display:block;width:100%;background:#c6ff00;color:#000;font-family:Heebo,sans-serif;font-size:16px;font-weight:800;padding:14px;border:none;border-radius:12px;cursor:not-allowed;opacity:0.4;transition:all 0.2s;">צרי חשבון וקבלי את המדריך ←</button>
+      <button id="popup-submit-btn" onclick="registerAndProceed()" disabled style="display:block;width:100%;background:#c6ff00;color:#000;font-family:Heebo,sans-serif;font-size:16px;font-weight:800;padding:14px;border:none;border-radius:12px;cursor:not-allowed;opacity:0.4;transition:all 0.2s;">יוצרות לך חשבון ←</button>
       <p style="font-size:12px;color:#555;margin-top:10px;">כבר יש לך חשבון? <a href="#" onclick="switchToLogin()" style="color:#c6ff00;text-decoration:none;">כניסה</a></p>
     </div>
     <div id="popup-login-form" style="display:none">
@@ -772,7 +772,7 @@ async function registerAndProceed() {
   if (pass.length < 8) { errEl.textContent = 'סיסמה חייבת להכיל לפחות 8 תווים'; errEl.style.display = 'block'; return; }
 
   const btn = document.getElementById('popup-submit-btn');
-  btn.textContent = 'יוצרת חשבון...';
+  btn.textContent = 'יוצרות לך חשבון...';
   btn.disabled = true;
 
   const type = window._popupType || 'f';
@@ -797,7 +797,7 @@ async function registerAndProceed() {
       errEl.textContent = error.message || 'שגיאה בהרשמה';
     }
     errEl.style.display = 'block';
-    btn.textContent = 'צרי חשבון וקבלי את המדריך ←';
+    btn.textContent = 'יוצרות לך חשבון ←';
     btn.disabled = false;
     return;
   }
