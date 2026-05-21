@@ -314,6 +314,51 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 .card-orange-price { color: #ff8c00; }
 .card-orange .card-btn, .card-orange-btn { background: rgba(255,140,0,0.12); border-color: rgba(255,140,0,0.3); color: #ff8c00; }
 .card-orange .card-btn:hover, .card-orange-btn:hover { background: #ff8c00; color: #000; }
+
+/* Purchased badge */
+.card-purchased-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.purchased .card-purchased-overlay { opacity: 1; }
+.card-purchased-check {
+  background: rgba(60,220,100,0.9);
+  color: #000;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.purchased .card-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(60,220,100,0.6);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.purchased-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(60,220,100,0.9);
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
 </style>
 </head>
 <body>
@@ -355,8 +400,8 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 
     <!-- CARD 1: לא משתעבדת לתוכן -->
     <a href="/courses/reels/about.html" class="product-card card-pink">
-      <div class="card-thumb">
-        <div class="card-thumb-placeholder grad-3">
+      <div class="card-thumb" id="thumb-salon">
+        <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#0d0d1e 0%,#1e1535 50%,#2d1a5e 100%);">
           <div class="thumb-title">לא משתעבדת<br>לתוכן</div>
           <div class="thumb-by">BY MORAN HOROVITZ</div>
         </div>
@@ -523,6 +568,56 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
   // 5. No result anywhere -> go to quiz
   window.location.href = '/salon-quiz.html';
 }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script>
+// Map product_id → card element selector
+const PRODUCT_CARDS = {
+  'reels-course':  document.querySelector('a[href="/courses/reels/about.html"]'),
+  'quiz-guide':    document.querySelector('a[href="#"][onclick]'),
+  'reels-guide':   document.querySelector('a[href*="landing-pages/reels"]'),
+  'salon':         document.querySelector('a[href="https://salon-hayazamiot.co.il"]'),
+};
+
+async function markPurchases() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+
+  const { data: purchases } = await sb
+    .from('purchases')
+    .select('product_id')
+    .eq('user_id', session.user.id);
+
+  if (!purchases || !purchases.length) return;
+
+  purchases.forEach(p => {
+    const card = PRODUCT_CARDS[p.product_id];
+    if (!card) return;
+    card.classList.add('purchased');
+    // Add tag to card footer
+    const footer = card.querySelector('.card-footer');
+    if (footer && !footer.querySelector('.purchased-tag')) {
+      const tag = document.createElement('span');
+      tag.className = 'purchased-tag';
+      tag.textContent = '✓ רכשת';
+      footer.appendChild(tag);
+    }
+  });
+}
+
+// Also update nav if logged in
+(async () => {
+  await markPurchases();
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    const loginBtn = document.getElementById('nav-login-btn');
+    const regBtn = document.getElementById('nav-register-btn');
+    if (loginBtn) { loginBtn.textContent = session.user.email.split('@')[0]; loginBtn.href = '/courses/reels/'; }
+    if (regBtn) { regBtn.textContent = 'לקורסים ←'; regBtn.href = '/courses/reels/'; }
+  }
+})();
 </script>
 </body>
 </html>
