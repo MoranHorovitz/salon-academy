@@ -604,7 +604,7 @@ async function markPurchases() {
     } else if (p.product_id === 'quiz-guide') {
       // For quiz guide - go to personal guide based on personality type
       const type = localStorage.getItem('quiz_result_type') || 'f';
-      card.href = '/guides/guide-' + type + '.html';
+      card.href = '/guides/guide-' + type.toLowerCase() + '.html';
     }
 
     // Replace button with "כניסה ←" 
