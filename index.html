@@ -339,14 +339,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   align-items: center;
   gap: 6px;
 }
-.purchased .card-thumb::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid rgba(60,220,100,0.6);
-  border-radius: inherit;
-  pointer-events: none;
-}
+.purchased { outline: 2.5px solid rgba(60,220,100,0.6); outline-offset: -1px; }
 .purchased-tag {
   position: absolute;
   bottom: 10px;
@@ -400,8 +393,8 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 
     <!-- CARD 1: לא משתעבדת לתוכן -->
     <a href="/courses/reels/about.html" class="product-card card-pink">
-      <div class="card-thumb" id="thumb-salon">
-        <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#0d0d1e 0%,#1e1535 50%,#2d1a5e 100%);">
+      <div class="card-thumb">
+        <div class="card-thumb-placeholder grad-3">
           <div class="thumb-title">לא משתעבדת<br>לתוכן</div>
           <div class="thumb-by">BY MORAN HOROVITZ</div>
         </div>
@@ -596,14 +589,19 @@ async function markPurchases() {
     const card = PRODUCT_CARDS[p.product_id];
     if (!card) return;
     card.classList.add('purchased');
-    // Add tag to card footer
-    const footer = card.querySelector('.card-footer');
-    if (footer && !footer.querySelector('.purchased-tag')) {
-      const tag = document.createElement('span');
-      tag.className = 'purchased-tag';
-      tag.textContent = '✓ רכשת';
-      footer.appendChild(tag);
+    // Replace button with "נרכש" indicator
+    const btn = card.querySelector('.card-btn');
+    if (btn) {
+      btn.style.background = 'rgba(60,220,100,0.12)';
+      btn.style.borderColor = 'rgba(60,220,100,0.3)';
+      btn.style.color = '#3cdd82';
+      btn.style.cursor = 'default';
+      btn.textContent = '✓ נרכש';
+      btn.onclick = (e) => e.preventDefault();
     }
+    // Update price color to muted
+    const price = card.querySelector('.card-price');
+    if (price) price.style.opacity = '0.5';
   });
 }
 
