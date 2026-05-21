@@ -363,8 +363,8 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     <span>by Moran Horovitz &amp; Ofek Panker</span>
   </a>
   <div class="nav-actions">
-    <a href="/login.html" class="nav-btn">כניסה</a>
-    <a href="/register.html" class="nav-btn primary">הרשמה</a>
+    <a href="/login.html" class="nav-btn" id="nav-login-btn">כניסה</a>
+    <a href="/register.html" class="nav-btn primary" id="nav-register-btn">הרשמה</a>
   </div>
 </nav>
 
@@ -628,8 +628,22 @@ async function markPurchases() {
   if (session) {
     const loginBtn = document.getElementById('nav-login-btn');
     const regBtn = document.getElementById('nav-register-btn');
-    if (loginBtn) { loginBtn.textContent = session.user.email.split('@')[0]; loginBtn.href = '/courses/reels/'; }
-    if (regBtn) { regBtn.textContent = 'לקורסים ←'; regBtn.href = '/courses/reels/'; }
+    if (loginBtn) {
+      const name = session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email.split('@')[0];
+      loginBtn.textContent = 'שלום, ' + name;
+      loginBtn.href = '/courses/reels/';
+      loginBtn.style.color = '#c6ff00';
+    }
+    if (regBtn) {
+      regBtn.textContent = 'התנתקות';
+      regBtn.href = '#';
+      regBtn.className = 'nav-btn';
+      regBtn.onclick = async (e) => {
+        e.preventDefault();
+        await sb.auth.signOut();
+        window.location.reload();
+      };
+    }
   }
 })();
 </script>
