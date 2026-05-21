@@ -371,17 +371,15 @@
 
     const user = session.user;
 
-    // 2. Check enrollment
-    const { data: enrollment, error: enrollError } = await sb
-      .from('enrollments')
-      .select('id')
-      .eq('user_id', user.id)
-      .eq('course_id', COURSE_ID)
-      .maybeSingle();
+    // 2. Check enrollment (enrollments table OR purchases table)
+    const [{ data: enrollment }, { data: purchase }] = await Promise.all([
+      sb.from('enrollments').select('id').eq('user_id', user.id).eq('course_id', COURSE_ID).maybeSingle(),
+      sb.from('purchases').select('product_id').eq('user_id', user.id).eq('product_id', 'reels-course').maybeSingle()
+    ]);
 
-    if (!enrollment) {
-      // Not enrolled - redirect to purchase
-      window.location.href = '/';
+    if (!enrollment && !purchase) {
+      // Not enrolled - redirect to purchase page
+      window.location.href = '/courses/reels/about.html';
       return;
     }
 

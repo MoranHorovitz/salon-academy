@@ -631,7 +631,7 @@ async function markPurchases() {
     if (loginBtn) {
       const name = session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email.split('@')[0];
       loginBtn.textContent = 'שלום, ' + name;
-      loginBtn.href = '/courses/reels/';
+      loginBtn.href = '/';
       loginBtn.style.color = '#c6ff00';
     }
     if (regBtn) {
