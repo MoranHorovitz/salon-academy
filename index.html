@@ -585,19 +585,35 @@ async function markPurchases() {
 
   if (!purchases || !purchases.length) return;
 
+  const PRODUCT_LINKS = {
+    'reels-course': '/courses/reels/',
+    'quiz-guide':   null, // dynamic — based on personality type
+    'reels-guide':  'https://www.salon-hayazamiot.co.il/landing-pages/reels',
+    'salon':        'https://salon-hayazamiot.co.il',
+  };
+
   purchases.forEach(p => {
     const card = PRODUCT_CARDS[p.product_id];
     if (!card) return;
     card.classList.add('purchased');
-    // Replace button with "נרכש" indicator
+
+    // Change card link to direct content URL
+    const directUrl = PRODUCT_LINKS[p.product_id];
+    if (directUrl) {
+      card.href = directUrl;
+    } else if (p.product_id === 'quiz-guide') {
+      // For quiz guide - go to personal guide based on personality type
+      const type = localStorage.getItem('quiz_result_type') || 'f';
+      card.href = '/guides/guide-' + type + '.html';
+    }
+
+    // Replace button with "כניסה ←" 
     const btn = card.querySelector('.card-btn');
     if (btn) {
-      btn.style.background = 'rgba(60,220,100,0.12)';
-      btn.style.borderColor = 'rgba(60,220,100,0.3)';
+      btn.style.background = 'rgba(60,220,100,0.15)';
+      btn.style.borderColor = 'rgba(60,220,100,0.4)';
       btn.style.color = '#3cdd82';
-      btn.style.cursor = 'default';
-      btn.textContent = '✓ נרכש';
-      btn.onclick = (e) => e.preventDefault();
+      btn.textContent = 'כניסה ←';
     }
     // Update price color to muted
     const price = card.querySelector('.card-price');
