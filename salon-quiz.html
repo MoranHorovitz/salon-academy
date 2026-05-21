@@ -378,7 +378,24 @@ footer {
       <input id="popup-email" type="email" placeholder="אימייל" autocomplete="email" style="display:block;width:100%;background:#0f0f0f;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:13px 16px;font-family:Heebo,sans-serif;font-size:15px;color:#f0f0f0;outline:none;margin-bottom:10px;box-sizing:border-box;text-align:right;">
       <input id="popup-pass" type="password" placeholder="סיסמה (לפחות 8 תווים)" autocomplete="new-password" style="display:block;width:100%;background:#0f0f0f;border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:13px 16px;font-family:Heebo,sans-serif;font-size:15px;color:#f0f0f0;outline:none;margin-bottom:10px;box-sizing:border-box;text-align:right;">
       <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;cursor:pointer;text-align:right;">
-        <input type="checkbox" id="popup-consent" required onchange="const btn=document.getElementById('popup-submit-btn');btn.disabled=!this.checked;btn.style.opacity=this.checked?'1':'0.4';btn.style.cursor=this.checked?'pointer':'not-allowed';" style="width:16px;height:16px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:#c6ff00;">
+        <input type="checkbox" id="popup-consent" required onchange="const btn=document.getElementById('popup-submit-btn');btn.disabled=!this.checked;btn.style.opacity=this.checked?'1':'0.4';
+
+/* FbAlfi Bold - Hebrew display font */
+@font-face {
+  font-family: 'FbAlfi';
+  src: url('/fonts/FbAlfi-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hebrew headings use FbAlfi */
+h1, h2, .hero-title, .result-title, .result-hero-name,
+.week-title, .card-preview-title, .hero h1,
+.hero-h1, .sidebar-name, .nav-logo {
+  font-family: 'FbAlfi', 'Heebo', sans-serif;
+}
+btn.style.cursor=this.checked?'pointer':'not-allowed';" style="width:16px;height:16px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:#c6ff00;">
         <span style="font-size:12px;color:#777;line-height:1.5;">קראתי ואני מסכימה ל<a href="https://www.salon-hayazamiot.co.il/privacy-policy" target="_blank" style="color:#c6ff00;text-decoration:underline;">מדיניות הפרטיות</a> ולקבלת חומרים שיווקיים</span>
       </label>
       <div id="popup-error" style="display:none;color:#ff6060;font-size:13px;margin-bottom:10px;"></div>
