@@ -603,7 +603,12 @@ async function markPurchases() {
       card.href = directUrl;
     } else if (p.product_id === 'quiz-guide') {
       // For quiz guide - go to personal guide based on personality type
-      const type = localStorage.getItem('quiz_result_type') || 'f';
+      // Try localStorage first, then user_metadata, then default to 'f'
+      let type = localStorage.getItem('quiz_result_type');
+      if (!type) {
+        const { data: { user: u } } = await sb.auth.getUser();
+        type = u?.user_metadata?.personality_type || 'f';
+      }
       card.href = '/guides/guide-' + type.toLowerCase() + '.html';
     }
 

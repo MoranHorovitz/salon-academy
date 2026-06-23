@@ -103,10 +103,20 @@ async function init() {
     return;
   }
 
-  // 5. Save purchase to metadata
+  // 5. Save purchase to metadata + purchases table
   await sb.auth.updateUser({
-    data: { guide_purchased_at: new Date().toISOString() }
+    data: { guide_purchased_at: new Date().toISOString(), personality_type: type }
   });
+  // Also insert into purchases table so markPurchases() works on homepage
+  const { data: existingPurchase } = await sb
+    .from('purchases')
+    .select('product_id')
+    .eq('user_id', user.id)
+    .eq('product_id', 'quiz-guide')
+    .maybeSingle();
+  if (!existingPurchase) {
+    await sb.from('purchases').insert({ user_id: user.id, product_id: 'quiz-guide' });
+  }
 
   // 6. Show result + redirect
   const t = TYPES[type];
