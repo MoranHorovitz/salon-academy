@@ -112,7 +112,7 @@
   (async () => {
     const { data: { session } } = await sb.auth.getSession();
     if (session) {
-      window.location.href = course ? `thank-you.html?course=${course}` : 'course.html';
+      window.location.href = course ? `thank-you.html?course=${course}` : '/';
     }
   })();
 
