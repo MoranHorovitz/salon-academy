@@ -353,6 +353,22 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   letter-spacing: 0.5px;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script>
+// One-time migration: move session from old storageKey to default Supabase key
+(function() {
+  try {
+    const OLD = 'salon-academy-auth';
+    const NEW = 'sb-sbuwxhijqfdrznblnieb-auth-token';
+    const old = localStorage.getItem(OLD);
+    if (old) {
+      if (!localStorage.getItem(NEW)) localStorage.setItem(NEW, old);
+      localStorage.removeItem(OLD);
+    }
+  } catch(e) {}
+})();
+</script>
 </head>
 <body>
 
@@ -477,8 +493,6 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/supabase-config.js"></script>
 <script>
 async function goToGuide(e) {
   e.preventDefault();
@@ -563,8 +577,7 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/supabase-config.js"></script>
+
 <script>
 // Map product_id → card element selector
 const PRODUCT_CARDS = {
