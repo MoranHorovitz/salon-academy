@@ -580,13 +580,6 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 
 <script>
 window.addEventListener('DOMContentLoaded', async function() {
-// If redirected from login, do a clean reload to ensure session is picked up
-  if (window.location.search.includes('auth=1')) {
-    window.history.replaceState({}, '', '/');
-    window.location.reload();
-    return;
-  }
-
   // Map product_id → card element selector
 const PRODUCT_CARDS = {
   'reels-course':  document.querySelector('[data-product-id="reels-course"]'),
