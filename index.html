@@ -591,12 +591,37 @@ async function markPurchases(personalityType) {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
 
+  // Check purchases table (guides + quiz)
   const { data: purchases } = await sb
     .from('purchases')
     .select('product_id')
     .eq('user_id', session.user.id);
 
-  if (!purchases || !purchases.length) return;
+  // Check enrollments table (courses) — map course_id to product_id
+  const { data: enrollments } = await sb
+    .from('enrollments')
+    .select('course_id')
+    .eq('user_id', session.user.id);
+
+  const enrolledProductIds = (enrollments || []).map(e => {
+    if (e.course_id === 'reels' || e.course_id === 'lo-mishtabedet-latochan') return 'reels-course';
+    return e.course_id;
+  });
+
+  const allPurchases = [
+    ...(purchases || []),
+    ...enrolledProductIds.map(id => ({ product_id: id }))
+  ];
+
+  // Deduplicate
+  const seen = new Set();
+  const uniquePurchases = allPurchases.filter(p => {
+    if (seen.has(p.product_id)) return false;
+    seen.add(p.product_id);
+    return true;
+  });
+
+  if (!uniquePurchases.length) return;
 
   const PRODUCT_LINKS = {
     'reels-course': '/courses/reels/',
@@ -605,7 +630,7 @@ async function markPurchases(personalityType) {
     'salon':        'https://salon-hayazamiot.co.il',
   };
 
-  purchases.forEach(p => {
+  uniquePurchases.forEach(p => {
     const card = PRODUCT_CARDS[p.product_id];
     if (!card) return;
     card.classList.add('purchased');
