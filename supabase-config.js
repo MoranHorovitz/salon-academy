@@ -9,7 +9,6 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: true,
-    storageKey: 'salon-academy-auth'
+    detectSessionInUrl: true
   }
 });
