@@ -579,7 +579,6 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 
 
 <script>
-window.addEventListener('DOMContentLoaded', async function() {
   // Map product_id → card element selector
 const PRODUCT_CARDS = {
   'reels-course':  document.querySelector('[data-product-id="reels-course"]'),
@@ -674,7 +673,7 @@ sb.auth.getSession().then(({ data: { session } }) => {
 sb.auth.onAuthStateChange((event, session) => {
   if (session) updateNav(session);
 });
-});
+
 </script>
 </body>
 </html>
