@@ -358,7 +358,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="#" class="nav-logo">
+  <a href="/" class="nav-logo" onclick="if(window.location.pathname=='/'){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}">
     Salon Academy
     <span>by Moran Horovitz &amp; Ofek Panker</span>
   </a>
@@ -383,7 +383,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   <p>כאן תוכלי לראות את כל הקורסים והמדריכים שלנו מרוכזים במקום אחד.</p>
   <p>מה שרכשת כבר  -  <strong>יהיה זמין לצפייה כאן</strong></p>
   <p>ומה שלא נתן לרכוש מכאן במהירות 👇</p>
-  <span class="cta-note">מומלץ להתחיל מהמדריך שמתאים לסוג האישיות שלך ←</span>
+  <a href="#" onclick="goToGuide(event)" class="cta-note" style="cursor:pointer;text-decoration:none;">מומלץ להתחיל מהמדריך שמתאים לסוג האישיות שלך ←</a>
 </div>
 
 <!-- PRODUCTS -->
@@ -588,7 +588,7 @@ async function markPurchases() {
   const PRODUCT_LINKS = {
     'reels-course': '/courses/reels/',
     'quiz-guide':   null, // dynamic — based on personality type
-    'reels-guide':  'https://www.salon-hayazamiot.co.il/guides/reels',
+    'reels-guide':  '/viewer.html',
     'salon':        'https://salon-hayazamiot.co.il',
   };
 
