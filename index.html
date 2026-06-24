@@ -648,30 +648,38 @@ async function markPurchases() {
 }
 
 // Also update nav if logged in
-// Use onAuthStateChange — fires reliably when session is ready, even from localStorage
-sb.auth.onAuthStateChange(async (event, session) => {
-  if (session) {
-    const loginBtn = document.getElementById('nav-login-btn');
-    const regBtn = document.getElementById('nav-register-btn');
-    if (loginBtn) {
-      const name = session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email.split('@')[0];
-      loginBtn.textContent = 'שלום, ' + name;
-      loginBtn.href = '/';
-      loginBtn.style.color = '#c6ff00';
-    }
-    if (regBtn) {
-      regBtn.textContent = 'התנתקות';
-      regBtn.href = '#';
-      regBtn.className = 'nav-btn';
-      regBtn.onclick = async (e) => {
-        e.preventDefault();
-        await sb.auth.signOut();
-        window.location.reload();
-      };
-    }
-    // Mark purchased items when session is ready
-    await markPurchases();
+// Update nav based on session — called from both getSession() and onAuthStateChange
+async function updateNav(session) {
+  if (!session) return;
+  const loginBtn = document.getElementById('nav-login-btn');
+  const regBtn = document.getElementById('nav-register-btn');
+  if (loginBtn) {
+    const name = session.user.user_metadata?.full_name?.split(' ')[0] || session.user.email.split('@')[0];
+    loginBtn.textContent = 'שלום, ' + name;
+    loginBtn.href = '/';
+    loginBtn.style.color = '#c6ff00';
   }
+  if (regBtn) {
+    regBtn.textContent = 'התנתקות';
+    regBtn.href = '#';
+    regBtn.className = 'nav-btn';
+    regBtn.onclick = async (e) => {
+      e.preventDefault();
+      await sb.auth.signOut();
+      window.location.reload();
+    };
+  }
+  await markPurchases();
+}
+
+// 1. Check immediately (handles page reload with existing session)
+sb.auth.getSession().then(({ data: { session } }) => {
+  if (session) updateNav(session);
+});
+
+// 2. Also listen for auth changes (handles fresh login redirect)
+sb.auth.onAuthStateChange((event, session) => {
+  if (session) updateNav(session);
 });
 });
 </script>
