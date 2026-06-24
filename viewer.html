@@ -18,7 +18,7 @@
     --sidebar-w: 256px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; height: 100dvh; overflow: hidden; }
+  body { background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; height: 100dvh; overflow: hidden; visibility: hidden; }
 
   /* SIDEBAR */
   .sidebar {
@@ -220,6 +220,32 @@
 <div class="lb" id="lb" onclick="closeLb()">
   <img id="lb-img" src="" alt="">
 </div>
+
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script>
+// Auth gate — must have session + reels-guide purchase
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+    return;
+  }
+  const { data: purchase } = await sb
+    .from('purchases')
+    .select('product_id')
+    .eq('user_id', session.user.id)
+    .eq('product_id', 'reels-guide')
+    .maybeSingle();
+  if (!purchase) {
+    window.location.href = '/?access=denied';
+    return;
+  }
+  // Auth passed — show content
+  document.body.style.visibility = 'visible';
+})();
+</script>
 
 <script>
 const TOTAL = 68;

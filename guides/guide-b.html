@@ -20,7 +20,7 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--lime:#c6ff00;--border:rgba(255,255,255,0.08);--text:#f0f0f0;--muted:#777;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
+body{visibility:hidden;font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
 .wrap{max-width:860px;margin:0 auto;padding:56px 32px 100px;}
 @media(max-width:600px){.wrap{padding:32px 16px 80px;}.week-header{gap:10px;}}
 .hero-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);background:rgba(198,255,0,0.08);border:1px solid rgba(198,255,0,0.2);border-radius:20px;padding:6px 14px;margin-bottom:24px;}
@@ -99,6 +99,29 @@ footer{text-align:center;padding:28px 0 0;font-size:12px;color:var(--muted);bord
 }
 .week.open .week-chevron { transform: rotate(180deg); color: var(--lime); }
 </style>
+<!-- Supabase auth gate -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script>
+(async () => {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+    return;
+  }
+  const { data: purchase } = await sb
+    .from('purchases')
+    .select('product_id')
+    .eq('user_id', session.user.id)
+    .eq('product_id', 'quiz-guide')
+    .maybeSingle();
+  if (!purchase) {
+    window.location.href = '/?access=denied';
+    return;
+  }
+  document.body.style.visibility = 'visible';
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
