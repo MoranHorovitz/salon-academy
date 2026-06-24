@@ -358,7 +358,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="#" class="nav-logo">
+  <a href="/" class="nav-logo" onclick="if(window.location.pathname=='/'){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}">
     Salon Academy
     <span>by Moran Horovitz &amp; Ofek Panker</span>
   </a>
@@ -383,7 +383,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   <p>כאן תוכלי לראות את כל הקורסים והמדריכים שלנו מרוכזים במקום אחד.</p>
   <p>מה שרכשת כבר  -  <strong>יהיה זמין לצפייה כאן</strong></p>
   <p>ומה שלא נתן לרכוש מכאן במהירות 👇</p>
-  <span class="cta-note">מומלץ להתחיל מהמדריך שמתאים לסוג האישיות שלך ←</span>
+  <a href="#" onclick="goToGuide(event)" class="cta-note" style="cursor:pointer;text-decoration:none;">מומלץ להתחיל מהמדריך שמתאים לסוג האישיות שלך ←</a>
 </div>
 
 <!-- PRODUCTS -->
@@ -392,7 +392,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
   <div class="products-grid">
 
     <!-- CARD 1: לא משתעבדת לתוכן -->
-    <a href="/courses/reels/about.html" class="product-card card-pink">
+    <a href="/courses/reels/about.html" class="product-card card-pink" data-product-id="reels-course">
       <div class="card-thumb">
         <div class="card-thumb-placeholder grad-3">
           <div class="thumb-title">לא משתעבדת<br>לתוכן</div>
@@ -411,7 +411,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 2: שעה אחת בשבוע -->
-    <a href="#" onclick="goToGuide(event)" class="product-card card-green">
+    <a href="#" onclick="goToGuide(event)" class="product-card card-green" data-product-id="quiz-guide">
       <div class="card-thumb">
         <div class="card-thumb-placeholder grad-2">
           <div class="thumb-title">שעה אחת<br>בשבוע</div>
@@ -430,7 +430,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 3: סלון היזמיות (ה-flagship) -->
-    <a href="https://salon-hayazamiot.co.il" class="product-card card-purple">
+    <a href="https://salon-hayazamiot.co.il" class="product-card card-purple" data-product-id="salon">
       <div class="card-thumb">
         <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#0d0d1e 0%,#1e1535 50%,#2d1a5e 100%);">
           <div class="thumb-title">סלון<br>היזמיות</div>
@@ -449,7 +449,7 @@ body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--tex
     </a>
 
     <!-- CARD 4: מדריך רילז ₪10 -->
-    <a href="https://www.salon-hayazamiot.co.il/landing-pages/reels" target="_blank" class="product-card card-orange">
+    <a href="https://www.salon-hayazamiot.co.il/landing-pages/reels" target="_blank" class="product-card card-orange" data-product-id="reels-guide">
       <div class="card-thumb">
         <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#1a0e00 0%,#3d2000 50%,#7a3800 100%);">
           <div class="thumb-title">מדריך יצירת<br>תוכן לרילז</div>
@@ -568,10 +568,10 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 <script>
 // Map product_id → card element selector
 const PRODUCT_CARDS = {
-  'reels-course':  document.querySelector('a[href="/courses/reels/about.html"]'),
-  'quiz-guide':    document.querySelector('a[href="#"][onclick]'),
-  'reels-guide':   document.querySelector('a[href*="landing-pages/reels"]'),
-  'salon':         document.querySelector('a[href="https://salon-hayazamiot.co.il"]'),
+  'reels-course':  document.querySelector('[data-product-id="reels-course"]'),
+  'quiz-guide':    document.querySelector('[data-product-id="quiz-guide"]'),
+  'reels-guide':   document.querySelector('[data-product-id="reels-guide"]'),
+  'salon':         document.querySelector('[data-product-id="salon"]'),
 };
 
 async function markPurchases() {
@@ -588,7 +588,7 @@ async function markPurchases() {
   const PRODUCT_LINKS = {
     'reels-course': '/courses/reels/',
     'quiz-guide':   null, // dynamic — based on personality type
-    'reels-guide':  'https://www.salon-hayazamiot.co.il/guides/reels',
+    'reels-guide':  '/viewer.html',
     'salon':        'https://salon-hayazamiot.co.il',
   };
 
