@@ -587,7 +587,7 @@ const PRODUCT_CARDS = {
   'salon':         document.querySelector('[data-product-id="salon"]'),
 };
 
-async function markPurchases() {
+async function markPurchases(personalityType) {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
 
@@ -617,12 +617,8 @@ async function markPurchases() {
     } else if (p.product_id === 'quiz-guide') {
       // For quiz guide - go to personal guide based on personality type
       // Try localStorage first, then user_metadata, then default to 'f'
-      let type = localStorage.getItem('quiz_result_type');
-      if (!type) {
-        const { data: { user: u } } = await sb.auth.getUser();
-        type = u?.user_metadata?.personality_type || 'f';
-      }
-      card.href = '/guides/guide-' + type.toLowerCase() + '.html';
+      const type = (localStorage.getItem('quiz_result_type') || personalityType || 'f').toLowerCase();
+      card.href = '/guides/guide-' + type + '.html';
     }
 
     // Replace button with "כניסה ←" 
@@ -661,7 +657,8 @@ async function updateNav(session) {
       window.location.reload();
     };
   }
-  await markPurchases();
+  const pType = session.user.user_metadata?.personality_type || 'f';
+  await markPurchases(pType);
 }
 
 // 1. Check immediately (handles page reload with existing session)
