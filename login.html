@@ -67,6 +67,20 @@
 
 <!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// One-time session migration from old storageKey to default Supabase key
+(function() {
+  try {
+    const OLD_KEY = 'salon-academy-auth';
+    const NEW_KEY = 'sb-sbuwxhijqfdrznblnieb-auth-token';
+    const old = localStorage.getItem(OLD_KEY);
+    if (old && !localStorage.getItem(NEW_KEY)) {
+      localStorage.setItem(NEW_KEY, old);
+    }
+    if (old) localStorage.removeItem(OLD_KEY);
+  } catch(e) {}
+})();
+</script>
 <script src="supabase-config.js"></script>
 <script>
   // Check for redirect param (if came from a protected page)
