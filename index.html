@@ -648,9 +648,8 @@ async function markPurchases() {
 }
 
 // Also update nav if logged in
-(async () => {
-  await markPurchases();
-  const { data: { session } } = await sb.auth.getSession();
+// Use onAuthStateChange — fires reliably when session is ready, even from localStorage
+sb.auth.onAuthStateChange(async (event, session) => {
   if (session) {
     const loginBtn = document.getElementById('nav-login-btn');
     const regBtn = document.getElementById('nav-register-btn');
@@ -670,8 +669,10 @@ async function markPurchases() {
         window.location.reload();
       };
     }
+    // Mark purchased items when session is ready
+    await markPurchases();
   }
-})();
+});
 });
 </script>
 </body>
