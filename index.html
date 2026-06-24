@@ -580,7 +580,14 @@ h1, h2, .hero-title, .result-title, .result-hero-name,
 
 <script>
 window.addEventListener('DOMContentLoaded', async function() {
-// Map product_id → card element selector
+// If redirected from login, do a clean reload to ensure session is picked up
+  if (window.location.search.includes('auth=1')) {
+    window.history.replaceState({}, '', '/');
+    window.location.reload();
+    return;
+  }
+
+  // Map product_id → card element selector
 const PRODUCT_CARDS = {
   'reels-course':  document.querySelector('[data-product-id="reels-course"]'),
   'quiz-guide':    document.querySelector('[data-product-id="quiz-guide"]'),
@@ -641,9 +648,8 @@ async function markPurchases() {
 }
 
 // Also update nav if logged in
-(async () => {
-  await markPurchases();
-  const { data: { session } } = await sb.auth.getSession();
+// Use onAuthStateChange — fires reliably when session is ready, even from localStorage
+sb.auth.onAuthStateChange(async (event, session) => {
   if (session) {
     const loginBtn = document.getElementById('nav-login-btn');
     const regBtn = document.getElementById('nav-register-btn');
@@ -663,8 +669,10 @@ async function markPurchases() {
         window.location.reload();
       };
     }
+    // Mark purchased items when session is ready
+    await markPurchases();
   }
-})();
+});
 });
 </script>
 </body>
